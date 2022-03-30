@@ -25,6 +25,7 @@ export interface PaymentDetails {
     paid: boolean;
     expiration: string;
     expired: boolean;
+    owner: string;
 }
 export interface PaymentBillingInfo {
     address: ComponentLocationAddress;
