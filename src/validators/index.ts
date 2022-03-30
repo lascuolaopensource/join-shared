@@ -41,7 +41,7 @@ export const sdiSchema = yup.string().uppercase().matches(re.sdi);
 
 export const phoneSchema = yup.string().matches(re.phone);
 export const emailSchema = yup.string().email();
-export const pecSchema = emailSchema.matches(re.pec);
+export const pecSchema = yup.string().matches(re.pec).email();
 
 export const provinciaSchema = yup.string().uppercase().matches(re.provincia);
 export const capSchema = yup.string().matches(re.cap);
