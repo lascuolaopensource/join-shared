@@ -23,7 +23,9 @@ const re = {
   phone: /^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/,
   provincia: /^[A-Z]{2}$/,
   cap: /^[0-9]{5}$/,
-  piva: /^[0-9]{11}$/
+  vat: /^[0-9]{11}$/,
+  sdi: /^([0-9]|[A-Z]){6,7}$/,
+  pec: /^(.*)@(?:\w*.?pec(?:.?\w+)*)$/
 };
 /**
  * Schemas
@@ -31,10 +33,13 @@ const re = {
 
 const urlSchema = yup.string().lowercase().matches(re.url);
 const cfSchema = yup.string().uppercase().matches(re.cf);
+const vatSchema = yup.string().matches(re.vat);
+const sdiSchema = yup.string().uppercase().matches(re.sdi);
 const phoneSchema = yup.string().matches(re.phone);
+const emailSchema = yup.string().email();
+const pecSchema = emailSchema.matches(re.pec);
 const provinciaSchema = yup.string().uppercase().matches(re.provincia);
 const capSchema = yup.string().matches(re.cap);
-const emailSchema = yup.string().email();
 /**
  * Yup dynamic checks
  */
@@ -72,10 +77,13 @@ var index$4 = {
 	re: re,
 	urlSchema: urlSchema,
 	cfSchema: cfSchema,
+	vatSchema: vatSchema,
+	sdiSchema: sdiSchema,
 	phoneSchema: phoneSchema,
+	emailSchema: emailSchema,
+	pecSchema: pecSchema,
 	provinciaSchema: provinciaSchema,
 	capSchema: capSchema,
-	emailSchema: emailSchema,
 	thenReq: thenReq,
 	thenUrlReq: thenUrlReq,
 	thenNull: thenNull,
@@ -259,9 +267,9 @@ const BillingCompanyValues = {
 };
 const BillingCompanySchema = yup.object({
   name: yup.string().required(),
-  vat: yup.string().required(),
-  sdi: yup.string(),
-  pec: emailSchema.required(),
+  vat: vatSchema.required(),
+  sdi: sdiSchema,
+  pec: pecSchema.required(),
   address: AddressSchema
 });
 const PayValues = {

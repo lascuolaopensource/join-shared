@@ -24,7 +24,9 @@ export const re = {
 	phone: /^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/,
 	provincia: /^[A-Z]{2}$/,
 	cap: /^[0-9]{5}$/,
-	piva: /^[0-9]{11}$/,
+	vat: /^[0-9]{11}$/,
+	sdi: /^([0-9]|[A-Z]){6,7}$/,
+	pec: /^(.*)@(?:\w*.?pec(?:.?\w+)*)$/,
 };
 
 /**
@@ -32,11 +34,17 @@ export const re = {
  */
 
 export const urlSchema = yup.string().lowercase().matches(re.url);
+
 export const cfSchema = yup.string().uppercase().matches(re.cf);
+export const vatSchema = yup.string().matches(re.vat);
+export const sdiSchema = yup.string().uppercase().matches(re.sdi);
+
 export const phoneSchema = yup.string().matches(re.phone);
+export const emailSchema = yup.string().email();
+export const pecSchema = emailSchema.matches(re.pec);
+
 export const provinciaSchema = yup.string().uppercase().matches(re.provincia);
 export const capSchema = yup.string().matches(re.cap);
-export const emailSchema = yup.string().email();
 
 /**
  * Yup dynamic checks

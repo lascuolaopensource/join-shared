@@ -1,10 +1,13 @@
 import * as yup from "yup";
 import {
+	setYupDefaultMessages,
+	vatSchema,
+	sdiSchema,
 	cfSchema,
 	provinciaSchema,
 	capSchema,
-	setYupDefaultMessages,
 	emailSchema,
+	pecSchema,
 } from "../validators";
 import { BillingOptions } from "../types";
 
@@ -80,9 +83,9 @@ export const BillingCompanyValues = {
 
 export const BillingCompanySchema = yup.object({
 	name: yup.string().required(),
-	vat: yup.string().required(),
-	sdi: yup.string(),
-	pec: emailSchema.required(),
+	vat: vatSchema.required(),
+	sdi: sdiSchema,
+	pec: pecSchema.required(),
 	address: AddressSchema,
 });
 

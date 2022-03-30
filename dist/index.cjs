@@ -43,7 +43,9 @@ var re = {
   phone: /^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/,
   provincia: /^[A-Z]{2}$/,
   cap: /^[0-9]{5}$/,
-  piva: /^[0-9]{11}$/
+  vat: /^[0-9]{11}$/,
+  sdi: /^([0-9]|[A-Z]){6,7}$/,
+  pec: /^(.*)@(?:\w*.?pec(?:.?\w+)*)$/
 };
 /**
  * Schemas
@@ -51,10 +53,13 @@ var re = {
 
 var urlSchema = yup__namespace.string().lowercase().matches(re.url);
 var cfSchema = yup__namespace.string().uppercase().matches(re.cf);
+var vatSchema = yup__namespace.string().matches(re.vat);
+var sdiSchema = yup__namespace.string().uppercase().matches(re.sdi);
 var phoneSchema = yup__namespace.string().matches(re.phone);
+var emailSchema = yup__namespace.string().email();
+var pecSchema = emailSchema.matches(re.pec);
 var provinciaSchema = yup__namespace.string().uppercase().matches(re.provincia);
 var capSchema = yup__namespace.string().matches(re.cap);
-var emailSchema = yup__namespace.string().email();
 /**
  * Yup dynamic checks
  */
@@ -110,10 +115,13 @@ var index$4 = {
 	re: re,
 	urlSchema: urlSchema,
 	cfSchema: cfSchema,
+	vatSchema: vatSchema,
+	sdiSchema: sdiSchema,
 	phoneSchema: phoneSchema,
+	emailSchema: emailSchema,
+	pecSchema: pecSchema,
 	provinciaSchema: provinciaSchema,
 	capSchema: capSchema,
-	emailSchema: emailSchema,
 	thenReq: thenReq,
 	thenUrlReq: thenUrlReq,
 	thenNull: thenNull,
@@ -297,9 +305,9 @@ var BillingCompanyValues = {
 };
 var BillingCompanySchema = yup__namespace.object({
   name: yup__namespace.string().required(),
-  vat: yup__namespace.string().required(),
-  sdi: yup__namespace.string(),
-  pec: emailSchema.required(),
+  vat: vatSchema.required(),
+  sdi: sdiSchema,
+  pec: pecSchema.required(),
   address: AddressSchema
 });
 var PayValues = {

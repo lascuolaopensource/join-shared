@@ -12,17 +12,22 @@ export declare const re: {
     phone: RegExp;
     provincia: RegExp;
     cap: RegExp;
-    piva: RegExp;
+    vat: RegExp;
+    sdi: RegExp;
+    pec: RegExp;
 };
 /**
  * Schemas
  */
 export declare const urlSchema: yup.StringSchema<string, import("yup/lib/types").AnyObject, string>;
 export declare const cfSchema: yup.StringSchema<string, import("yup/lib/types").AnyObject, string>;
+export declare const vatSchema: yup.StringSchema<string, import("yup/lib/types").AnyObject, string>;
+export declare const sdiSchema: yup.StringSchema<string, import("yup/lib/types").AnyObject, string>;
 export declare const phoneSchema: yup.StringSchema<string, import("yup/lib/types").AnyObject, string>;
+export declare const emailSchema: yup.StringSchema<string, import("yup/lib/types").AnyObject, string>;
+export declare const pecSchema: yup.StringSchema<string, import("yup/lib/types").AnyObject, string>;
 export declare const provinciaSchema: yup.StringSchema<string, import("yup/lib/types").AnyObject, string>;
 export declare const capSchema: yup.StringSchema<string, import("yup/lib/types").AnyObject, string>;
-export declare const emailSchema: yup.StringSchema<string, import("yup/lib/types").AnyObject, string>;
 /**
  * Yup dynamic checks
  */
