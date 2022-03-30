@@ -4,7 +4,7 @@ import {
 	thenUrlReq,
 	phoneSchema,
 	setYupDefaultMessages,
-} from "../validators";
+} from "../validation";
 
 setYupDefaultMessages();
 

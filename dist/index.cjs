@@ -471,5 +471,5 @@ exports.endpoints = index$2;
 exports.gql = index$1;
 exports.helpers = index;
 exports.types = index$3;
-exports.validators = index$4;
+exports.validation = index$4;
 //# sourceMappingURL=index.cjs.map

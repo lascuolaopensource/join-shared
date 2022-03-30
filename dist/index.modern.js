@@ -428,5 +428,5 @@ var Errors;
   Errors["ValidationError"] = "ValidationError";
 })(Errors || (Errors = {}));
 
-export { Errors, index$2 as endpoints, index$1 as gql, index as helpers, index$3 as types, index$4 as validators };
+export { Errors, index$2 as endpoints, index$1 as gql, index as helpers, index$3 as types, index$4 as validation };
 //# sourceMappingURL=index.modern.js.map

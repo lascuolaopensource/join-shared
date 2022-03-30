@@ -8,7 +8,7 @@ import {
 	capSchema,
 	emailSchema,
 	pecSchema,
-} from "../validators";
+} from "../validation";
 import { BillingOptions } from "../types";
 
 setYupDefaultMessages();
