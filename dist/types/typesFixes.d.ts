@@ -19,7 +19,7 @@ export interface LoginResponse {
  * Payment
  */
 export interface PaymentC extends Payment {
-    confirmCode: boolean;
+    confirmCode: string;
 }
 export interface PaymentDetails {
     category: string;
