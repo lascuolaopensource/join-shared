@@ -428,9 +428,13 @@ var index = {
 var Errors;
 
 (function (Errors) {
+  Errors["AlreadyEnrolled"] = "AlreadyEnrolled";
   Errors["DefaultRoleNotFound"] = "DefaultRoleNotFound";
   Errors["EmailSendError"] = "EmailSendError";
   Errors["EmailTaken"] = "EmailTaken";
+  Errors["EnrollmentExpired"] = "EnrollmentExpired";
+  Errors["InvalidRequestBody"] = "InvalidRequestBody";
+  Errors["NoSchemaProvidedInPolicyConfig"] = "NoSchemaProvidedInPolicyConfig";
   Errors["NotFound"] = "NotFound";
   Errors["PasswordThreeDollars"] = "PasswordThreeDollars";
   Errors["PaymentAlreadyPaid"] = "PaymentAlreadyPaid";
@@ -438,12 +442,9 @@ var Errors;
   Errors["PaymentNotFound"] = "PaymentNotFound";
   Errors["RegisterDisabled"] = "RegisterDisabled";
   Errors["UnknownError"] = "UnknownError";
+  Errors["UserExists"] = "UserExists";
   Errors["UserNotConfirmed"] = "UserNotConfirmed";
   Errors["ValidationError"] = "ValidationError";
-  Errors["UserExists"] = "UserExists";
-  Errors["EnrollmentExpired"] = "EnrollmentExpired";
-  Errors["AlreadyEnrolled"] = "AlreadyEnrolled";
-  Errors["NoSchemaProvidedInPolicyConfig"] = "NoSchemaProvidedInPolicyConfig";
 })(Errors || (Errors = {}));
 
 export { Errors, index$2 as e, index$1 as gql, index as h, index$3 as t, index$4 as validators };

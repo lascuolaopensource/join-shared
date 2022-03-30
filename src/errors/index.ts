@@ -1,7 +1,11 @@
 export enum Errors {
+	AlreadyEnrolled = "AlreadyEnrolled",
 	DefaultRoleNotFound = "DefaultRoleNotFound",
 	EmailSendError = "EmailSendError",
 	EmailTaken = "EmailTaken",
+	EnrollmentExpired = "EnrollmentExpired",
+	InvalidRequestBody = "InvalidRequestBody",
+	NoSchemaProvidedInPolicyConfig = "NoSchemaProvidedInPolicyConfig",
 	NotFound = "NotFound",
 	PasswordThreeDollars = "PasswordThreeDollars",
 	PaymentAlreadyPaid = "PaymentAlreadyPaid",
@@ -9,10 +13,7 @@ export enum Errors {
 	PaymentNotFound = "PaymentNotFound",
 	RegisterDisabled = "RegisterDisabled",
 	UnknownError = "UnknownError",
+	UserExists = "UserExists",
 	UserNotConfirmed = "UserNotConfirmed",
 	ValidationError = "ValidationError",
-	UserExists = "UserExists",
-	EnrollmentExpired = "EnrollmentExpired",
-	AlreadyEnrolled = "AlreadyEnrolled",
-	NoSchemaProvidedInPolicyConfig = "NoSchemaProvidedInPolicyConfig",
 }

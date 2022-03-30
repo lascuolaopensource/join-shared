@@ -448,9 +448,13 @@ var index = {
 exports.Errors = void 0;
 
 (function (Errors) {
+  Errors["AlreadyEnrolled"] = "AlreadyEnrolled";
   Errors["DefaultRoleNotFound"] = "DefaultRoleNotFound";
   Errors["EmailSendError"] = "EmailSendError";
   Errors["EmailTaken"] = "EmailTaken";
+  Errors["EnrollmentExpired"] = "EnrollmentExpired";
+  Errors["InvalidRequestBody"] = "InvalidRequestBody";
+  Errors["NoSchemaProvidedInPolicyConfig"] = "NoSchemaProvidedInPolicyConfig";
   Errors["NotFound"] = "NotFound";
   Errors["PasswordThreeDollars"] = "PasswordThreeDollars";
   Errors["PaymentAlreadyPaid"] = "PaymentAlreadyPaid";
@@ -458,12 +462,9 @@ exports.Errors = void 0;
   Errors["PaymentNotFound"] = "PaymentNotFound";
   Errors["RegisterDisabled"] = "RegisterDisabled";
   Errors["UnknownError"] = "UnknownError";
+  Errors["UserExists"] = "UserExists";
   Errors["UserNotConfirmed"] = "UserNotConfirmed";
   Errors["ValidationError"] = "ValidationError";
-  Errors["UserExists"] = "UserExists";
-  Errors["EnrollmentExpired"] = "EnrollmentExpired";
-  Errors["AlreadyEnrolled"] = "AlreadyEnrolled";
-  Errors["NoSchemaProvidedInPolicyConfig"] = "NoSchemaProvidedInPolicyConfig";
 })(exports.Errors || (exports.Errors = {}));
 
 exports.e = index$2;
