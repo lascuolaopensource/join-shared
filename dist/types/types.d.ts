@@ -782,13 +782,12 @@ export declare type PaginationArg = {
 export declare type Payment = {
     __typename?: 'Payment';
     billing?: Maybe<BillingInfoEntityResponse>;
-    confirmCode: Scalars['String'];
-    confirmed?: Maybe<Scalars['Boolean']>;
     createdAt?: Maybe<Scalars['DateTime']>;
     enrollment?: Maybe<EnrollmentEntityResponse>;
     expiration: Scalars['DateTime'];
     hash: Scalars['String'];
     owner?: Maybe<UsersPermissionsUserEntityResponse>;
+    paid: Scalars['Boolean'];
     updatedAt?: Maybe<Scalars['DateTime']>;
 };
 export declare type PaymentEntity = {
@@ -809,7 +808,6 @@ export declare type PaymentFiltersInput = {
     and?: InputMaybe<Array<InputMaybe<PaymentFiltersInput>>>;
     billing?: InputMaybe<BillingInfoFiltersInput>;
     confirmCode?: InputMaybe<StringFilterInput>;
-    confirmed?: InputMaybe<BooleanFilterInput>;
     createdAt?: InputMaybe<DateTimeFilterInput>;
     enrollment?: InputMaybe<EnrollmentFiltersInput>;
     expiration?: InputMaybe<DateTimeFilterInput>;
@@ -818,16 +816,17 @@ export declare type PaymentFiltersInput = {
     not?: InputMaybe<PaymentFiltersInput>;
     or?: InputMaybe<Array<InputMaybe<PaymentFiltersInput>>>;
     owner?: InputMaybe<UsersPermissionsUserFiltersInput>;
+    paid?: InputMaybe<BooleanFilterInput>;
     updatedAt?: InputMaybe<DateTimeFilterInput>;
 };
 export declare type PaymentInput = {
     billing?: InputMaybe<Scalars['ID']>;
     confirmCode?: InputMaybe<Scalars['String']>;
-    confirmed?: InputMaybe<Scalars['Boolean']>;
     enrollment?: InputMaybe<Scalars['ID']>;
     expiration?: InputMaybe<Scalars['DateTime']>;
     hash?: InputMaybe<Scalars['String']>;
     owner?: InputMaybe<Scalars['ID']>;
+    paid?: InputMaybe<Scalars['Boolean']>;
 };
 export declare type PaymentRelationResponseCollection = {
     __typename?: 'PaymentRelationResponseCollection';
