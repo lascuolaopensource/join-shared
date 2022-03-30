@@ -2,6 +2,7 @@ import {
 	UsersPermissionsMe,
 	ComponentLocationAddress,
 	BillingInfoDataDynamicZone,
+	Payment,
 } from "./types";
 
 /**
@@ -24,6 +25,10 @@ export interface LoginResponse {
 /**
  * Payment
  */
+
+export interface PaymentC extends Payment {
+	confirmCode: boolean;
+}
 
 export interface PaymentDetails {
 	category: string;
