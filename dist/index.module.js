@@ -37,7 +37,7 @@ var vatSchema = yup.string().matches(re.vat);
 var sdiSchema = yup.string().uppercase().matches(re.sdi);
 var phoneSchema = yup.string().matches(re.phone);
 var emailSchema = yup.string().email();
-var pecSchema = yup.string().matches(re.pec).email();
+var pecSchema = emailSchema.matches(re.pec);
 var provinciaSchema = yup.string().uppercase().matches(re.provincia);
 var capSchema = yup.string().matches(re.cap);
 /**

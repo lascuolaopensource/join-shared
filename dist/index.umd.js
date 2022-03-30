@@ -59,7 +59,7 @@
 	var sdiSchema = yup__namespace.string().uppercase().matches(re.sdi);
 	var phoneSchema = yup__namespace.string().matches(re.phone);
 	var emailSchema = yup__namespace.string().email();
-	var pecSchema = yup__namespace.string().matches(re.pec).email();
+	var pecSchema = emailSchema.matches(re.pec);
 	var provinciaSchema = yup__namespace.string().uppercase().matches(re.provincia);
 	var capSchema = yup__namespace.string().matches(re.cap);
 	/**
