@@ -469,10 +469,10 @@
 	  Errors["ValidationError"] = "ValidationError";
 	})(exports.Errors || (exports.Errors = {}));
 
-	exports.e = index$2;
+	exports.endpoints = index$2;
 	exports.gql = index$1;
-	exports.h = index;
-	exports.t = index$3;
+	exports.helpers = index;
+	exports.types = index$3;
 	exports.validators = index$4;
 
 }));
