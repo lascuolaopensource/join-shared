@@ -465,6 +465,7 @@
 	  Errors["UserExists"] = "UserExists";
 	  Errors["EnrollmentExpired"] = "EnrollmentExpired";
 	  Errors["AlreadyEnrolled"] = "AlreadyEnrolled";
+	  Errors["NoSchemaProvidedInPolicyConfig"] = "NoSchemaProvidedInPolicyConfig";
 	})(exports.Errors || (exports.Errors = {}));
 
 	exports.e = index$2;

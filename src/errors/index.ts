@@ -14,4 +14,5 @@ export enum Errors {
 	UserExists = "UserExists",
 	EnrollmentExpired = "EnrollmentExpired",
 	AlreadyEnrolled = "AlreadyEnrolled",
+	NoSchemaProvidedInPolicyConfig = "NoSchemaProvidedInPolicyConfig",
 }

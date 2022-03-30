@@ -13,5 +13,6 @@ export declare enum Errors {
     ValidationError = "ValidationError",
     UserExists = "UserExists",
     EnrollmentExpired = "EnrollmentExpired",
-    AlreadyEnrolled = "AlreadyEnrolled"
+    AlreadyEnrolled = "AlreadyEnrolled",
+    NoSchemaProvidedInPolicyConfig = "NoSchemaProvidedInPolicyConfig"
 }
