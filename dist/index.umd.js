@@ -465,6 +465,7 @@
 	  Errors["RegisterDisabled"] = "RegisterDisabled";
 	  Errors["UnknownError"] = "UnknownError";
 	  Errors["UserExists"] = "UserExists";
+	  Errors["UserNotFound"] = "UserNotFound";
 	  Errors["UserNotConfirmed"] = "UserNotConfirmed";
 	  Errors["ValidationError"] = "ValidationError";
 	})(exports.Errors || (exports.Errors = {}));
