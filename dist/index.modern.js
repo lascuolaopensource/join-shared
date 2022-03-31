@@ -338,7 +338,11 @@ const formatPriceNumber = (price, locale = "IT-it", currency = "EUR") => {
 };
 const formatDateString = (date, locale = "IT-it") => {
   const d = new Date(Date.parse(date));
-  return d.toLocaleDateString(locale);
+  return d.toLocaleDateString(locale, {
+    month: "2-digit",
+    day: "2-digit",
+    year: "2-digit"
+  });
 };
 
 var index$2 = {
