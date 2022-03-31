@@ -1,4 +1,6 @@
-import { Enrollment } from "../types";
+import { Enrollment, Course } from "../types";
 export declare type GetUserRelationsEnrollmentsRes = {
-    enrollments: Array<Enrollment>;
+    enrollments: Array<Omit<Enrollment, "course"> & {
+        course: Course;
+    }>;
 };
