@@ -89,7 +89,7 @@ var nullOrReq = {
   }
 };
 
-var index$4 = {
+var index$5 = {
 	__proto__: null,
 	setYupDefaultMessages: setYupDefaultMessages,
 	re: re,
@@ -221,7 +221,7 @@ var BillingOptionsComponents;
   BillingOptionsComponents["Me"] = "billing.me";
 })(BillingOptionsComponents || (BillingOptionsComponents = {}));
 
-var index$3 = {
+var index$4 = {
 	__proto__: null,
 	get Enum_Enrollment_State () { return Enum_Enrollment_State; },
 	get PublicationState () { return PublicationState; },
@@ -334,7 +334,7 @@ var UserExistsSchema = yup.object({
   email: emailSchema.required()
 });
 
-var index$2 = {
+var index$3 = {
 	__proto__: null,
 	ContactsValues: ContactsValues,
 	ContactsSchema: ContactsSchema,
@@ -357,6 +357,36 @@ var index$2 = {
 	PayValues: PayValues,
 	PaySchema: PaySchema,
 	UserExistsSchema: UserExistsSchema
+};
+
+var formatPriceNumber = function formatPriceNumber(price, locale, currency) {
+  if (locale === void 0) {
+    locale = "IT-it";
+  }
+
+  if (currency === void 0) {
+    currency = "EUR";
+  }
+
+  var formatter = new Intl.NumberFormat(locale, {
+    style: "currency",
+    currency: currency
+  });
+  return formatter.format(price);
+};
+var formatDateString = function formatDateString(date, locale) {
+  if (locale === void 0) {
+    locale = "IT-it";
+  }
+
+  var d = new Date(Date.parse(date));
+  return d.toLocaleDateString(locale);
+};
+
+var index$2 = {
+	__proto__: null,
+	formatPriceNumber: formatPriceNumber,
+	formatDateString: formatDateString
 };
 
 function _taggedTemplateLiteralLoose(strings, raw) {
@@ -448,5 +478,5 @@ var Errors;
   Errors["ValidationError"] = "ValidationError";
 })(Errors || (Errors = {}));
 
-export { Errors, index$2 as endpoints, index$1 as gql, index as helpers, index$3 as types, index$4 as validation };
+export { Errors, index$3 as endpoints, index$2 as formatters, index$1 as gql, index as helpers, index$4 as types, index$5 as validation };
 //# sourceMappingURL=index.module.js.map
