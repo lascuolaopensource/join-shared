@@ -14,6 +14,7 @@ export enum Errors {
 	RegisterDisabled = "RegisterDisabled",
 	UnknownError = "UnknownError",
 	UserExists = "UserExists",
+	UserNotFound = "UserNotFound",
 	UserNotConfirmed = "UserNotConfirmed",
 	ValidationError = "ValidationError",
 }
