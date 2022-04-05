@@ -456,12 +456,20 @@ function isEvaluationNeeded(c) {
 function isEnrollable(c) {
   return Date.now() < Date.parse(c.enrollmentDeadline);
 }
+function getStartDate(c) {
+  return c.meetings[0].date;
+}
+function getEndDate(c) {
+  return c.meetings[c.meetings.length - 1].date;
+}
 
 var course = {
 	__proto__: null,
 	isPaymentNeeded: isPaymentNeeded,
 	isEvaluationNeeded: isEvaluationNeeded,
-	isEnrollable: isEnrollable
+	isEnrollable: isEnrollable,
+	getStartDate: getStartDate,
+	getEndDate: getEndDate
 };
 
 function isExpired(p) {
