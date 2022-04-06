@@ -64,3 +64,13 @@ export enum BillingOptionsComponents {
 	Person = "billing.person",
 	Me = "billing.me",
 }
+
+/**
+ * Roles
+ */
+
+export enum UserPermissionRoles {
+	Public = "public",
+	Authenticated = "authenticated",
+	AdminEnrollments = "admin_enrollments",
+}
