@@ -1,5 +1,6 @@
 export * from "./enroll";
 export * from "./get-user-relations-enrollments";
+export * from "./get-user-relations-role";
 export * from "./is-user-enrolled";
 export * from "./login-email";
 export * from "./login";
