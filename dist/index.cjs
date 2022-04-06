@@ -240,6 +240,18 @@ var BillingOptionsComponents;
   BillingOptionsComponents["Person"] = "billing.person";
   BillingOptionsComponents["Me"] = "billing.me";
 })(BillingOptionsComponents || (BillingOptionsComponents = {}));
+/**
+ * Roles
+ */
+
+
+var UserPermissionRoles;
+
+(function (UserPermissionRoles) {
+  UserPermissionRoles["Public"] = "public";
+  UserPermissionRoles["Authenticated"] = "authenticated";
+  UserPermissionRoles["AdminEnrollments"] = "admin_enrollments";
+})(UserPermissionRoles || (UserPermissionRoles = {}));
 
 var index$4 = {
 	__proto__: null,
@@ -247,7 +259,8 @@ var index$4 = {
 	get PublicationState () { return PublicationState; },
 	get PaymentCategories () { return PaymentCategories; },
 	BillingOptions: BillingOptions,
-	get BillingOptionsComponents () { return BillingOptionsComponents; }
+	get BillingOptionsComponents () { return BillingOptionsComponents; },
+	get UserPermissionRoles () { return UserPermissionRoles; }
 };
 
 setYupDefaultMessages();
