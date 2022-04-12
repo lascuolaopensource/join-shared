@@ -11,6 +11,7 @@ export enum Errors {
 	NotFound = "NotFound",
 	PasswordThreeDollars = "PasswordThreeDollars",
 	PaymentAlreadyPaid = "PaymentAlreadyPaid",
+	PaymentAlreadyConfirmed = "PaymentAlreadyConfirmed",
 	PaymentExpired = "PaymentExpired",
 	PaymentNotFound = "PaymentNotFound",
 	RegisterDisabled = "RegisterDisabled",

@@ -515,6 +515,7 @@ exports.Errors = void 0;
   Errors["NotFound"] = "NotFound";
   Errors["PasswordThreeDollars"] = "PasswordThreeDollars";
   Errors["PaymentAlreadyPaid"] = "PaymentAlreadyPaid";
+  Errors["PaymentAlreadyConfirmed"] = "PaymentAlreadyConfirmed";
   Errors["PaymentExpired"] = "PaymentExpired";
   Errors["PaymentNotFound"] = "PaymentNotFound";
   Errors["RegisterDisabled"] = "RegisterDisabled";
