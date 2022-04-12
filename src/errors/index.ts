@@ -5,6 +5,7 @@ export enum Errors {
 	EmailTaken = "EmailTaken",
 	EnrollmentExpired = "EnrollmentExpired",
 	InvalidRequestBody = "InvalidRequestBody",
+	InvalidRole = "InvalidRole",
 	MissingCourseID = "MissingCourseID",
 	MissingUserInfo = "MissingUserInfo",
 	NoSchemaProvidedInPolicyConfig = "NoSchemaProvidedInPolicyConfig",

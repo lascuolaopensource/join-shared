@@ -511,6 +511,7 @@
 	  Errors["EmailTaken"] = "EmailTaken";
 	  Errors["EnrollmentExpired"] = "EnrollmentExpired";
 	  Errors["InvalidRequestBody"] = "InvalidRequestBody";
+	  Errors["InvalidRole"] = "InvalidRole";
 	  Errors["MissingCourseID"] = "MissingCourseID";
 	  Errors["MissingUserInfo"] = "MissingUserInfo";
 	  Errors["NoSchemaProvidedInPolicyConfig"] = "NoSchemaProvidedInPolicyConfig";
