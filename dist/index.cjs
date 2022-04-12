@@ -509,6 +509,7 @@ exports.Errors = void 0;
   Errors["EmailTaken"] = "EmailTaken";
   Errors["EnrollmentExpired"] = "EnrollmentExpired";
   Errors["InvalidRequestBody"] = "InvalidRequestBody";
+  Errors["MissingUserInfo"] = "MissingUserInfo";
   Errors["NoSchemaProvidedInPolicyConfig"] = "NoSchemaProvidedInPolicyConfig";
   Errors["NotFound"] = "NotFound";
   Errors["PasswordThreeDollars"] = "PasswordThreeDollars";
@@ -518,8 +519,8 @@ exports.Errors = void 0;
   Errors["RegisterDisabled"] = "RegisterDisabled";
   Errors["UnknownError"] = "UnknownError";
   Errors["UserExists"] = "UserExists";
-  Errors["UserNotFound"] = "UserNotFound";
   Errors["UserNotConfirmed"] = "UserNotConfirmed";
+  Errors["UserNotFound"] = "UserNotFound";
   Errors["ValidationError"] = "ValidationError";
 })(exports.Errors || (exports.Errors = {}));
 
