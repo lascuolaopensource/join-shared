@@ -5,6 +5,7 @@ export enum Errors {
 	EmailTaken = "EmailTaken",
 	EnrollmentExpired = "EnrollmentExpired",
 	InvalidRequestBody = "InvalidRequestBody",
+	MissingUserInfo = "MissingUserInfo",
 	NoSchemaProvidedInPolicyConfig = "NoSchemaProvidedInPolicyConfig",
 	NotFound = "NotFound",
 	PasswordThreeDollars = "PasswordThreeDollars",
@@ -14,7 +15,7 @@ export enum Errors {
 	RegisterDisabled = "RegisterDisabled",
 	UnknownError = "UnknownError",
 	UserExists = "UserExists",
-	UserNotFound = "UserNotFound",
 	UserNotConfirmed = "UserNotConfirmed",
+	UserNotFound = "UserNotFound",
 	ValidationError = "ValidationError",
 }
