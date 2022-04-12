@@ -458,6 +458,7 @@ var Errors;
   Errors["EmailTaken"] = "EmailTaken";
   Errors["EnrollmentExpired"] = "EnrollmentExpired";
   Errors["InvalidRequestBody"] = "InvalidRequestBody";
+  Errors["MissingCourseID"] = "MissingCourseID";
   Errors["MissingUserInfo"] = "MissingUserInfo";
   Errors["NoSchemaProvidedInPolicyConfig"] = "NoSchemaProvidedInPolicyConfig";
   Errors["NotFound"] = "NotFound";
