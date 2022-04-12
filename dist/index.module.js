@@ -497,10 +497,12 @@ var Errors;
 
 (function (Errors) {
   Errors["AlreadyEnrolled"] = "AlreadyEnrolled";
+  Errors["BadPolicyConfig"] = "BadPolicyConfig";
   Errors["DefaultRoleNotFound"] = "DefaultRoleNotFound";
   Errors["EmailSendError"] = "EmailSendError";
   Errors["EmailTaken"] = "EmailTaken";
   Errors["EnrollmentExpired"] = "EnrollmentExpired";
+  Errors["InternalServerError"] = "InternalServerError";
   Errors["InvalidRequestBody"] = "InvalidRequestBody";
   Errors["InvalidRole"] = "InvalidRole";
   Errors["MissingCourseID"] = "MissingCourseID";
@@ -508,8 +510,8 @@ var Errors;
   Errors["NoSchemaProvidedInPolicyConfig"] = "NoSchemaProvidedInPolicyConfig";
   Errors["NotFound"] = "NotFound";
   Errors["PasswordThreeDollars"] = "PasswordThreeDollars";
-  Errors["PaymentAlreadyPaid"] = "PaymentAlreadyPaid";
   Errors["PaymentAlreadyConfirmed"] = "PaymentAlreadyConfirmed";
+  Errors["PaymentAlreadyPaid"] = "PaymentAlreadyPaid";
   Errors["PaymentExpired"] = "PaymentExpired";
   Errors["PaymentNotFound"] = "PaymentNotFound";
   Errors["RegisterDisabled"] = "RegisterDisabled";
