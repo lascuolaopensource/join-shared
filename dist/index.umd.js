@@ -23,6 +23,18 @@
 
 	var yup__namespace = /*#__PURE__*/_interopNamespace(yup);
 
+	var AdminEnrollmentsUpdateSchema = yup__namespace.object().required().test("has-state", "Some objects do not have a state attribute", function (value) {
+	  for (var _i = 0, _Object$values = Object.values(value); _i < _Object$values.length; _i++) {
+	    var e = _Object$values[_i];
+
+	    if (!e.state) {
+	      return false;
+	    }
+	  }
+
+	  return true;
+	});
+
 	/**
 	 * Setting yup default messages
 	 */
@@ -371,6 +383,7 @@
 
 	var index$3 = {
 		__proto__: null,
+		AdminEnrollmentsUpdateSchema: AdminEnrollmentsUpdateSchema,
 		ContactsValues: ContactsValues,
 		ContactsSchema: ContactsSchema,
 		EvaluationValues: EvaluationValues,

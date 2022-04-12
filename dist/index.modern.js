@@ -1,6 +1,16 @@
 import * as yup from 'yup';
 import { gql } from 'graphql-tag';
 
+const AdminEnrollmentsUpdateSchema = yup.object().required().test("has-state", "Some objects do not have a state attribute", value => {
+  for (let e of Object.values(value)) {
+    if (!e.state) {
+      return false;
+    }
+  }
+
+  return true;
+});
+
 /**
  * Setting yup default messages
  */
@@ -319,6 +329,7 @@ const UserExistsSchema = yup.object({
 
 var index$3 = {
 	__proto__: null,
+	AdminEnrollmentsUpdateSchema: AdminEnrollmentsUpdateSchema,
 	ContactsValues: ContactsValues,
 	ContactsSchema: ContactsSchema,
 	EvaluationValues: EvaluationValues,
