@@ -475,29 +475,73 @@
 		getCoursePageBySlug: getCoursePageBySlug
 	};
 
-	function isPaymentNeeded(c) {
-	  return c.price > 0;
-	}
-	function isEvaluationNeeded(c) {
-	  return c.cvNeeded || c.motivationalLetterNeeded || c.portfolioNeeded;
-	}
-	function isEnrollable(c) {
-	  return Date.now() < Date.parse(c.enrollmentDeadline);
-	}
 	function getStartDate(c) {
 	  return c.meetings[0].date;
 	}
 	function getEndDate(c) {
 	  return c.meetings[c.meetings.length - 1].date;
+	} // Evaluation flags
+
+	function isPaymentNeeded(c) {
+	  return c.price > 0;
+	}
+	function isEvaluationNeeded(c) {
+	  return c.cvNeeded || c.motivationalLetterNeeded || c.portfolioNeeded;
+	} // Course times
+
+	function isErollmentTime(c) {
+	  return Date.now() < Date.parse(c.enrollmentDeadline);
+	}
+	function isCourseTime(c) {
+	  return Date.now() >= Date.parse(getStartDate(c));
+	}
+	function isEvaluationTime(c) {
+	  return !isErollmentTime(c) && !isCourseTime(c);
+	} // Enrollments flags
+
+	function areMinEnrollsReached(c, e) {
+	  return e.length >= c.enrollmentMin;
+	}
+	function areMaxEnrollsExceeded(c, e) {
+	  return e.length > c.enrollmentMax;
+	}
+	function areMinEnrollsApproved(c, e) {
+	  var enrollsApprovedNum = e.filter(function (e) {
+	    return e.state == Enum_Enrollment_State.Approved;
+	  }).length;
+	  return enrollsApprovedNum >= c.enrollmentMin;
+	} //
+
+	function canStart(c, e) {
+	  return areMinEnrollsReached(c, e) && isEvaluationTime(c);
+	}
+	function cannotStart(c, e) {
+	  return !areMinEnrollsReached(c, e) && isEvaluationTime(c);
+	} //
+
+	function isActive(c, e) {
+	  return areMinEnrollsApproved(c, e) && isCourseTime(c);
+	}
+	function isNotActivated(c, e) {
+	  return !areMinEnrollsApproved(c, e) && isCourseTime(c);
 	}
 
 	var course = {
 		__proto__: null,
+		getStartDate: getStartDate,
+		getEndDate: getEndDate,
 		isPaymentNeeded: isPaymentNeeded,
 		isEvaluationNeeded: isEvaluationNeeded,
-		isEnrollable: isEnrollable,
-		getStartDate: getStartDate,
-		getEndDate: getEndDate
+		isErollmentTime: isErollmentTime,
+		isCourseTime: isCourseTime,
+		isEvaluationTime: isEvaluationTime,
+		areMinEnrollsReached: areMinEnrollsReached,
+		areMaxEnrollsExceeded: areMaxEnrollsExceeded,
+		areMinEnrollsApproved: areMinEnrollsApproved,
+		canStart: canStart,
+		cannotStart: cannotStart,
+		isActive: isActive,
+		isNotActivated: isNotActivated
 	};
 
 	function isExpired(p) {
