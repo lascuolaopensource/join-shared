@@ -496,6 +496,61 @@ export type Error = {
   message?: Maybe<Scalars['String']>;
 };
 
+export type Event = {
+  __typename?: 'Event';
+  createdAt?: Maybe<Scalars['DateTime']>;
+  meetings?: Maybe<Array<Maybe<ComponentTimeMeeting>>>;
+  publishedAt?: Maybe<Scalars['DateTime']>;
+  tool?: Maybe<ToolEntityResponse>;
+  updatedAt?: Maybe<Scalars['DateTime']>;
+};
+
+
+export type EventMeetingsArgs = {
+  filters?: InputMaybe<ComponentTimeMeetingFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+export type EventEntity = {
+  __typename?: 'EventEntity';
+  attributes?: Maybe<Event>;
+  id?: Maybe<Scalars['ID']>;
+};
+
+export type EventEntityResponse = {
+  __typename?: 'EventEntityResponse';
+  data?: Maybe<EventEntity>;
+};
+
+export type EventEntityResponseCollection = {
+  __typename?: 'EventEntityResponseCollection';
+  data: Array<EventEntity>;
+  meta: ResponseCollectionMeta;
+};
+
+export type EventFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<EventFiltersInput>>>;
+  createdAt?: InputMaybe<DateTimeFilterInput>;
+  id?: InputMaybe<IdFilterInput>;
+  not?: InputMaybe<EventFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<EventFiltersInput>>>;
+  publishedAt?: InputMaybe<DateTimeFilterInput>;
+  tool?: InputMaybe<ToolFiltersInput>;
+  updatedAt?: InputMaybe<DateTimeFilterInput>;
+};
+
+export type EventInput = {
+  meetings?: InputMaybe<Array<InputMaybe<ComponentTimeMeetingInput>>>;
+  publishedAt?: InputMaybe<Scalars['DateTime']>;
+  tool?: InputMaybe<Scalars['ID']>;
+};
+
+export type EventRelationResponseCollection = {
+  __typename?: 'EventRelationResponseCollection';
+  data: Array<EventEntity>;
+};
+
 export type FileInfoInput = {
   alternativeText?: InputMaybe<Scalars['String']>;
   caption?: InputMaybe<Scalars['String']>;
@@ -525,7 +580,7 @@ export type FloatFilterInput = {
   startsWith?: InputMaybe<Scalars['Float']>;
 };
 
-export type GenericMorph = Area | BillingInfo | ComponentBillingCompany | ComponentBillingMe | ComponentBillingPerson | ComponentLocationAddress | ComponentTimeMeeting | ComponentTimeTimeSlot | Course | Enrollment | I18NLocale | Payment | PhoneNumber | UploadFile | UserInfo | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
+export type GenericMorph = Area | BillingInfo | ComponentBillingCompany | ComponentBillingMe | ComponentBillingPerson | ComponentLocationAddress | ComponentTimeMeeting | ComponentTimeTimeSlot | Course | Enrollment | Event | I18NLocale | Payment | PhoneNumber | Tool | UploadFile | UserInfo | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
 
 export type I18NLocale = {
   __typename?: 'I18NLocale';
@@ -639,8 +694,11 @@ export type Mutation = {
   createBillingInfo?: Maybe<BillingInfoEntityResponse>;
   createCourse?: Maybe<CourseEntityResponse>;
   createEnrollment?: Maybe<EnrollmentEntityResponse>;
+  createEvent?: Maybe<EventEntityResponse>;
   createPayment?: Maybe<PaymentEntityResponse>;
   createPhoneNumber?: Maybe<PhoneNumberEntityResponse>;
+  createTool?: Maybe<ToolEntityResponse>;
+  createToolLocalization?: Maybe<ToolEntityResponse>;
   createUploadFile?: Maybe<UploadFileEntityResponse>;
   createUserInfo?: Maybe<UserInfoEntityResponse>;
   /** Create a new role */
@@ -651,8 +709,10 @@ export type Mutation = {
   deleteBillingInfo?: Maybe<BillingInfoEntityResponse>;
   deleteCourse?: Maybe<CourseEntityResponse>;
   deleteEnrollment?: Maybe<EnrollmentEntityResponse>;
+  deleteEvent?: Maybe<EventEntityResponse>;
   deletePayment?: Maybe<PaymentEntityResponse>;
   deletePhoneNumber?: Maybe<PhoneNumberEntityResponse>;
+  deleteTool?: Maybe<ToolEntityResponse>;
   deleteUploadFile?: Maybe<UploadFileEntityResponse>;
   deleteUserInfo?: Maybe<UserInfoEntityResponse>;
   /** Delete an existing role */
@@ -674,9 +734,11 @@ export type Mutation = {
   updateBillingInfo?: Maybe<BillingInfoEntityResponse>;
   updateCourse?: Maybe<CourseEntityResponse>;
   updateEnrollment?: Maybe<EnrollmentEntityResponse>;
+  updateEvent?: Maybe<EventEntityResponse>;
   updateFileInfo: UploadFileEntityResponse;
   updatePayment?: Maybe<PaymentEntityResponse>;
   updatePhoneNumber?: Maybe<PhoneNumberEntityResponse>;
+  updateTool?: Maybe<ToolEntityResponse>;
   updateUploadFile?: Maybe<UploadFileEntityResponse>;
   updateUserInfo?: Maybe<UserInfoEntityResponse>;
   /** Update an existing role */
@@ -715,6 +777,11 @@ export type MutationCreateEnrollmentArgs = {
 };
 
 
+export type MutationCreateEventArgs = {
+  data: EventInput;
+};
+
+
 export type MutationCreatePaymentArgs = {
   data: PaymentInput;
 };
@@ -722,6 +789,19 @@ export type MutationCreatePaymentArgs = {
 
 export type MutationCreatePhoneNumberArgs = {
   data: PhoneNumberInput;
+};
+
+
+export type MutationCreateToolArgs = {
+  data: ToolInput;
+  locale?: InputMaybe<Scalars['I18NLocaleCode']>;
+};
+
+
+export type MutationCreateToolLocalizationArgs = {
+  data?: InputMaybe<ToolInput>;
+  id?: InputMaybe<Scalars['ID']>;
+  locale?: InputMaybe<Scalars['I18NLocaleCode']>;
 };
 
 
@@ -766,6 +846,11 @@ export type MutationDeleteEnrollmentArgs = {
 };
 
 
+export type MutationDeleteEventArgs = {
+  id: Scalars['ID'];
+};
+
+
 export type MutationDeletePaymentArgs = {
   id: Scalars['ID'];
 };
@@ -773,6 +858,12 @@ export type MutationDeletePaymentArgs = {
 
 export type MutationDeletePhoneNumberArgs = {
   id: Scalars['ID'];
+};
+
+
+export type MutationDeleteToolArgs = {
+  id: Scalars['ID'];
+  locale?: InputMaybe<Scalars['I18NLocaleCode']>;
 };
 
 
@@ -861,6 +952,12 @@ export type MutationUpdateEnrollmentArgs = {
 };
 
 
+export type MutationUpdateEventArgs = {
+  data: EventInput;
+  id: Scalars['ID'];
+};
+
+
 export type MutationUpdateFileInfoArgs = {
   id: Scalars['ID'];
   info?: InputMaybe<FileInfoInput>;
@@ -876,6 +973,13 @@ export type MutationUpdatePaymentArgs = {
 export type MutationUpdatePhoneNumberArgs = {
   data: PhoneNumberInput;
   id: Scalars['ID'];
+};
+
+
+export type MutationUpdateToolArgs = {
+  data: ToolInput;
+  id: Scalars['ID'];
+  locale?: InputMaybe<Scalars['I18NLocaleCode']>;
 };
 
 
@@ -1039,6 +1143,8 @@ export type Query = {
   courses?: Maybe<CourseEntityResponseCollection>;
   enrollment?: Maybe<EnrollmentEntityResponse>;
   enrollments?: Maybe<EnrollmentEntityResponseCollection>;
+  event?: Maybe<EventEntityResponse>;
+  events?: Maybe<EventEntityResponseCollection>;
   i18NLocale?: Maybe<I18NLocaleEntityResponse>;
   i18NLocales?: Maybe<I18NLocaleEntityResponseCollection>;
   me?: Maybe<UsersPermissionsMe>;
@@ -1046,6 +1152,8 @@ export type Query = {
   payments?: Maybe<PaymentEntityResponseCollection>;
   phoneNumber?: Maybe<PhoneNumberEntityResponse>;
   phoneNumbers?: Maybe<PhoneNumberEntityResponseCollection>;
+  tool?: Maybe<ToolEntityResponse>;
+  tools?: Maybe<ToolEntityResponseCollection>;
   uploadFile?: Maybe<UploadFileEntityResponse>;
   uploadFiles?: Maybe<UploadFileEntityResponseCollection>;
   userInfo?: Maybe<UserInfoEntityResponse>;
@@ -1108,6 +1216,19 @@ export type QueryEnrollmentsArgs = {
 };
 
 
+export type QueryEventArgs = {
+  id?: InputMaybe<Scalars['ID']>;
+};
+
+
+export type QueryEventsArgs = {
+  filters?: InputMaybe<EventFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  publicationState?: InputMaybe<PublicationState>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
 export type QueryI18NLocaleArgs = {
   id?: InputMaybe<Scalars['ID']>;
 };
@@ -1139,6 +1260,20 @@ export type QueryPhoneNumberArgs = {
 
 export type QueryPhoneNumbersArgs = {
   filters?: InputMaybe<PhoneNumberFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+export type QueryToolArgs = {
+  id?: InputMaybe<Scalars['ID']>;
+  locale?: InputMaybe<Scalars['I18NLocaleCode']>;
+};
+
+
+export type QueryToolsArgs = {
+  filters?: InputMaybe<ToolFiltersInput>;
+  locale?: InputMaybe<Scalars['I18NLocaleCode']>;
   pagination?: InputMaybe<PaginationArg>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
@@ -1240,6 +1375,71 @@ export type TimeFilterInput = {
   null?: InputMaybe<Scalars['Boolean']>;
   or?: InputMaybe<Array<InputMaybe<Scalars['Time']>>>;
   startsWith?: InputMaybe<Scalars['Time']>;
+};
+
+export type Tool = {
+  __typename?: 'Tool';
+  bookings?: Maybe<EventRelationResponseCollection>;
+  createdAt?: Maybe<Scalars['DateTime']>;
+  locale?: Maybe<Scalars['String']>;
+  localizations?: Maybe<ToolRelationResponseCollection>;
+  name: Scalars['String'];
+  updatedAt?: Maybe<Scalars['DateTime']>;
+};
+
+
+export type ToolBookingsArgs = {
+  filters?: InputMaybe<EventFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  publicationState?: InputMaybe<PublicationState>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+export type ToolLocalizationsArgs = {
+  filters?: InputMaybe<ToolFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+export type ToolEntity = {
+  __typename?: 'ToolEntity';
+  attributes?: Maybe<Tool>;
+  id?: Maybe<Scalars['ID']>;
+};
+
+export type ToolEntityResponse = {
+  __typename?: 'ToolEntityResponse';
+  data?: Maybe<ToolEntity>;
+};
+
+export type ToolEntityResponseCollection = {
+  __typename?: 'ToolEntityResponseCollection';
+  data: Array<ToolEntity>;
+  meta: ResponseCollectionMeta;
+};
+
+export type ToolFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ToolFiltersInput>>>;
+  bookings?: InputMaybe<EventFiltersInput>;
+  createdAt?: InputMaybe<DateTimeFilterInput>;
+  id?: InputMaybe<IdFilterInput>;
+  locale?: InputMaybe<StringFilterInput>;
+  localizations?: InputMaybe<ToolFiltersInput>;
+  name?: InputMaybe<StringFilterInput>;
+  not?: InputMaybe<ToolFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<ToolFiltersInput>>>;
+  updatedAt?: InputMaybe<DateTimeFilterInput>;
+};
+
+export type ToolInput = {
+  bookings?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  name?: InputMaybe<Scalars['String']>;
+};
+
+export type ToolRelationResponseCollection = {
+  __typename?: 'ToolRelationResponseCollection';
+  data: Array<ToolEntity>;
 };
 
 export type UploadFile = {
