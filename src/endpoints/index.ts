@@ -9,3 +9,4 @@ export * from "./pay-get-payment-details";
 export * from "./pay";
 export * from "./register-user";
 export * from "./user-exists";
+export * from "./book-tools";
