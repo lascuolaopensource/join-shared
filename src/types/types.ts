@@ -496,61 +496,6 @@ export type Error = {
   message?: Maybe<Scalars['String']>;
 };
 
-export type Event = {
-  __typename?: 'Event';
-  createdAt?: Maybe<Scalars['DateTime']>;
-  meetings?: Maybe<Array<Maybe<ComponentTimeMeeting>>>;
-  publishedAt?: Maybe<Scalars['DateTime']>;
-  tool?: Maybe<ToolEntityResponse>;
-  updatedAt?: Maybe<Scalars['DateTime']>;
-};
-
-
-export type EventMeetingsArgs = {
-  filters?: InputMaybe<ComponentTimeMeetingFiltersInput>;
-  pagination?: InputMaybe<PaginationArg>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-};
-
-export type EventEntity = {
-  __typename?: 'EventEntity';
-  attributes?: Maybe<Event>;
-  id?: Maybe<Scalars['ID']>;
-};
-
-export type EventEntityResponse = {
-  __typename?: 'EventEntityResponse';
-  data?: Maybe<EventEntity>;
-};
-
-export type EventEntityResponseCollection = {
-  __typename?: 'EventEntityResponseCollection';
-  data: Array<EventEntity>;
-  meta: ResponseCollectionMeta;
-};
-
-export type EventFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<EventFiltersInput>>>;
-  createdAt?: InputMaybe<DateTimeFilterInput>;
-  id?: InputMaybe<IdFilterInput>;
-  not?: InputMaybe<EventFiltersInput>;
-  or?: InputMaybe<Array<InputMaybe<EventFiltersInput>>>;
-  publishedAt?: InputMaybe<DateTimeFilterInput>;
-  tool?: InputMaybe<ToolFiltersInput>;
-  updatedAt?: InputMaybe<DateTimeFilterInput>;
-};
-
-export type EventInput = {
-  meetings?: InputMaybe<Array<InputMaybe<ComponentTimeMeetingInput>>>;
-  publishedAt?: InputMaybe<Scalars['DateTime']>;
-  tool?: InputMaybe<Scalars['ID']>;
-};
-
-export type EventRelationResponseCollection = {
-  __typename?: 'EventRelationResponseCollection';
-  data: Array<EventEntity>;
-};
-
 export type FileInfoInput = {
   alternativeText?: InputMaybe<Scalars['String']>;
   caption?: InputMaybe<Scalars['String']>;
@@ -580,7 +525,7 @@ export type FloatFilterInput = {
   startsWith?: InputMaybe<Scalars['Float']>;
 };
 
-export type GenericMorph = Area | BillingInfo | ComponentBillingCompany | ComponentBillingMe | ComponentBillingPerson | ComponentLocationAddress | ComponentTimeMeeting | ComponentTimeTimeSlot | Course | Enrollment | Event | I18NLocale | Payment | PhoneNumber | Tool | UploadFile | UserInfo | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
+export type GenericMorph = Area | BillingInfo | ComponentBillingCompany | ComponentBillingMe | ComponentBillingPerson | ComponentLocationAddress | ComponentTimeMeeting | ComponentTimeTimeSlot | Course | Enrollment | I18NLocale | Payment | PhoneNumber | Tool | ToolBooking | ToolsBooking | UploadFile | UserInfo | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
 
 export type I18NLocale = {
   __typename?: 'I18NLocale';
@@ -694,11 +639,12 @@ export type Mutation = {
   createBillingInfo?: Maybe<BillingInfoEntityResponse>;
   createCourse?: Maybe<CourseEntityResponse>;
   createEnrollment?: Maybe<EnrollmentEntityResponse>;
-  createEvent?: Maybe<EventEntityResponse>;
   createPayment?: Maybe<PaymentEntityResponse>;
   createPhoneNumber?: Maybe<PhoneNumberEntityResponse>;
   createTool?: Maybe<ToolEntityResponse>;
+  createToolBooking?: Maybe<ToolBookingEntityResponse>;
   createToolLocalization?: Maybe<ToolEntityResponse>;
+  createToolsBooking?: Maybe<ToolsBookingEntityResponse>;
   createUploadFile?: Maybe<UploadFileEntityResponse>;
   createUserInfo?: Maybe<UserInfoEntityResponse>;
   /** Create a new role */
@@ -709,10 +655,11 @@ export type Mutation = {
   deleteBillingInfo?: Maybe<BillingInfoEntityResponse>;
   deleteCourse?: Maybe<CourseEntityResponse>;
   deleteEnrollment?: Maybe<EnrollmentEntityResponse>;
-  deleteEvent?: Maybe<EventEntityResponse>;
   deletePayment?: Maybe<PaymentEntityResponse>;
   deletePhoneNumber?: Maybe<PhoneNumberEntityResponse>;
   deleteTool?: Maybe<ToolEntityResponse>;
+  deleteToolBooking?: Maybe<ToolBookingEntityResponse>;
+  deleteToolsBooking?: Maybe<ToolsBookingEntityResponse>;
   deleteUploadFile?: Maybe<UploadFileEntityResponse>;
   deleteUserInfo?: Maybe<UserInfoEntityResponse>;
   /** Delete an existing role */
@@ -734,11 +681,12 @@ export type Mutation = {
   updateBillingInfo?: Maybe<BillingInfoEntityResponse>;
   updateCourse?: Maybe<CourseEntityResponse>;
   updateEnrollment?: Maybe<EnrollmentEntityResponse>;
-  updateEvent?: Maybe<EventEntityResponse>;
   updateFileInfo: UploadFileEntityResponse;
   updatePayment?: Maybe<PaymentEntityResponse>;
   updatePhoneNumber?: Maybe<PhoneNumberEntityResponse>;
   updateTool?: Maybe<ToolEntityResponse>;
+  updateToolBooking?: Maybe<ToolBookingEntityResponse>;
+  updateToolsBooking?: Maybe<ToolsBookingEntityResponse>;
   updateUploadFile?: Maybe<UploadFileEntityResponse>;
   updateUserInfo?: Maybe<UserInfoEntityResponse>;
   /** Update an existing role */
@@ -777,11 +725,6 @@ export type MutationCreateEnrollmentArgs = {
 };
 
 
-export type MutationCreateEventArgs = {
-  data: EventInput;
-};
-
-
 export type MutationCreatePaymentArgs = {
   data: PaymentInput;
 };
@@ -798,10 +741,20 @@ export type MutationCreateToolArgs = {
 };
 
 
+export type MutationCreateToolBookingArgs = {
+  data: ToolBookingInput;
+};
+
+
 export type MutationCreateToolLocalizationArgs = {
   data?: InputMaybe<ToolInput>;
   id?: InputMaybe<Scalars['ID']>;
   locale?: InputMaybe<Scalars['I18NLocaleCode']>;
+};
+
+
+export type MutationCreateToolsBookingArgs = {
+  data: ToolsBookingInput;
 };
 
 
@@ -846,11 +799,6 @@ export type MutationDeleteEnrollmentArgs = {
 };
 
 
-export type MutationDeleteEventArgs = {
-  id: Scalars['ID'];
-};
-
-
 export type MutationDeletePaymentArgs = {
   id: Scalars['ID'];
 };
@@ -864,6 +812,16 @@ export type MutationDeletePhoneNumberArgs = {
 export type MutationDeleteToolArgs = {
   id: Scalars['ID'];
   locale?: InputMaybe<Scalars['I18NLocaleCode']>;
+};
+
+
+export type MutationDeleteToolBookingArgs = {
+  id: Scalars['ID'];
+};
+
+
+export type MutationDeleteToolsBookingArgs = {
+  id: Scalars['ID'];
 };
 
 
@@ -952,12 +910,6 @@ export type MutationUpdateEnrollmentArgs = {
 };
 
 
-export type MutationUpdateEventArgs = {
-  data: EventInput;
-  id: Scalars['ID'];
-};
-
-
 export type MutationUpdateFileInfoArgs = {
   id: Scalars['ID'];
   info?: InputMaybe<FileInfoInput>;
@@ -980,6 +932,18 @@ export type MutationUpdateToolArgs = {
   data: ToolInput;
   id: Scalars['ID'];
   locale?: InputMaybe<Scalars['I18NLocaleCode']>;
+};
+
+
+export type MutationUpdateToolBookingArgs = {
+  data: ToolBookingInput;
+  id: Scalars['ID'];
+};
+
+
+export type MutationUpdateToolsBookingArgs = {
+  data: ToolsBookingInput;
+  id: Scalars['ID'];
 };
 
 
@@ -1143,8 +1107,6 @@ export type Query = {
   courses?: Maybe<CourseEntityResponseCollection>;
   enrollment?: Maybe<EnrollmentEntityResponse>;
   enrollments?: Maybe<EnrollmentEntityResponseCollection>;
-  event?: Maybe<EventEntityResponse>;
-  events?: Maybe<EventEntityResponseCollection>;
   i18NLocale?: Maybe<I18NLocaleEntityResponse>;
   i18NLocales?: Maybe<I18NLocaleEntityResponseCollection>;
   me?: Maybe<UsersPermissionsMe>;
@@ -1153,7 +1115,11 @@ export type Query = {
   phoneNumber?: Maybe<PhoneNumberEntityResponse>;
   phoneNumbers?: Maybe<PhoneNumberEntityResponseCollection>;
   tool?: Maybe<ToolEntityResponse>;
+  toolBooking?: Maybe<ToolBookingEntityResponse>;
+  toolBookings?: Maybe<ToolBookingEntityResponseCollection>;
   tools?: Maybe<ToolEntityResponseCollection>;
+  toolsBooking?: Maybe<ToolsBookingEntityResponse>;
+  toolsBookings?: Maybe<ToolsBookingEntityResponseCollection>;
   uploadFile?: Maybe<UploadFileEntityResponse>;
   uploadFiles?: Maybe<UploadFileEntityResponseCollection>;
   userInfo?: Maybe<UserInfoEntityResponse>;
@@ -1216,19 +1182,6 @@ export type QueryEnrollmentsArgs = {
 };
 
 
-export type QueryEventArgs = {
-  id?: InputMaybe<Scalars['ID']>;
-};
-
-
-export type QueryEventsArgs = {
-  filters?: InputMaybe<EventFiltersInput>;
-  pagination?: InputMaybe<PaginationArg>;
-  publicationState?: InputMaybe<PublicationState>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-};
-
-
 export type QueryI18NLocaleArgs = {
   id?: InputMaybe<Scalars['ID']>;
 };
@@ -1271,9 +1224,33 @@ export type QueryToolArgs = {
 };
 
 
+export type QueryToolBookingArgs = {
+  id?: InputMaybe<Scalars['ID']>;
+};
+
+
+export type QueryToolBookingsArgs = {
+  filters?: InputMaybe<ToolBookingFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
 export type QueryToolsArgs = {
   filters?: InputMaybe<ToolFiltersInput>;
   locale?: InputMaybe<Scalars['I18NLocaleCode']>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+export type QueryToolsBookingArgs = {
+  id?: InputMaybe<Scalars['ID']>;
+};
+
+
+export type QueryToolsBookingsArgs = {
+  filters?: InputMaybe<ToolsBookingFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
@@ -1379,7 +1356,7 @@ export type TimeFilterInput = {
 
 export type Tool = {
   __typename?: 'Tool';
-  bookings?: Maybe<EventRelationResponseCollection>;
+  bookings?: Maybe<ToolBookingRelationResponseCollection>;
   createdAt?: Maybe<Scalars['DateTime']>;
   locale?: Maybe<Scalars['String']>;
   localizations?: Maybe<ToolRelationResponseCollection>;
@@ -1389,9 +1366,8 @@ export type Tool = {
 
 
 export type ToolBookingsArgs = {
-  filters?: InputMaybe<EventFiltersInput>;
+  filters?: InputMaybe<ToolBookingFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
-  publicationState?: InputMaybe<PublicationState>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
@@ -1400,6 +1376,61 @@ export type ToolLocalizationsArgs = {
   filters?: InputMaybe<ToolFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+export type ToolBooking = {
+  __typename?: 'ToolBooking';
+  booking?: Maybe<ToolsBookingEntityResponse>;
+  createdAt?: Maybe<Scalars['DateTime']>;
+  date: Scalars['Date'];
+  timeEnd?: Maybe<Scalars['Date']>;
+  timeStart: Scalars['Time'];
+  tool?: Maybe<ToolEntityResponse>;
+  updatedAt?: Maybe<Scalars['DateTime']>;
+};
+
+export type ToolBookingEntity = {
+  __typename?: 'ToolBookingEntity';
+  attributes?: Maybe<ToolBooking>;
+  id?: Maybe<Scalars['ID']>;
+};
+
+export type ToolBookingEntityResponse = {
+  __typename?: 'ToolBookingEntityResponse';
+  data?: Maybe<ToolBookingEntity>;
+};
+
+export type ToolBookingEntityResponseCollection = {
+  __typename?: 'ToolBookingEntityResponseCollection';
+  data: Array<ToolBookingEntity>;
+  meta: ResponseCollectionMeta;
+};
+
+export type ToolBookingFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ToolBookingFiltersInput>>>;
+  booking?: InputMaybe<ToolsBookingFiltersInput>;
+  createdAt?: InputMaybe<DateTimeFilterInput>;
+  date?: InputMaybe<DateFilterInput>;
+  id?: InputMaybe<IdFilterInput>;
+  not?: InputMaybe<ToolBookingFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<ToolBookingFiltersInput>>>;
+  timeEnd?: InputMaybe<DateFilterInput>;
+  timeStart?: InputMaybe<TimeFilterInput>;
+  tool?: InputMaybe<ToolFiltersInput>;
+  updatedAt?: InputMaybe<DateTimeFilterInput>;
+};
+
+export type ToolBookingInput = {
+  booking?: InputMaybe<Scalars['ID']>;
+  date?: InputMaybe<Scalars['Date']>;
+  timeEnd?: InputMaybe<Scalars['Date']>;
+  timeStart?: InputMaybe<Scalars['Time']>;
+  tool?: InputMaybe<Scalars['ID']>;
+};
+
+export type ToolBookingRelationResponseCollection = {
+  __typename?: 'ToolBookingRelationResponseCollection';
+  data: Array<ToolBookingEntity>;
 };
 
 export type ToolEntity = {
@@ -1421,7 +1452,7 @@ export type ToolEntityResponseCollection = {
 
 export type ToolFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<ToolFiltersInput>>>;
-  bookings?: InputMaybe<EventFiltersInput>;
+  bookings?: InputMaybe<ToolBookingFiltersInput>;
   createdAt?: InputMaybe<DateTimeFilterInput>;
   id?: InputMaybe<IdFilterInput>;
   locale?: InputMaybe<StringFilterInput>;
@@ -1440,6 +1471,59 @@ export type ToolInput = {
 export type ToolRelationResponseCollection = {
   __typename?: 'ToolRelationResponseCollection';
   data: Array<ToolEntity>;
+};
+
+export type ToolsBooking = {
+  __typename?: 'ToolsBooking';
+  bookings?: Maybe<ToolBookingRelationResponseCollection>;
+  createdAt?: Maybe<Scalars['DateTime']>;
+  owner?: Maybe<UsersPermissionsUserEntityResponse>;
+  updatedAt?: Maybe<Scalars['DateTime']>;
+};
+
+
+export type ToolsBookingBookingsArgs = {
+  filters?: InputMaybe<ToolBookingFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+export type ToolsBookingEntity = {
+  __typename?: 'ToolsBookingEntity';
+  attributes?: Maybe<ToolsBooking>;
+  id?: Maybe<Scalars['ID']>;
+};
+
+export type ToolsBookingEntityResponse = {
+  __typename?: 'ToolsBookingEntityResponse';
+  data?: Maybe<ToolsBookingEntity>;
+};
+
+export type ToolsBookingEntityResponseCollection = {
+  __typename?: 'ToolsBookingEntityResponseCollection';
+  data: Array<ToolsBookingEntity>;
+  meta: ResponseCollectionMeta;
+};
+
+export type ToolsBookingFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ToolsBookingFiltersInput>>>;
+  bookings?: InputMaybe<ToolBookingFiltersInput>;
+  createdAt?: InputMaybe<DateTimeFilterInput>;
+  id?: InputMaybe<IdFilterInput>;
+  not?: InputMaybe<ToolsBookingFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<ToolsBookingFiltersInput>>>;
+  owner?: InputMaybe<UsersPermissionsUserFiltersInput>;
+  updatedAt?: InputMaybe<DateTimeFilterInput>;
+};
+
+export type ToolsBookingInput = {
+  bookings?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  owner?: InputMaybe<Scalars['ID']>;
+};
+
+export type ToolsBookingRelationResponseCollection = {
+  __typename?: 'ToolsBookingRelationResponseCollection';
+  data: Array<ToolsBookingEntity>;
 };
 
 export type UploadFile = {
@@ -1750,6 +1834,7 @@ export type UsersPermissionsUser = {
   payments?: Maybe<PaymentRelationResponseCollection>;
   provider?: Maybe<Scalars['String']>;
   role?: Maybe<UsersPermissionsRoleEntityResponse>;
+  tools_bookings?: Maybe<ToolsBookingRelationResponseCollection>;
   updatedAt?: Maybe<Scalars['DateTime']>;
   userInfo?: Maybe<UserInfoEntityResponse>;
   username: Scalars['String'];
@@ -1765,6 +1850,13 @@ export type UsersPermissionsUserEnrollmentsArgs = {
 
 export type UsersPermissionsUserPaymentsArgs = {
   filters?: InputMaybe<PaymentFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+export type UsersPermissionsUserTools_BookingsArgs = {
+  filters?: InputMaybe<ToolsBookingFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
@@ -1802,6 +1894,7 @@ export type UsersPermissionsUserFiltersInput = {
   provider?: InputMaybe<StringFilterInput>;
   resetPasswordToken?: InputMaybe<StringFilterInput>;
   role?: InputMaybe<UsersPermissionsRoleFiltersInput>;
+  tools_bookings?: InputMaybe<ToolsBookingFiltersInput>;
   updatedAt?: InputMaybe<DateTimeFilterInput>;
   userInfo?: InputMaybe<UserInfoFiltersInput>;
   username?: InputMaybe<StringFilterInput>;
@@ -1818,6 +1911,7 @@ export type UsersPermissionsUserInput = {
   provider?: InputMaybe<Scalars['String']>;
   resetPasswordToken?: InputMaybe<Scalars['String']>;
   role?: InputMaybe<Scalars['ID']>;
+  tools_bookings?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
   userInfo?: InputMaybe<Scalars['ID']>;
   username?: InputMaybe<Scalars['String']>;
 };

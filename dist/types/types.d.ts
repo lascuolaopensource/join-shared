@@ -443,52 +443,6 @@ export declare type Error = {
     code: Scalars['String'];
     message?: Maybe<Scalars['String']>;
 };
-export declare type Event = {
-    __typename?: 'Event';
-    createdAt?: Maybe<Scalars['DateTime']>;
-    meetings?: Maybe<Array<Maybe<ComponentTimeMeeting>>>;
-    publishedAt?: Maybe<Scalars['DateTime']>;
-    tool?: Maybe<ToolEntityResponse>;
-    updatedAt?: Maybe<Scalars['DateTime']>;
-};
-export declare type EventMeetingsArgs = {
-    filters?: InputMaybe<ComponentTimeMeetingFiltersInput>;
-    pagination?: InputMaybe<PaginationArg>;
-    sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-};
-export declare type EventEntity = {
-    __typename?: 'EventEntity';
-    attributes?: Maybe<Event>;
-    id?: Maybe<Scalars['ID']>;
-};
-export declare type EventEntityResponse = {
-    __typename?: 'EventEntityResponse';
-    data?: Maybe<EventEntity>;
-};
-export declare type EventEntityResponseCollection = {
-    __typename?: 'EventEntityResponseCollection';
-    data: Array<EventEntity>;
-    meta: ResponseCollectionMeta;
-};
-export declare type EventFiltersInput = {
-    and?: InputMaybe<Array<InputMaybe<EventFiltersInput>>>;
-    createdAt?: InputMaybe<DateTimeFilterInput>;
-    id?: InputMaybe<IdFilterInput>;
-    not?: InputMaybe<EventFiltersInput>;
-    or?: InputMaybe<Array<InputMaybe<EventFiltersInput>>>;
-    publishedAt?: InputMaybe<DateTimeFilterInput>;
-    tool?: InputMaybe<ToolFiltersInput>;
-    updatedAt?: InputMaybe<DateTimeFilterInput>;
-};
-export declare type EventInput = {
-    meetings?: InputMaybe<Array<InputMaybe<ComponentTimeMeetingInput>>>;
-    publishedAt?: InputMaybe<Scalars['DateTime']>;
-    tool?: InputMaybe<Scalars['ID']>;
-};
-export declare type EventRelationResponseCollection = {
-    __typename?: 'EventRelationResponseCollection';
-    data: Array<EventEntity>;
-};
 export declare type FileInfoInput = {
     alternativeText?: InputMaybe<Scalars['String']>;
     caption?: InputMaybe<Scalars['String']>;
@@ -516,7 +470,7 @@ export declare type FloatFilterInput = {
     or?: InputMaybe<Array<InputMaybe<Scalars['Float']>>>;
     startsWith?: InputMaybe<Scalars['Float']>;
 };
-export declare type GenericMorph = Area | BillingInfo | ComponentBillingCompany | ComponentBillingMe | ComponentBillingPerson | ComponentLocationAddress | ComponentTimeMeeting | ComponentTimeTimeSlot | Course | Enrollment | Event | I18NLocale | Payment | PhoneNumber | Tool | UploadFile | UserInfo | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
+export declare type GenericMorph = Area | BillingInfo | ComponentBillingCompany | ComponentBillingMe | ComponentBillingPerson | ComponentLocationAddress | ComponentTimeMeeting | ComponentTimeTimeSlot | Course | Enrollment | I18NLocale | Payment | PhoneNumber | Tool | ToolBooking | ToolsBooking | UploadFile | UserInfo | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
 export declare type I18NLocale = {
     __typename?: 'I18NLocale';
     code?: Maybe<Scalars['String']>;
@@ -621,11 +575,12 @@ export declare type Mutation = {
     createBillingInfo?: Maybe<BillingInfoEntityResponse>;
     createCourse?: Maybe<CourseEntityResponse>;
     createEnrollment?: Maybe<EnrollmentEntityResponse>;
-    createEvent?: Maybe<EventEntityResponse>;
     createPayment?: Maybe<PaymentEntityResponse>;
     createPhoneNumber?: Maybe<PhoneNumberEntityResponse>;
     createTool?: Maybe<ToolEntityResponse>;
+    createToolBooking?: Maybe<ToolBookingEntityResponse>;
     createToolLocalization?: Maybe<ToolEntityResponse>;
+    createToolsBooking?: Maybe<ToolsBookingEntityResponse>;
     createUploadFile?: Maybe<UploadFileEntityResponse>;
     createUserInfo?: Maybe<UserInfoEntityResponse>;
     /** Create a new role */
@@ -636,10 +591,11 @@ export declare type Mutation = {
     deleteBillingInfo?: Maybe<BillingInfoEntityResponse>;
     deleteCourse?: Maybe<CourseEntityResponse>;
     deleteEnrollment?: Maybe<EnrollmentEntityResponse>;
-    deleteEvent?: Maybe<EventEntityResponse>;
     deletePayment?: Maybe<PaymentEntityResponse>;
     deletePhoneNumber?: Maybe<PhoneNumberEntityResponse>;
     deleteTool?: Maybe<ToolEntityResponse>;
+    deleteToolBooking?: Maybe<ToolBookingEntityResponse>;
+    deleteToolsBooking?: Maybe<ToolsBookingEntityResponse>;
     deleteUploadFile?: Maybe<UploadFileEntityResponse>;
     deleteUserInfo?: Maybe<UserInfoEntityResponse>;
     /** Delete an existing role */
@@ -661,11 +617,12 @@ export declare type Mutation = {
     updateBillingInfo?: Maybe<BillingInfoEntityResponse>;
     updateCourse?: Maybe<CourseEntityResponse>;
     updateEnrollment?: Maybe<EnrollmentEntityResponse>;
-    updateEvent?: Maybe<EventEntityResponse>;
     updateFileInfo: UploadFileEntityResponse;
     updatePayment?: Maybe<PaymentEntityResponse>;
     updatePhoneNumber?: Maybe<PhoneNumberEntityResponse>;
     updateTool?: Maybe<ToolEntityResponse>;
+    updateToolBooking?: Maybe<ToolBookingEntityResponse>;
+    updateToolsBooking?: Maybe<ToolsBookingEntityResponse>;
     updateUploadFile?: Maybe<UploadFileEntityResponse>;
     updateUserInfo?: Maybe<UserInfoEntityResponse>;
     /** Update an existing role */
@@ -692,9 +649,6 @@ export declare type MutationCreateCourseArgs = {
 export declare type MutationCreateEnrollmentArgs = {
     data: EnrollmentInput;
 };
-export declare type MutationCreateEventArgs = {
-    data: EventInput;
-};
 export declare type MutationCreatePaymentArgs = {
     data: PaymentInput;
 };
@@ -705,10 +659,16 @@ export declare type MutationCreateToolArgs = {
     data: ToolInput;
     locale?: InputMaybe<Scalars['I18NLocaleCode']>;
 };
+export declare type MutationCreateToolBookingArgs = {
+    data: ToolBookingInput;
+};
 export declare type MutationCreateToolLocalizationArgs = {
     data?: InputMaybe<ToolInput>;
     id?: InputMaybe<Scalars['ID']>;
     locale?: InputMaybe<Scalars['I18NLocaleCode']>;
+};
+export declare type MutationCreateToolsBookingArgs = {
+    data: ToolsBookingInput;
 };
 export declare type MutationCreateUploadFileArgs = {
     data: UploadFileInput;
@@ -735,9 +695,6 @@ export declare type MutationDeleteCourseArgs = {
 export declare type MutationDeleteEnrollmentArgs = {
     id: Scalars['ID'];
 };
-export declare type MutationDeleteEventArgs = {
-    id: Scalars['ID'];
-};
 export declare type MutationDeletePaymentArgs = {
     id: Scalars['ID'];
 };
@@ -747,6 +704,12 @@ export declare type MutationDeletePhoneNumberArgs = {
 export declare type MutationDeleteToolArgs = {
     id: Scalars['ID'];
     locale?: InputMaybe<Scalars['I18NLocaleCode']>;
+};
+export declare type MutationDeleteToolBookingArgs = {
+    id: Scalars['ID'];
+};
+export declare type MutationDeleteToolsBookingArgs = {
+    id: Scalars['ID'];
 };
 export declare type MutationDeleteUploadFileArgs = {
     id: Scalars['ID'];
@@ -803,10 +766,6 @@ export declare type MutationUpdateEnrollmentArgs = {
     data: EnrollmentInput;
     id: Scalars['ID'];
 };
-export declare type MutationUpdateEventArgs = {
-    data: EventInput;
-    id: Scalars['ID'];
-};
 export declare type MutationUpdateFileInfoArgs = {
     id: Scalars['ID'];
     info?: InputMaybe<FileInfoInput>;
@@ -823,6 +782,14 @@ export declare type MutationUpdateToolArgs = {
     data: ToolInput;
     id: Scalars['ID'];
     locale?: InputMaybe<Scalars['I18NLocaleCode']>;
+};
+export declare type MutationUpdateToolBookingArgs = {
+    data: ToolBookingInput;
+    id: Scalars['ID'];
+};
+export declare type MutationUpdateToolsBookingArgs = {
+    data: ToolsBookingInput;
+    id: Scalars['ID'];
 };
 export declare type MutationUpdateUploadFileArgs = {
     data: UploadFileInput;
@@ -959,8 +926,6 @@ export declare type Query = {
     courses?: Maybe<CourseEntityResponseCollection>;
     enrollment?: Maybe<EnrollmentEntityResponse>;
     enrollments?: Maybe<EnrollmentEntityResponseCollection>;
-    event?: Maybe<EventEntityResponse>;
-    events?: Maybe<EventEntityResponseCollection>;
     i18NLocale?: Maybe<I18NLocaleEntityResponse>;
     i18NLocales?: Maybe<I18NLocaleEntityResponseCollection>;
     me?: Maybe<UsersPermissionsMe>;
@@ -969,7 +934,11 @@ export declare type Query = {
     phoneNumber?: Maybe<PhoneNumberEntityResponse>;
     phoneNumbers?: Maybe<PhoneNumberEntityResponseCollection>;
     tool?: Maybe<ToolEntityResponse>;
+    toolBooking?: Maybe<ToolBookingEntityResponse>;
+    toolBookings?: Maybe<ToolBookingEntityResponseCollection>;
     tools?: Maybe<ToolEntityResponseCollection>;
+    toolsBooking?: Maybe<ToolsBookingEntityResponse>;
+    toolsBookings?: Maybe<ToolsBookingEntityResponseCollection>;
     uploadFile?: Maybe<UploadFileEntityResponse>;
     uploadFiles?: Maybe<UploadFileEntityResponseCollection>;
     userInfo?: Maybe<UserInfoEntityResponse>;
@@ -1014,15 +983,6 @@ export declare type QueryEnrollmentsArgs = {
     pagination?: InputMaybe<PaginationArg>;
     sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
-export declare type QueryEventArgs = {
-    id?: InputMaybe<Scalars['ID']>;
-};
-export declare type QueryEventsArgs = {
-    filters?: InputMaybe<EventFiltersInput>;
-    pagination?: InputMaybe<PaginationArg>;
-    publicationState?: InputMaybe<PublicationState>;
-    sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-};
 export declare type QueryI18NLocaleArgs = {
     id?: InputMaybe<Scalars['ID']>;
 };
@@ -1051,9 +1011,25 @@ export declare type QueryToolArgs = {
     id?: InputMaybe<Scalars['ID']>;
     locale?: InputMaybe<Scalars['I18NLocaleCode']>;
 };
+export declare type QueryToolBookingArgs = {
+    id?: InputMaybe<Scalars['ID']>;
+};
+export declare type QueryToolBookingsArgs = {
+    filters?: InputMaybe<ToolBookingFiltersInput>;
+    pagination?: InputMaybe<PaginationArg>;
+    sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
 export declare type QueryToolsArgs = {
     filters?: InputMaybe<ToolFiltersInput>;
     locale?: InputMaybe<Scalars['I18NLocaleCode']>;
+    pagination?: InputMaybe<PaginationArg>;
+    sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+export declare type QueryToolsBookingArgs = {
+    id?: InputMaybe<Scalars['ID']>;
+};
+export declare type QueryToolsBookingsArgs = {
+    filters?: InputMaybe<ToolsBookingFiltersInput>;
     pagination?: InputMaybe<PaginationArg>;
     sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
@@ -1139,7 +1115,7 @@ export declare type TimeFilterInput = {
 };
 export declare type Tool = {
     __typename?: 'Tool';
-    bookings?: Maybe<EventRelationResponseCollection>;
+    bookings?: Maybe<ToolBookingRelationResponseCollection>;
     createdAt?: Maybe<Scalars['DateTime']>;
     locale?: Maybe<Scalars['String']>;
     localizations?: Maybe<ToolRelationResponseCollection>;
@@ -1147,15 +1123,62 @@ export declare type Tool = {
     updatedAt?: Maybe<Scalars['DateTime']>;
 };
 export declare type ToolBookingsArgs = {
-    filters?: InputMaybe<EventFiltersInput>;
+    filters?: InputMaybe<ToolBookingFiltersInput>;
     pagination?: InputMaybe<PaginationArg>;
-    publicationState?: InputMaybe<PublicationState>;
     sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 export declare type ToolLocalizationsArgs = {
     filters?: InputMaybe<ToolFiltersInput>;
     pagination?: InputMaybe<PaginationArg>;
     sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+export declare type ToolBooking = {
+    __typename?: 'ToolBooking';
+    booking?: Maybe<ToolsBookingEntityResponse>;
+    createdAt?: Maybe<Scalars['DateTime']>;
+    date: Scalars['Date'];
+    timeEnd?: Maybe<Scalars['Date']>;
+    timeStart: Scalars['Time'];
+    tool?: Maybe<ToolEntityResponse>;
+    updatedAt?: Maybe<Scalars['DateTime']>;
+};
+export declare type ToolBookingEntity = {
+    __typename?: 'ToolBookingEntity';
+    attributes?: Maybe<ToolBooking>;
+    id?: Maybe<Scalars['ID']>;
+};
+export declare type ToolBookingEntityResponse = {
+    __typename?: 'ToolBookingEntityResponse';
+    data?: Maybe<ToolBookingEntity>;
+};
+export declare type ToolBookingEntityResponseCollection = {
+    __typename?: 'ToolBookingEntityResponseCollection';
+    data: Array<ToolBookingEntity>;
+    meta: ResponseCollectionMeta;
+};
+export declare type ToolBookingFiltersInput = {
+    and?: InputMaybe<Array<InputMaybe<ToolBookingFiltersInput>>>;
+    booking?: InputMaybe<ToolsBookingFiltersInput>;
+    createdAt?: InputMaybe<DateTimeFilterInput>;
+    date?: InputMaybe<DateFilterInput>;
+    id?: InputMaybe<IdFilterInput>;
+    not?: InputMaybe<ToolBookingFiltersInput>;
+    or?: InputMaybe<Array<InputMaybe<ToolBookingFiltersInput>>>;
+    timeEnd?: InputMaybe<DateFilterInput>;
+    timeStart?: InputMaybe<TimeFilterInput>;
+    tool?: InputMaybe<ToolFiltersInput>;
+    updatedAt?: InputMaybe<DateTimeFilterInput>;
+};
+export declare type ToolBookingInput = {
+    booking?: InputMaybe<Scalars['ID']>;
+    date?: InputMaybe<Scalars['Date']>;
+    timeEnd?: InputMaybe<Scalars['Date']>;
+    timeStart?: InputMaybe<Scalars['Time']>;
+    tool?: InputMaybe<Scalars['ID']>;
+};
+export declare type ToolBookingRelationResponseCollection = {
+    __typename?: 'ToolBookingRelationResponseCollection';
+    data: Array<ToolBookingEntity>;
 };
 export declare type ToolEntity = {
     __typename?: 'ToolEntity';
@@ -1173,7 +1196,7 @@ export declare type ToolEntityResponseCollection = {
 };
 export declare type ToolFiltersInput = {
     and?: InputMaybe<Array<InputMaybe<ToolFiltersInput>>>;
-    bookings?: InputMaybe<EventFiltersInput>;
+    bookings?: InputMaybe<ToolBookingFiltersInput>;
     createdAt?: InputMaybe<DateTimeFilterInput>;
     id?: InputMaybe<IdFilterInput>;
     locale?: InputMaybe<StringFilterInput>;
@@ -1190,6 +1213,50 @@ export declare type ToolInput = {
 export declare type ToolRelationResponseCollection = {
     __typename?: 'ToolRelationResponseCollection';
     data: Array<ToolEntity>;
+};
+export declare type ToolsBooking = {
+    __typename?: 'ToolsBooking';
+    bookings?: Maybe<ToolBookingRelationResponseCollection>;
+    createdAt?: Maybe<Scalars['DateTime']>;
+    owner?: Maybe<UsersPermissionsUserEntityResponse>;
+    updatedAt?: Maybe<Scalars['DateTime']>;
+};
+export declare type ToolsBookingBookingsArgs = {
+    filters?: InputMaybe<ToolBookingFiltersInput>;
+    pagination?: InputMaybe<PaginationArg>;
+    sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+export declare type ToolsBookingEntity = {
+    __typename?: 'ToolsBookingEntity';
+    attributes?: Maybe<ToolsBooking>;
+    id?: Maybe<Scalars['ID']>;
+};
+export declare type ToolsBookingEntityResponse = {
+    __typename?: 'ToolsBookingEntityResponse';
+    data?: Maybe<ToolsBookingEntity>;
+};
+export declare type ToolsBookingEntityResponseCollection = {
+    __typename?: 'ToolsBookingEntityResponseCollection';
+    data: Array<ToolsBookingEntity>;
+    meta: ResponseCollectionMeta;
+};
+export declare type ToolsBookingFiltersInput = {
+    and?: InputMaybe<Array<InputMaybe<ToolsBookingFiltersInput>>>;
+    bookings?: InputMaybe<ToolBookingFiltersInput>;
+    createdAt?: InputMaybe<DateTimeFilterInput>;
+    id?: InputMaybe<IdFilterInput>;
+    not?: InputMaybe<ToolsBookingFiltersInput>;
+    or?: InputMaybe<Array<InputMaybe<ToolsBookingFiltersInput>>>;
+    owner?: InputMaybe<UsersPermissionsUserFiltersInput>;
+    updatedAt?: InputMaybe<DateTimeFilterInput>;
+};
+export declare type ToolsBookingInput = {
+    bookings?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+    owner?: InputMaybe<Scalars['ID']>;
+};
+export declare type ToolsBookingRelationResponseCollection = {
+    __typename?: 'ToolsBookingRelationResponseCollection';
+    data: Array<ToolsBookingEntity>;
 };
 export declare type UploadFile = {
     __typename?: 'UploadFile';
@@ -1460,6 +1527,7 @@ export declare type UsersPermissionsUser = {
     payments?: Maybe<PaymentRelationResponseCollection>;
     provider?: Maybe<Scalars['String']>;
     role?: Maybe<UsersPermissionsRoleEntityResponse>;
+    tools_bookings?: Maybe<ToolsBookingRelationResponseCollection>;
     updatedAt?: Maybe<Scalars['DateTime']>;
     userInfo?: Maybe<UserInfoEntityResponse>;
     username: Scalars['String'];
@@ -1471,6 +1539,11 @@ export declare type UsersPermissionsUserEnrollmentsArgs = {
 };
 export declare type UsersPermissionsUserPaymentsArgs = {
     filters?: InputMaybe<PaymentFiltersInput>;
+    pagination?: InputMaybe<PaginationArg>;
+    sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+export declare type UsersPermissionsUserTools_BookingsArgs = {
+    filters?: InputMaybe<ToolsBookingFiltersInput>;
     pagination?: InputMaybe<PaginationArg>;
     sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
@@ -1504,6 +1577,7 @@ export declare type UsersPermissionsUserFiltersInput = {
     provider?: InputMaybe<StringFilterInput>;
     resetPasswordToken?: InputMaybe<StringFilterInput>;
     role?: InputMaybe<UsersPermissionsRoleFiltersInput>;
+    tools_bookings?: InputMaybe<ToolsBookingFiltersInput>;
     updatedAt?: InputMaybe<DateTimeFilterInput>;
     userInfo?: InputMaybe<UserInfoFiltersInput>;
     username?: InputMaybe<StringFilterInput>;
@@ -1519,6 +1593,7 @@ export declare type UsersPermissionsUserInput = {
     provider?: InputMaybe<Scalars['String']>;
     resetPasswordToken?: InputMaybe<Scalars['String']>;
     role?: InputMaybe<Scalars['ID']>;
+    tools_bookings?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
     userInfo?: InputMaybe<Scalars['ID']>;
     username?: InputMaybe<Scalars['String']>;
 };
