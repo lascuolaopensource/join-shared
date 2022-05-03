@@ -230,6 +230,7 @@ var UserPermissionRoles;
   UserPermissionRoles["Public"] = "public";
   UserPermissionRoles["Authenticated"] = "authenticated";
   UserPermissionRoles["AdminEnrollments"] = "admin_enrollments";
+  UserPermissionRoles["AdminTools"] = "admin_tools";
 })(UserPermissionRoles || (UserPermissionRoles = {}));
 
 var index$4 = {

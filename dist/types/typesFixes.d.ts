@@ -53,5 +53,6 @@ export declare enum BillingOptionsComponents {
 export declare enum UserPermissionRoles {
     Public = "public",
     Authenticated = "authenticated",
-    AdminEnrollments = "admin_enrollments"
+    AdminEnrollments = "admin_enrollments",
+    AdminTools = "admin_tools"
 }

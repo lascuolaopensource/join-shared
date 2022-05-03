@@ -73,4 +73,5 @@ export enum UserPermissionRoles {
 	Public = "public",
 	Authenticated = "authenticated",
 	AdminEnrollments = "admin_enrollments",
+	AdminTools = "admin_tools",
 }
