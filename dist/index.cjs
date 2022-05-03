@@ -225,6 +225,13 @@ var Enum_Enrollment_State;
   Enum_Enrollment_State["Rejected"] = "rejected";
 })(Enum_Enrollment_State || (Enum_Enrollment_State = {}));
 
+var Enum_Toolslot_Type;
+
+(function (Enum_Toolslot_Type) {
+  Enum_Toolslot_Type["Block"] = "block";
+  Enum_Toolslot_Type["Booking"] = "booking";
+})(Enum_Toolslot_Type || (Enum_Toolslot_Type = {}));
+
 var PublicationState;
 
 (function (PublicationState) {
@@ -268,6 +275,7 @@ var UserPermissionRoles;
 var index$4 = {
 	__proto__: null,
 	get Enum_Enrollment_State () { return Enum_Enrollment_State; },
+	get Enum_Toolslot_Type () { return Enum_Toolslot_Type; },
 	get PublicationState () { return PublicationState; },
 	get PaymentCategories () { return PaymentCategories; },
 	BillingOptions: BillingOptions,

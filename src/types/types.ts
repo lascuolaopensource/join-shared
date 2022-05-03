@@ -426,6 +426,11 @@ export enum Enum_Enrollment_State {
   Rejected = 'rejected'
 }
 
+export enum Enum_Toolslot_Type {
+  Block = 'block',
+  Booking = 'booking'
+}
+
 export type Enrollment = {
   __typename?: 'Enrollment';
   course?: Maybe<CourseEntityResponse>;
@@ -525,7 +530,7 @@ export type FloatFilterInput = {
   startsWith?: InputMaybe<Scalars['Float']>;
 };
 
-export type GenericMorph = Area | BillingInfo | ComponentBillingCompany | ComponentBillingMe | ComponentBillingPerson | ComponentLocationAddress | ComponentTimeMeeting | ComponentTimeTimeSlot | Course | Enrollment | I18NLocale | Payment | PhoneNumber | Tool | ToolBooking | ToolsBooking | UploadFile | UserInfo | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
+export type GenericMorph = Area | BillingInfo | ComponentBillingCompany | ComponentBillingMe | ComponentBillingPerson | ComponentLocationAddress | ComponentTimeMeeting | ComponentTimeTimeSlot | Course | Enrollment | I18NLocale | Payment | PhoneNumber | Tool | ToolSlot | ToolsBooking | UploadFile | UserInfo | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
 
 export type I18NLocale = {
   __typename?: 'I18NLocale';
@@ -642,8 +647,8 @@ export type Mutation = {
   createPayment?: Maybe<PaymentEntityResponse>;
   createPhoneNumber?: Maybe<PhoneNumberEntityResponse>;
   createTool?: Maybe<ToolEntityResponse>;
-  createToolBooking?: Maybe<ToolBookingEntityResponse>;
   createToolLocalization?: Maybe<ToolEntityResponse>;
+  createToolSlot?: Maybe<ToolSlotEntityResponse>;
   createToolsBooking?: Maybe<ToolsBookingEntityResponse>;
   createUploadFile?: Maybe<UploadFileEntityResponse>;
   createUserInfo?: Maybe<UserInfoEntityResponse>;
@@ -658,7 +663,7 @@ export type Mutation = {
   deletePayment?: Maybe<PaymentEntityResponse>;
   deletePhoneNumber?: Maybe<PhoneNumberEntityResponse>;
   deleteTool?: Maybe<ToolEntityResponse>;
-  deleteToolBooking?: Maybe<ToolBookingEntityResponse>;
+  deleteToolSlot?: Maybe<ToolSlotEntityResponse>;
   deleteToolsBooking?: Maybe<ToolsBookingEntityResponse>;
   deleteUploadFile?: Maybe<UploadFileEntityResponse>;
   deleteUserInfo?: Maybe<UserInfoEntityResponse>;
@@ -685,7 +690,7 @@ export type Mutation = {
   updatePayment?: Maybe<PaymentEntityResponse>;
   updatePhoneNumber?: Maybe<PhoneNumberEntityResponse>;
   updateTool?: Maybe<ToolEntityResponse>;
-  updateToolBooking?: Maybe<ToolBookingEntityResponse>;
+  updateToolSlot?: Maybe<ToolSlotEntityResponse>;
   updateToolsBooking?: Maybe<ToolsBookingEntityResponse>;
   updateUploadFile?: Maybe<UploadFileEntityResponse>;
   updateUserInfo?: Maybe<UserInfoEntityResponse>;
@@ -741,15 +746,15 @@ export type MutationCreateToolArgs = {
 };
 
 
-export type MutationCreateToolBookingArgs = {
-  data: ToolBookingInput;
-};
-
-
 export type MutationCreateToolLocalizationArgs = {
   data?: InputMaybe<ToolInput>;
   id?: InputMaybe<Scalars['ID']>;
   locale?: InputMaybe<Scalars['I18NLocaleCode']>;
+};
+
+
+export type MutationCreateToolSlotArgs = {
+  data: ToolSlotInput;
 };
 
 
@@ -815,7 +820,7 @@ export type MutationDeleteToolArgs = {
 };
 
 
-export type MutationDeleteToolBookingArgs = {
+export type MutationDeleteToolSlotArgs = {
   id: Scalars['ID'];
 };
 
@@ -935,8 +940,8 @@ export type MutationUpdateToolArgs = {
 };
 
 
-export type MutationUpdateToolBookingArgs = {
-  data: ToolBookingInput;
+export type MutationUpdateToolSlotArgs = {
+  data: ToolSlotInput;
   id: Scalars['ID'];
 };
 
@@ -1115,8 +1120,8 @@ export type Query = {
   phoneNumber?: Maybe<PhoneNumberEntityResponse>;
   phoneNumbers?: Maybe<PhoneNumberEntityResponseCollection>;
   tool?: Maybe<ToolEntityResponse>;
-  toolBooking?: Maybe<ToolBookingEntityResponse>;
-  toolBookings?: Maybe<ToolBookingEntityResponseCollection>;
+  toolSlot?: Maybe<ToolSlotEntityResponse>;
+  toolSlots?: Maybe<ToolSlotEntityResponseCollection>;
   tools?: Maybe<ToolEntityResponseCollection>;
   toolsBooking?: Maybe<ToolsBookingEntityResponse>;
   toolsBookings?: Maybe<ToolsBookingEntityResponseCollection>;
@@ -1224,13 +1229,13 @@ export type QueryToolArgs = {
 };
 
 
-export type QueryToolBookingArgs = {
+export type QueryToolSlotArgs = {
   id?: InputMaybe<Scalars['ID']>;
 };
 
 
-export type QueryToolBookingsArgs = {
-  filters?: InputMaybe<ToolBookingFiltersInput>;
+export type QueryToolSlotsArgs = {
+  filters?: InputMaybe<ToolSlotFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
@@ -1356,19 +1361,12 @@ export type TimeFilterInput = {
 
 export type Tool = {
   __typename?: 'Tool';
-  bookings?: Maybe<ToolBookingRelationResponseCollection>;
   createdAt?: Maybe<Scalars['DateTime']>;
   locale?: Maybe<Scalars['String']>;
   localizations?: Maybe<ToolRelationResponseCollection>;
   name: Scalars['String'];
+  slots?: Maybe<ToolSlotRelationResponseCollection>;
   updatedAt?: Maybe<Scalars['DateTime']>;
-};
-
-
-export type ToolBookingsArgs = {
-  filters?: InputMaybe<ToolBookingFiltersInput>;
-  pagination?: InputMaybe<PaginationArg>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
 
@@ -1378,59 +1376,11 @@ export type ToolLocalizationsArgs = {
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
-export type ToolBooking = {
-  __typename?: 'ToolBooking';
-  booking?: Maybe<ToolsBookingEntityResponse>;
-  createdAt?: Maybe<Scalars['DateTime']>;
-  date: Scalars['Date'];
-  timeEnd?: Maybe<Scalars['Date']>;
-  timeStart: Scalars['Time'];
-  tool?: Maybe<ToolEntityResponse>;
-  updatedAt?: Maybe<Scalars['DateTime']>;
-};
 
-export type ToolBookingEntity = {
-  __typename?: 'ToolBookingEntity';
-  attributes?: Maybe<ToolBooking>;
-  id?: Maybe<Scalars['ID']>;
-};
-
-export type ToolBookingEntityResponse = {
-  __typename?: 'ToolBookingEntityResponse';
-  data?: Maybe<ToolBookingEntity>;
-};
-
-export type ToolBookingEntityResponseCollection = {
-  __typename?: 'ToolBookingEntityResponseCollection';
-  data: Array<ToolBookingEntity>;
-  meta: ResponseCollectionMeta;
-};
-
-export type ToolBookingFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<ToolBookingFiltersInput>>>;
-  booking?: InputMaybe<ToolsBookingFiltersInput>;
-  createdAt?: InputMaybe<DateTimeFilterInput>;
-  date?: InputMaybe<DateFilterInput>;
-  id?: InputMaybe<IdFilterInput>;
-  not?: InputMaybe<ToolBookingFiltersInput>;
-  or?: InputMaybe<Array<InputMaybe<ToolBookingFiltersInput>>>;
-  timeEnd?: InputMaybe<DateFilterInput>;
-  timeStart?: InputMaybe<TimeFilterInput>;
-  tool?: InputMaybe<ToolFiltersInput>;
-  updatedAt?: InputMaybe<DateTimeFilterInput>;
-};
-
-export type ToolBookingInput = {
-  booking?: InputMaybe<Scalars['ID']>;
-  date?: InputMaybe<Scalars['Date']>;
-  timeEnd?: InputMaybe<Scalars['Date']>;
-  timeStart?: InputMaybe<Scalars['Time']>;
-  tool?: InputMaybe<Scalars['ID']>;
-};
-
-export type ToolBookingRelationResponseCollection = {
-  __typename?: 'ToolBookingRelationResponseCollection';
-  data: Array<ToolBookingEntity>;
+export type ToolSlotsArgs = {
+  filters?: InputMaybe<ToolSlotFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
 export type ToolEntity = {
@@ -1452,7 +1402,6 @@ export type ToolEntityResponseCollection = {
 
 export type ToolFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<ToolFiltersInput>>>;
-  bookings?: InputMaybe<ToolBookingFiltersInput>;
   createdAt?: InputMaybe<DateTimeFilterInput>;
   id?: InputMaybe<IdFilterInput>;
   locale?: InputMaybe<StringFilterInput>;
@@ -1460,12 +1409,13 @@ export type ToolFiltersInput = {
   name?: InputMaybe<StringFilterInput>;
   not?: InputMaybe<ToolFiltersInput>;
   or?: InputMaybe<Array<InputMaybe<ToolFiltersInput>>>;
+  slots?: InputMaybe<ToolSlotFiltersInput>;
   updatedAt?: InputMaybe<DateTimeFilterInput>;
 };
 
 export type ToolInput = {
-  bookings?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
   name?: InputMaybe<Scalars['String']>;
+  slots?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
 };
 
 export type ToolRelationResponseCollection = {
@@ -1473,17 +1423,75 @@ export type ToolRelationResponseCollection = {
   data: Array<ToolEntity>;
 };
 
+export type ToolSlot = {
+  __typename?: 'ToolSlot';
+  booking?: Maybe<ToolsBookingEntityResponse>;
+  createdAt?: Maybe<Scalars['DateTime']>;
+  date: Scalars['Date'];
+  time_end: Scalars['Time'];
+  time_start: Scalars['Time'];
+  tool?: Maybe<ToolEntityResponse>;
+  type: Enum_Toolslot_Type;
+  updatedAt?: Maybe<Scalars['DateTime']>;
+};
+
+export type ToolSlotEntity = {
+  __typename?: 'ToolSlotEntity';
+  attributes?: Maybe<ToolSlot>;
+  id?: Maybe<Scalars['ID']>;
+};
+
+export type ToolSlotEntityResponse = {
+  __typename?: 'ToolSlotEntityResponse';
+  data?: Maybe<ToolSlotEntity>;
+};
+
+export type ToolSlotEntityResponseCollection = {
+  __typename?: 'ToolSlotEntityResponseCollection';
+  data: Array<ToolSlotEntity>;
+  meta: ResponseCollectionMeta;
+};
+
+export type ToolSlotFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ToolSlotFiltersInput>>>;
+  booking?: InputMaybe<ToolsBookingFiltersInput>;
+  createdAt?: InputMaybe<DateTimeFilterInput>;
+  date?: InputMaybe<DateFilterInput>;
+  id?: InputMaybe<IdFilterInput>;
+  not?: InputMaybe<ToolSlotFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<ToolSlotFiltersInput>>>;
+  time_end?: InputMaybe<TimeFilterInput>;
+  time_start?: InputMaybe<TimeFilterInput>;
+  tool?: InputMaybe<ToolFiltersInput>;
+  type?: InputMaybe<StringFilterInput>;
+  updatedAt?: InputMaybe<DateTimeFilterInput>;
+};
+
+export type ToolSlotInput = {
+  booking?: InputMaybe<Scalars['ID']>;
+  date?: InputMaybe<Scalars['Date']>;
+  time_end?: InputMaybe<Scalars['Time']>;
+  time_start?: InputMaybe<Scalars['Time']>;
+  tool?: InputMaybe<Scalars['ID']>;
+  type?: InputMaybe<Enum_Toolslot_Type>;
+};
+
+export type ToolSlotRelationResponseCollection = {
+  __typename?: 'ToolSlotRelationResponseCollection';
+  data: Array<ToolSlotEntity>;
+};
+
 export type ToolsBooking = {
   __typename?: 'ToolsBooking';
-  bookings?: Maybe<ToolBookingRelationResponseCollection>;
   createdAt?: Maybe<Scalars['DateTime']>;
   owner?: Maybe<UsersPermissionsUserEntityResponse>;
+  slots?: Maybe<ToolSlotRelationResponseCollection>;
   updatedAt?: Maybe<Scalars['DateTime']>;
 };
 
 
-export type ToolsBookingBookingsArgs = {
-  filters?: InputMaybe<ToolBookingFiltersInput>;
+export type ToolsBookingSlotsArgs = {
+  filters?: InputMaybe<ToolSlotFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
@@ -1507,18 +1515,18 @@ export type ToolsBookingEntityResponseCollection = {
 
 export type ToolsBookingFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<ToolsBookingFiltersInput>>>;
-  bookings?: InputMaybe<ToolBookingFiltersInput>;
   createdAt?: InputMaybe<DateTimeFilterInput>;
   id?: InputMaybe<IdFilterInput>;
   not?: InputMaybe<ToolsBookingFiltersInput>;
   or?: InputMaybe<Array<InputMaybe<ToolsBookingFiltersInput>>>;
   owner?: InputMaybe<UsersPermissionsUserFiltersInput>;
+  slots?: InputMaybe<ToolSlotFiltersInput>;
   updatedAt?: InputMaybe<DateTimeFilterInput>;
 };
 
 export type ToolsBookingInput = {
-  bookings?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
   owner?: InputMaybe<Scalars['ID']>;
+  slots?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
 };
 
 export type ToolsBookingRelationResponseCollection = {
