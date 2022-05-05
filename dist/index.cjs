@@ -560,13 +560,13 @@ var payment = {
 	isExpired: isExpired
 };
 
-function formatDate(d) {
+function formatQueryDate(d) {
   return d.toISOString().split("T")[0];
 }
 
 var date = {
 	__proto__: null,
-	formatDate: formatDate
+	formatQueryDate: formatQueryDate
 };
 
 var index = {

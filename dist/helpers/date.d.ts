@@ -1,1 +1,1 @@
-export declare function formatDate(d: Date): string;
+export declare function formatQueryDate(d: Date): string;
