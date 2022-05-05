@@ -565,10 +565,28 @@
 	function formatQueryDate(d) {
 	  return d.toISOString().split("T")[0];
 	}
+	function getDateMidnight(d) {
+	  var db = new Date(d.getTime());
+	  db.setHours(0, 0, 0, 0);
+	  return db;
+	}
+	function getPreviousMonday(d) {
+	  var day = d.getDay();
+	  var diff = d.getDate() - day + (day == 0 ? -6 : 1); // adjust when day is sunday
+
+	  return new Date(d.setDate(diff));
+	}
+	function addDays(d, amount) {
+	  var diff = d.getDate() + amount;
+	  return new Date(d.setDate(diff));
+	}
 
 	var date = {
 		__proto__: null,
-		formatQueryDate: formatQueryDate
+		formatQueryDate: formatQueryDate,
+		getDateMidnight: getDateMidnight,
+		getPreviousMonday: getPreviousMonday,
+		addDays: addDays
 	};
 
 	var index = {
