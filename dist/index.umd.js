@@ -562,10 +562,20 @@
 		isExpired: isExpired
 	};
 
+	function formatDate(d) {
+	  return d.toISOString().split("T")[0];
+	}
+
+	var date = {
+		__proto__: null,
+		formatDate: formatDate
+	};
+
 	var index = {
 		__proto__: null,
 		course: course,
-		payment: payment
+		payment: payment,
+		date: date
 	};
 
 	exports.Errors = void 0;
