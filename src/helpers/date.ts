@@ -1,3 +1,5 @@
+import { string } from "yup";
+
 export function formatQueryDate(d: Date) {
 	return d.toISOString().split("T")[0];
 }
@@ -19,4 +21,8 @@ export function addDays(d: Date, amount: number): Date {
 	const diff = d.getDate() + amount;
 	d_copy.setDate(diff);
 	return d_copy;
+}
+
+export function joinDateHour(d: string, h: string): Date {
+	return new Date(Date.parse(`${d}T${h}Z`));
 }

@@ -582,13 +582,17 @@
 	  d_copy.setDate(diff);
 	  return d_copy;
 	}
+	function joinDateHour(d, h) {
+	  return new Date(Date.parse(d + "T" + h + "Z"));
+	}
 
 	var date = {
 		__proto__: null,
 		formatQueryDate: formatQueryDate,
 		getDateMidnight: getDateMidnight,
 		getPreviousMonday: getPreviousMonday,
-		addDays: addDays
+		addDays: addDays,
+		joinDateHour: joinDateHour
 	};
 
 	var index = {
