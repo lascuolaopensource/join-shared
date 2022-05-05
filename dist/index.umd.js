@@ -577,8 +577,10 @@
 	  return new Date(d.setDate(diff));
 	}
 	function addDays(d, amount) {
+	  var d_copy = new Date(d.getTime());
 	  var diff = d.getDate() + amount;
-	  return new Date(d.setDate(diff));
+	  d_copy.setDate(diff);
+	  return d_copy;
 	}
 
 	var date = {

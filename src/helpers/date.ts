@@ -15,6 +15,8 @@ export function getPreviousMonday(d: Date): Date {
 }
 
 export function addDays(d: Date, amount: number): Date {
+	const d_copy = new Date(d.getTime());
 	const diff = d.getDate() + amount;
-	return new Date(d.setDate(diff));
+	d_copy.setDate(diff);
+	return d_copy;
 }
