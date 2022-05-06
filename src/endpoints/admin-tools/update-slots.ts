@@ -2,7 +2,7 @@ import { Enum_Toolslot_Type } from "../../types";
 
 export type SlotUpdate = {
 	toolID: string;
-	dateTime: Date;
+	dateTime: string;
 	state: Enum_Toolslot_Type | null;
 };
 
