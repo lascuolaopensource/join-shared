@@ -1,1 +1,1 @@
-export * from "./change-slot-state";
+export * from "./update-slots";
