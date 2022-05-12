@@ -585,6 +585,11 @@
 	function joinDateHour(d, h) {
 	  return new Date(Date.parse(d + "T" + h + "Z"));
 	}
+	function getHHMM(d) {
+	  var hour = String(d.getHours()).padStart(2, "0");
+	  var mins = String(d.getMinutes()).padStart(2, "0");
+	  return hour + ":" + mins;
+	}
 
 	var date = {
 		__proto__: null,
@@ -592,7 +597,8 @@
 		getDateMidnight: getDateMidnight,
 		getPreviousMonday: getPreviousMonday,
 		addDays: addDays,
-		joinDateHour: joinDateHour
+		joinDateHour: joinDateHour,
+		getHHMM: getHHMM
 	};
 
 	var index = {

@@ -26,3 +26,10 @@ export function addDays(d: Date, amount: number): Date {
 export function joinDateHour(d: string, h: string): Date {
 	return new Date(Date.parse(`${d}T${h}Z`));
 }
+
+export function getHHMM(d: Date): string {
+	const hour = String(d.getHours()).padStart(2, "0");
+	const mins = String(d.getMinutes()).padStart(2, "0");
+
+	return `${hour}:${mins}`;
+}
