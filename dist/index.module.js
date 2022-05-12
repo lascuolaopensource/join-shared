@@ -568,6 +568,9 @@ function getHHMM(d) {
   var mins = String(d.getMinutes()).padStart(2, "0");
   return hour + ":" + mins;
 }
+function getTimeString(d) {
+  return d.toISOString().split("T")[1].replace("Z", "");
+}
 
 var date = {
 	__proto__: null,
@@ -576,7 +579,8 @@ var date = {
 	getPreviousMonday: getPreviousMonday,
 	addDays: addDays,
 	joinDateHour: joinDateHour,
-	getHHMM: getHHMM
+	getHHMM: getHHMM,
+	getTimeString: getTimeString
 };
 
 var index = {

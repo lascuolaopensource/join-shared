@@ -33,3 +33,7 @@ export function getHHMM(d: Date): string {
 
 	return `${hour}:${mins}`;
 }
+
+export function getTimeString(d: Date): string {
+	return d.toISOString().split("T")[1].replace("Z", "");
+}
