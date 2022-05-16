@@ -1174,9 +1174,8 @@ export declare type ToolSlot = {
     __typename?: 'ToolSlot';
     booking?: Maybe<ToolsBookingEntityResponse>;
     createdAt?: Maybe<Scalars['DateTime']>;
-    date: Scalars['Date'];
-    time_end: Scalars['Time'];
-    time_start: Scalars['Time'];
+    end: Scalars['DateTime'];
+    start: Scalars['DateTime'];
     tool?: Maybe<ToolEntityResponse>;
     type: Enum_Toolslot_Type;
     updatedAt?: Maybe<Scalars['DateTime']>;
@@ -1199,21 +1198,19 @@ export declare type ToolSlotFiltersInput = {
     and?: InputMaybe<Array<InputMaybe<ToolSlotFiltersInput>>>;
     booking?: InputMaybe<ToolsBookingFiltersInput>;
     createdAt?: InputMaybe<DateTimeFilterInput>;
-    date?: InputMaybe<DateFilterInput>;
+    end?: InputMaybe<DateTimeFilterInput>;
     id?: InputMaybe<IdFilterInput>;
     not?: InputMaybe<ToolSlotFiltersInput>;
     or?: InputMaybe<Array<InputMaybe<ToolSlotFiltersInput>>>;
-    time_end?: InputMaybe<TimeFilterInput>;
-    time_start?: InputMaybe<TimeFilterInput>;
+    start?: InputMaybe<DateTimeFilterInput>;
     tool?: InputMaybe<ToolFiltersInput>;
     type?: InputMaybe<StringFilterInput>;
     updatedAt?: InputMaybe<DateTimeFilterInput>;
 };
 export declare type ToolSlotInput = {
     booking?: InputMaybe<Scalars['ID']>;
-    date?: InputMaybe<Scalars['Date']>;
-    time_end?: InputMaybe<Scalars['Time']>;
-    time_start?: InputMaybe<Scalars['Time']>;
+    end?: InputMaybe<Scalars['DateTime']>;
+    start?: InputMaybe<Scalars['DateTime']>;
     tool?: InputMaybe<Scalars['ID']>;
     type?: InputMaybe<Enum_Toolslot_Type>;
 };
