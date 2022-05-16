@@ -23,6 +23,13 @@ export function addDays(d: Date, amount: number): Date {
 	return d_copy;
 }
 
+export function addHours(d: Date, amount: number): Date {
+	const d_copy = new Date(d.getTime());
+	const diff = d.getHours() + amount;
+	d_copy.setHours(diff);
+	return d_copy;
+}
+
 export function joinDateHour(d: string, h: string): Date {
 	return new Date(Date.parse(`${d}T${h}Z`));
 }
