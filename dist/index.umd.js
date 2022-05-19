@@ -230,7 +230,7 @@
 	var Enum_Toolslot_Type;
 
 	(function (Enum_Toolslot_Type) {
-	  Enum_Toolslot_Type["Block"] = "block";
+	  Enum_Toolslot_Type["Availability"] = "availability";
 	  Enum_Toolslot_Type["Booking"] = "booking";
 	})(Enum_Toolslot_Type || (Enum_Toolslot_Type = {}));
 
