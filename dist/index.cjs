@@ -586,6 +586,23 @@ function addHours(d, amount) {
   d_copy.setHours(diff);
   return d_copy;
 }
+function setHours(d, hours, min, sec, ms) {
+  if (min === void 0) {
+    min = 0;
+  }
+
+  if (sec === void 0) {
+    sec = 0;
+  }
+
+  if (ms === void 0) {
+    ms = 0;
+  }
+
+  var d_copy = new Date(d.getTime());
+  d_copy.setHours(hours, min, sec, ms);
+  return d_copy;
+}
 function joinDateHour(d, h) {
   return new Date(Date.parse(d + "T" + h + "Z"));
 }
@@ -605,6 +622,7 @@ var date = {
 	getPreviousMonday: getPreviousMonday,
 	addDays: addDays,
 	addHours: addHours,
+	setHours: setHours,
 	joinDateHour: joinDateHour,
 	getHHMM: getHHMM,
 	getTimeString: getTimeString

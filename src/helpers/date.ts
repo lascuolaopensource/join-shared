@@ -30,6 +30,18 @@ export function addHours(d: Date, amount: number): Date {
 	return d_copy;
 }
 
+export function setHours(
+	d: Date,
+	hours: number,
+	min = 0,
+	sec = 0,
+	ms = 0
+): Date {
+	const d_copy = new Date(d.getTime());
+	d_copy.setHours(hours, min, sec, ms);
+	return d_copy;
+}
+
 export function joinDateHour(d: string, h: string): Date {
 	return new Date(Date.parse(`${d}T${h}Z`));
 }
