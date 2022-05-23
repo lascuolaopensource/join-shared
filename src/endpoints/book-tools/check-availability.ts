@@ -25,4 +25,6 @@ export type MultipleDayResData = Array<
 >;
 export type MultipleDayRes = DayRes<DayResKind.Multiple, MultipleDayResData>;
 
-export type BookToolsCheckAvailabilityRes = SingleDayRes | MultipleDayRes;
+export type BookToolsCheckAvailabilityRes = {
+	data: SingleDayRes | MultipleDayRes;
+};
