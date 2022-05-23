@@ -582,12 +582,40 @@
 	  d_copy.setDate(diff);
 	  return d_copy;
 	}
+	/**
+	 * Adds hours to a date
+	 * @param d The date
+	 * @param amount Number of hours
+	 * @returns The date, with added hours
+	 */
+
 	function addHours(d, amount) {
 	  var d_copy = new Date(d.getTime());
 	  var diff = d.getHours() + amount;
 	  d_copy.setHours(diff);
 	  return d_copy;
 	}
+	/**
+	 * Adds time (in MS) to a date
+	 * @param d The date
+	 * @param amount Time in milliseconds
+	 * @returns The date, with added time
+	 */
+
+	function addTime(d, amount) {
+	  var d_copy = new Date(d.getTime() + amount);
+	  return d_copy;
+	}
+	/**
+	 * Returns a new date with set time
+	 * @param d
+	 * @param hours
+	 * @param min
+	 * @param sec
+	 * @param ms
+	 * @returns
+	 */
+
 	function setHours(d, hours, min, sec, ms) {
 	  if (min === void 0) {
 	    min = 0;
@@ -624,6 +652,7 @@
 		getPreviousMonday: getPreviousMonday,
 		addDays: addDays,
 		addHours: addHours,
+		addTime: addTime,
 		setHours: setHours,
 		joinDateHour: joinDateHour,
 		getHHMM: getHHMM,
