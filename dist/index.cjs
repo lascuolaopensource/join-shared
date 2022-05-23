@@ -388,6 +388,13 @@ var UserExistsSchema = yup__namespace.object({
   email: emailSchema.required()
 });
 
+var DayResKind;
+
+(function (DayResKind) {
+  DayResKind["Single"] = "single";
+  DayResKind["Multiple"] = "multiple";
+})(DayResKind || (DayResKind = {}));
+
 var index$3 = {
 	__proto__: null,
 	AdminEnrollmentsUpdateSchema: AdminEnrollmentsUpdateSchema,
@@ -411,7 +418,8 @@ var index$3 = {
 	BillingCompanySchema: BillingCompanySchema,
 	PayValues: PayValues,
 	PaySchema: PaySchema,
-	UserExistsSchema: UserExistsSchema
+	UserExistsSchema: UserExistsSchema,
+	get DayResKind () { return DayResKind; }
 };
 
 var formatPriceNumber = function formatPriceNumber(price, locale, currency) {
