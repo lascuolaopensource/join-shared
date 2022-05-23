@@ -20,6 +20,4 @@ export declare type MultipleDayResData = Array<Array<{
     options: Array<[Date, Date]>;
 }>>;
 export declare type MultipleDayRes = DayRes<DayResKind.Multiple, MultipleDayResData>;
-export declare type BookToolsCheckAvailabilityRes = {
-    data: SingleDayRes | MultipleDayRes;
-};
+export declare type BookToolsCheckAvailabilityRes = SingleDayRes | MultipleDayRes;
