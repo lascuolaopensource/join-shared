@@ -14,10 +14,12 @@ export declare type DayRes<K, T> = {
     data: T;
 };
 export declare type SingleDayResData = Record<string, Array<[Date, Date]>>;
-export declare type SingleDayRes = DayRes<DayResKind.Single, SingleDayResData>;
+export interface SingleDayRes extends DayRes<DayResKind.Single, SingleDayResData> {
+}
 export declare type MultipleDayResData = Array<Array<{
     day: string;
     options: Array<[Date, Date]>;
 }>>;
-export declare type MultipleDayRes = DayRes<DayResKind.Multiple, MultipleDayResData>;
+export interface MultipleDayRes extends DayRes<DayResKind.Multiple, MultipleDayResData> {
+}
 export declare type BookToolsCheckAvailabilityRes = SingleDayRes | MultipleDayRes;

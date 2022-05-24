@@ -18,11 +18,13 @@ export type DayRes<K, T> = {
 };
 
 export type SingleDayResData = Record<string, Array<[Date, Date]>>;
-export type SingleDayRes = DayRes<DayResKind.Single, SingleDayResData>;
+export interface SingleDayRes
+	extends DayRes<DayResKind.Single, SingleDayResData> {}
 
 export type MultipleDayResData = Array<
 	Array<{ day: string; options: Array<[Date, Date]> }>
 >;
-export type MultipleDayRes = DayRes<DayResKind.Multiple, MultipleDayResData>;
+export interface MultipleDayRes
+	extends DayRes<DayResKind.Multiple, MultipleDayResData> {}
 
 export type BookToolsCheckAvailabilityRes = SingleDayRes | MultipleDayRes;
