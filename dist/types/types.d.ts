@@ -382,7 +382,7 @@ export declare enum Enum_Enrollment_State {
     Rejected = "rejected"
 }
 export declare enum Enum_Toolslot_Type {
-    Block = "block",
+    Availability = "availability",
     Booking = "booking"
 }
 export declare type Enrollment = {

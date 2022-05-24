@@ -228,7 +228,7 @@ var Enum_Enrollment_State;
 var Enum_Toolslot_Type;
 
 (function (Enum_Toolslot_Type) {
-  Enum_Toolslot_Type["Block"] = "block";
+  Enum_Toolslot_Type["Availability"] = "availability";
   Enum_Toolslot_Type["Booking"] = "booking";
 })(Enum_Toolslot_Type || (Enum_Toolslot_Type = {}));
 
@@ -388,6 +388,13 @@ var UserExistsSchema = yup__namespace.object({
   email: emailSchema.required()
 });
 
+var DayResKind;
+
+(function (DayResKind) {
+  DayResKind["Single"] = "single";
+  DayResKind["Multiple"] = "multiple";
+})(DayResKind || (DayResKind = {}));
+
 var index$3 = {
 	__proto__: null,
 	AdminEnrollmentsUpdateSchema: AdminEnrollmentsUpdateSchema,
@@ -411,7 +418,8 @@ var index$3 = {
 	BillingCompanySchema: BillingCompanySchema,
 	PayValues: PayValues,
 	PaySchema: PaySchema,
-	UserExistsSchema: UserExistsSchema
+	UserExistsSchema: UserExistsSchema,
+	get DayResKind () { return DayResKind; }
 };
 
 var formatPriceNumber = function formatPriceNumber(price, locale, currency) {
@@ -580,10 +588,55 @@ function addDays(d, amount) {
   d_copy.setDate(diff);
   return d_copy;
 }
+/**
+ * Adds hours to a date
+ * @param d The date
+ * @param amount Number of hours
+ * @returns The date, with added hours
+ */
+
 function addHours(d, amount) {
   var d_copy = new Date(d.getTime());
   var diff = d.getHours() + amount;
   d_copy.setHours(diff);
+  return d_copy;
+}
+/**
+ * Adds time (in MS) to a date
+ * @param d The date
+ * @param amount Time in milliseconds
+ * @returns The date, with added time
+ */
+
+function addTime(d, amount) {
+  var d_copy = new Date(d.getTime() + amount);
+  return d_copy;
+}
+/**
+ * Returns a new date with set time
+ * @param d
+ * @param hours
+ * @param min
+ * @param sec
+ * @param ms
+ * @returns
+ */
+
+function setHours(d, hours, min, sec, ms) {
+  if (min === void 0) {
+    min = 0;
+  }
+
+  if (sec === void 0) {
+    sec = 0;
+  }
+
+  if (ms === void 0) {
+    ms = 0;
+  }
+
+  var d_copy = new Date(d.getTime());
+  d_copy.setHours(hours, min, sec, ms);
   return d_copy;
 }
 function joinDateHour(d, h) {
@@ -605,6 +658,8 @@ var date = {
 	getPreviousMonday: getPreviousMonday,
 	addDays: addDays,
 	addHours: addHours,
+	addTime: addTime,
+	setHours: setHours,
 	joinDateHour: joinDateHour,
 	getHHMM: getHHMM,
 	getTimeString: getTimeString

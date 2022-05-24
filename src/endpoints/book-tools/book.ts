@@ -1,10 +1,9 @@
-export type BookToolsBookDay = {
+export type DayReq = {
 	tool_ids: Array<string>;
-	date: string;
-	time_start: string;
-	time_end: string;
+	start: Date;
+	end: Date;
 };
 
-export type BookToolsBookReq = {
-	days: Array<BookToolsBookDay>;
+export type BookToolsReq = {
+	days: Array<DayReq>;
 };

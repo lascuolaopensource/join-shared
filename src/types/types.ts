@@ -427,7 +427,7 @@ export enum Enum_Enrollment_State {
 }
 
 export enum Enum_Toolslot_Type {
-  Block = 'block',
+  Availability = 'availability',
   Booking = 'booking'
 }
 
