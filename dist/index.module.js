@@ -548,20 +548,12 @@ var payment = {
 	isExpired: isExpired
 };
 
-function formatQueryDate(d) {
-  return d.toISOString().split("T")[0];
-}
-function getDateMidnight(d) {
-  var db = new Date(d.getTime());
-  db.setHours(0, 0, 0, 0);
-  return db;
-}
-function getPreviousMonday(d) {
-  var day = d.getDay();
-  var diff = d.getDate() - day + (day == 0 ? -6 : 1); // adjust when day is sunday
-
-  return new Date(d.setDate(diff));
-}
+/**
+ * Adds days to a date, returning a copy
+ * @param d The date
+ * @param amount Number of days
+ * @returns A copy of the date, updated
+ */
 function addDays(d, amount) {
   var d_copy = new Date(d.getTime());
   var diff = d.getDate() + amount;
@@ -569,10 +561,10 @@ function addDays(d, amount) {
   return d_copy;
 }
 /**
- * Adds hours to a date
+ * Adds hours to a date, returning a copy
  * @param d The date
  * @param amount Number of hours
- * @returns The date, with added hours
+ * @returns A copy of the date, updated
  */
 
 function addHours(d, amount) {
@@ -582,10 +574,10 @@ function addHours(d, amount) {
   return d_copy;
 }
 /**
- * Adds time (in MS) to a date
+ * Adds time (in MS) to a date, returning a copy
  * @param d The date
  * @param amount Time in milliseconds
- * @returns The date, with added time
+ * @returns A copy of the date, updated
  */
 
 function addTime(d, amount) {
@@ -593,13 +585,13 @@ function addTime(d, amount) {
   return d_copy;
 }
 /**
- * Returns a new date with set time
- * @param d
- * @param hours
- * @param min
- * @param sec
- * @param ms
- * @returns
+ * Sets date hours, mins, secs, ms, returning a copy
+ * @param d The date
+ * @param hours Hours
+ * @param min Minutes
+ * @param sec Seconds
+ * @param ms Milliseconds
+ * @returns A copy of the date, updated
  */
 
 function setHours(d, hours, min, sec, ms) {
@@ -618,6 +610,21 @@ function setHours(d, hours, min, sec, ms) {
   var d_copy = new Date(d.getTime());
   d_copy.setHours(hours, min, sec, ms);
   return d_copy;
+} //
+
+function formatQueryDate(d) {
+  return d.toISOString().split("T")[0];
+}
+function getDateMidnight(d) {
+  var db = new Date(d.getTime());
+  db.setHours(0, 0, 0, 0);
+  return db;
+}
+function getPreviousMonday(d) {
+  var day = d.getDay();
+  var diff = d.getDate() - day + (day == 0 ? -6 : 1); // adjust when day is sunday
+
+  return new Date(d.setDate(diff));
 }
 function joinDateHour(d, h) {
   return new Date(Date.parse(d + "T" + h + "Z"));
@@ -633,13 +640,13 @@ function getTimeString(d) {
 
 var date = {
 	__proto__: null,
-	formatQueryDate: formatQueryDate,
-	getDateMidnight: getDateMidnight,
-	getPreviousMonday: getPreviousMonday,
 	addDays: addDays,
 	addHours: addHours,
 	addTime: addTime,
 	setHours: setHours,
+	formatQueryDate: formatQueryDate,
+	getDateMidnight: getDateMidnight,
+	getPreviousMonday: getPreviousMonday,
 	joinDateHour: joinDateHour,
 	getHHMM: getHHMM,
 	getTimeString: getTimeString

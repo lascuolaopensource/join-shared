@@ -513,6 +513,58 @@ var payment = {
 	isExpired: isExpired
 };
 
+/**
+ * Adds days to a date, returning a copy
+ * @param d The date
+ * @param amount Number of days
+ * @returns A copy of the date, updated
+ */
+function addDays(d, amount) {
+  const d_copy = new Date(d.getTime());
+  const diff = d.getDate() + amount;
+  d_copy.setDate(diff);
+  return d_copy;
+}
+/**
+ * Adds hours to a date, returning a copy
+ * @param d The date
+ * @param amount Number of hours
+ * @returns A copy of the date, updated
+ */
+
+function addHours(d, amount) {
+  const d_copy = new Date(d.getTime());
+  const diff = d.getHours() + amount;
+  d_copy.setHours(diff);
+  return d_copy;
+}
+/**
+ * Adds time (in MS) to a date, returning a copy
+ * @param d The date
+ * @param amount Time in milliseconds
+ * @returns A copy of the date, updated
+ */
+
+function addTime(d, amount) {
+  const d_copy = new Date(d.getTime() + amount);
+  return d_copy;
+}
+/**
+ * Sets date hours, mins, secs, ms, returning a copy
+ * @param d The date
+ * @param hours Hours
+ * @param min Minutes
+ * @param sec Seconds
+ * @param ms Milliseconds
+ * @returns A copy of the date, updated
+ */
+
+function setHours(d, hours, min = 0, sec = 0, ms = 0) {
+  const d_copy = new Date(d.getTime());
+  d_copy.setHours(hours, min, sec, ms);
+  return d_copy;
+} //
+
 function formatQueryDate(d) {
   return d.toISOString().split("T")[0];
 }
@@ -526,51 +578,6 @@ function getPreviousMonday(d) {
   const diff = d.getDate() - day + (day == 0 ? -6 : 1); // adjust when day is sunday
 
   return new Date(d.setDate(diff));
-}
-function addDays(d, amount) {
-  const d_copy = new Date(d.getTime());
-  const diff = d.getDate() + amount;
-  d_copy.setDate(diff);
-  return d_copy;
-}
-/**
- * Adds hours to a date
- * @param d The date
- * @param amount Number of hours
- * @returns The date, with added hours
- */
-
-function addHours(d, amount) {
-  const d_copy = new Date(d.getTime());
-  const diff = d.getHours() + amount;
-  d_copy.setHours(diff);
-  return d_copy;
-}
-/**
- * Adds time (in MS) to a date
- * @param d The date
- * @param amount Time in milliseconds
- * @returns The date, with added time
- */
-
-function addTime(d, amount) {
-  const d_copy = new Date(d.getTime() + amount);
-  return d_copy;
-}
-/**
- * Returns a new date with set time
- * @param d
- * @param hours
- * @param min
- * @param sec
- * @param ms
- * @returns
- */
-
-function setHours(d, hours, min = 0, sec = 0, ms = 0) {
-  const d_copy = new Date(d.getTime());
-  d_copy.setHours(hours, min, sec, ms);
-  return d_copy;
 }
 function joinDateHour(d, h) {
   return new Date(Date.parse(`${d}T${h}Z`));
@@ -586,13 +593,13 @@ function getTimeString(d) {
 
 var date = {
 	__proto__: null,
-	formatQueryDate: formatQueryDate,
-	getDateMidnight: getDateMidnight,
-	getPreviousMonday: getPreviousMonday,
 	addDays: addDays,
 	addHours: addHours,
 	addTime: addTime,
 	setHours: setHours,
+	formatQueryDate: formatQueryDate,
+	getDateMidnight: getDateMidnight,
+	getPreviousMonday: getPreviousMonday,
 	joinDateHour: joinDateHour,
 	getHHMM: getHHMM,
 	getTimeString: getTimeString
