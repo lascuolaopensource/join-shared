@@ -5,6 +5,8 @@
  * @returns A copy of the date, updated
  */
 
+import { number } from "yup";
+
 export function addDays(d: Date, amount: number): Date {
 	const d_copy = new Date(d.getTime());
 	const diff = d.getDate() + amount;
@@ -106,4 +108,72 @@ export function splitDayInSlots(ms: number): Array<number> {
 		slots.push(ms * i);
 	}
 	return slots;
+}
+
+/**
+ *
+ * @param ms The time in milliseconds
+ * @returns The milliseconds of that time
+ */
+
+export function msToMilliseconds(ms: number): number {
+	return Math.floor((ms % 1000) / 100);
+}
+
+/**
+ *
+ * @param ms The time in milliseconds
+ * @returns The seconds of that time
+ */
+
+export function msToSeconds(ms: number): number {
+	return Math.floor((ms / 1000) % 60);
+}
+
+/**
+ *
+ * @param ms The time in milliseconds
+ * @returns The minutes of that time
+ */
+
+export function msToMinutes(ms: number): number {
+	return Math.floor((ms / (1000 * 60)) % 60);
+}
+
+/**
+ *
+ * @param ms The time in milliseconds
+ * @returns The hours of that time
+ */
+
+export function msToHours(ms: number): number {
+	return Math.floor((ms / (1000 * 60 * 60)) % 24);
+}
+
+/**
+ *
+ * @param ms The time in milliseconds
+ * @returns The hours, minutes, seconds of that time
+ */
+
+export function msToTime(ms: number) {
+	return {
+		hours: msToHours(ms),
+		minutes: msToMinutes(ms),
+		seconds: msToSeconds(ms),
+		milliseconds: msToMilliseconds(ms),
+	};
+}
+
+/**
+ *
+ * @param ms The time in milliseconds
+ * @returns The hours and mins of that time formatted as HH:MM
+ */
+
+export function msToHHMM(ms: number) {
+	const time = msToTime(ms);
+	const hours = String(time.hours).padStart(2, "0");
+	const mins = String(time.minutes).padStart(2, "0");
+	return `${hours}:${mins}`;
 }

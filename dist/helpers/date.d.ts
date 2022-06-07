@@ -41,3 +41,44 @@ export declare function getTimeString(d: Date): string;
  * @returns An array with all the start times of the slots
  */
 export declare function splitDayInSlots(ms: number): Array<number>;
+/**
+ *
+ * @param ms The time in milliseconds
+ * @returns The milliseconds of that time
+ */
+export declare function msToMilliseconds(ms: number): number;
+/**
+ *
+ * @param ms The time in milliseconds
+ * @returns The seconds of that time
+ */
+export declare function msToSeconds(ms: number): number;
+/**
+ *
+ * @param ms The time in milliseconds
+ * @returns The minutes of that time
+ */
+export declare function msToMinutes(ms: number): number;
+/**
+ *
+ * @param ms The time in milliseconds
+ * @returns The hours of that time
+ */
+export declare function msToHours(ms: number): number;
+/**
+ *
+ * @param ms The time in milliseconds
+ * @returns The hours, minutes, seconds of that time
+ */
+export declare function msToTime(ms: number): {
+    hours: number;
+    minutes: number;
+    seconds: number;
+    milliseconds: number;
+};
+/**
+ *
+ * @param ms The time in milliseconds
+ * @returns The hours and mins of that time formatted as HH:MM
+ */
+export declare function msToHHMM(ms: number): string;

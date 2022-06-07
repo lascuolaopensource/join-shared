@@ -675,6 +675,68 @@
 
 	  return slots;
 	}
+	/**
+	 *
+	 * @param ms The time in milliseconds
+	 * @returns The milliseconds of that time
+	 */
+
+	function msToMilliseconds(ms) {
+	  return Math.floor(ms % 1000 / 100);
+	}
+	/**
+	 *
+	 * @param ms The time in milliseconds
+	 * @returns The seconds of that time
+	 */
+
+	function msToSeconds(ms) {
+	  return Math.floor(ms / 1000 % 60);
+	}
+	/**
+	 *
+	 * @param ms The time in milliseconds
+	 * @returns The minutes of that time
+	 */
+
+	function msToMinutes(ms) {
+	  return Math.floor(ms / (1000 * 60) % 60);
+	}
+	/**
+	 *
+	 * @param ms The time in milliseconds
+	 * @returns The hours of that time
+	 */
+
+	function msToHours(ms) {
+	  return Math.floor(ms / (1000 * 60 * 60) % 24);
+	}
+	/**
+	 *
+	 * @param ms The time in milliseconds
+	 * @returns The hours, minutes, seconds of that time
+	 */
+
+	function msToTime(ms) {
+	  return {
+	    hours: msToHours(ms),
+	    minutes: msToMinutes(ms),
+	    seconds: msToSeconds(ms),
+	    milliseconds: msToMilliseconds(ms)
+	  };
+	}
+	/**
+	 *
+	 * @param ms The time in milliseconds
+	 * @returns The hours and mins of that time formatted as HH:MM
+	 */
+
+	function msToHHMM(ms) {
+	  var time = msToTime(ms);
+	  var hours = String(time.hours).padStart(2, "0");
+	  var mins = String(time.minutes).padStart(2, "0");
+	  return hours + ":" + mins;
+	}
 
 	var date = {
 		__proto__: null,
@@ -688,7 +750,13 @@
 		joinDateHour: joinDateHour,
 		getHHMM: getHHMM,
 		getTimeString: getTimeString,
-		splitDayInSlots: splitDayInSlots
+		splitDayInSlots: splitDayInSlots,
+		msToMilliseconds: msToMilliseconds,
+		msToSeconds: msToSeconds,
+		msToMinutes: msToMinutes,
+		msToHours: msToHours,
+		msToTime: msToTime,
+		msToHHMM: msToHHMM
 	};
 
 	var index = {
