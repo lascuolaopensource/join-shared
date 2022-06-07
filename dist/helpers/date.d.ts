@@ -35,3 +35,9 @@ export declare function getPreviousMonday(d: Date): Date;
 export declare function joinDateHour(d: string, h: string): Date;
 export declare function getHHMM(d: Date): string;
 export declare function getTimeString(d: Date): string;
+/**
+ * Splits the day in time slots
+ * @param ms The length of the slot, in MS
+ * @returns An array with all the start times of the slots
+ */
+export declare function splitDayInSlots(ms: number): Array<number>;

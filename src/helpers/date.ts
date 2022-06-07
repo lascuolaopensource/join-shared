@@ -92,3 +92,18 @@ export function getHHMM(d: Date): string {
 export function getTimeString(d: Date): string {
 	return d.toISOString().split("T")[1].replace("Z", "");
 }
+
+/**
+ * Splits the day in time slots
+ * @param ms The length of the slot, in MS
+ * @returns An array with all the start times of the slots
+ */
+
+export function splitDayInSlots(ms: number): Array<number> {
+	const iterations = Math.round((24 * 60 * 60 * 1000) / ms);
+	const slots = [];
+	for (let i = 0; i < iterations; i++) {
+		slots.push(ms * i);
+	}
+	return slots;
+}

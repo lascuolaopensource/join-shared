@@ -657,6 +657,22 @@ function getHHMM(d) {
 function getTimeString(d) {
   return d.toISOString().split("T")[1].replace("Z", "");
 }
+/**
+ * Splits the day in time slots
+ * @param ms The length of the slot, in MS
+ * @returns An array with all the start times of the slots
+ */
+
+function splitDayInSlots(ms) {
+  var iterations = Math.round(24 * 60 * 60 * 1000 / ms);
+  var slots = [];
+
+  for (var i = 0; i < iterations; i++) {
+    slots.push(ms * i);
+  }
+
+  return slots;
+}
 
 var date = {
 	__proto__: null,
@@ -669,7 +685,8 @@ var date = {
 	getPreviousMonday: getPreviousMonday,
 	joinDateHour: joinDateHour,
 	getHHMM: getHHMM,
-	getTimeString: getTimeString
+	getTimeString: getTimeString,
+	splitDayInSlots: splitDayInSlots
 };
 
 var index = {
