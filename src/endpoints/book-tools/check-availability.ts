@@ -1,10 +1,11 @@
-export type BookToolsCheckAvailabilityDay = {
-	tool_ids: Array<string>;
+export type ToolNeedsDay = {
+	id: number;
+	tools: Array<string>;
 	hours: number;
 };
 
 export type BookToolsCheckAvailabilityReq = {
-	days: Array<BookToolsCheckAvailabilityDay>;
+	days: Array<ToolNeedsDay>;
 };
 
 export enum DayResKind {
