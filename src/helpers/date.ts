@@ -103,7 +103,7 @@ export function getTimeString(d: Date): string {
 
 export function splitDayInSlots(ms: number): Array<number> {
 	const iterations = Math.round((24 * 60 * 60 * 1000) / ms);
-	const slots = [];
+	const slots: Array<number> = [];
 	for (let i = 0; i < iterations; i++) {
 		slots.push(ms * i);
 	}

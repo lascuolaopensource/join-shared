@@ -5,6 +5,7 @@ export declare type ToolNeedsDay = {
 };
 export declare type BookToolsCheckAvailabilityReq = {
     days: Array<ToolNeedsDay>;
+    start: string;
 };
 export declare enum DayResKind {
     Single = "single",

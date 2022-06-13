@@ -6,6 +6,7 @@ export type ToolNeedsDay = {
 
 export type BookToolsCheckAvailabilityReq = {
 	days: Array<ToolNeedsDay>;
+	start: string;
 };
 
 export enum DayResKind {
