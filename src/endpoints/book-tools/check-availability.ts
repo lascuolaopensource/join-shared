@@ -19,13 +19,11 @@ export type DayRes<K, T> = {
 	data: T;
 };
 
-export type SingleDayResData = Record<string, Array<[Date, Date]>>;
+export type SingleDayResData = Array<[string, string]>;
 export interface SingleDayRes
 	extends DayRes<DayResKind.Single, SingleDayResData> {}
 
-export type MultipleDayResData = Array<
-	Array<{ day: string; options: Array<[Date, Date]> }>
->;
+export type MultipleDayResData = Array<Array<Array<[string, string]>>>;
 export interface MultipleDayRes
 	extends DayRes<DayResKind.Multiple, MultipleDayResData> {}
 
