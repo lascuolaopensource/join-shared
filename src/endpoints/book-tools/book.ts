@@ -1,7 +1,7 @@
 export type DayReq = {
 	tool_ids: Array<string>;
-	start: Date;
-	end: Date;
+	start: string;
+	end: string;
 };
 
 export type BookToolsReq = {
