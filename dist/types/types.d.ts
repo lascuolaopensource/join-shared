@@ -224,7 +224,7 @@ export declare type ComponentTimeTimeSlotInput = {
 export declare type Course = {
     __typename?: 'Course';
     areas?: Maybe<AreaRelationResponseCollection>;
-    confirmed?: Maybe<Scalars['Boolean']>;
+    confirmed: Scalars['Boolean'];
     createdAt?: Maybe<Scalars['DateTime']>;
     cvNeeded?: Maybe<Scalars['Boolean']>;
     description?: Maybe<Scalars['String']>;
