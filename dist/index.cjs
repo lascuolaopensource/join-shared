@@ -21,17 +21,7 @@ function _interopNamespace(e) {
 
 var yup__namespace = /*#__PURE__*/_interopNamespace(yup);
 
-var AdminEnrollmentsUpdateSchema = yup__namespace.object().required().test("has-state", "Some objects do not have a state attribute", function (value) {
-  for (var _i = 0, _Object$values = Object.values(value); _i < _Object$values.length; _i++) {
-    var e = _Object$values[_i];
-
-    if (!e.state) {
-      return false;
-    }
-  }
-
-  return true;
-});
+var AdminEnrollmentsUpdateSchema = yup__namespace.object().required();
 
 /**
  * Setting yup default messages

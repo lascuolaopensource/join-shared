@@ -1,20 +1,6 @@
-import { Enrollment } from "../../types";
+import { EnrollmentEntity } from "../../types";
 import * as yup from "yup";
 
-export type AdminEnrollmentsUpdateReq = Record<string, Enrollment>;
+export type AdminEnrollmentsUpdateReq = Array<EnrollmentEntity>;
 
-export const AdminEnrollmentsUpdateSchema = yup
-	.object()
-	.required()
-	.test(
-		"has-state",
-		"Some objects do not have a state attribute",
-		(value: AdminEnrollmentsUpdateReq) => {
-			for (let e of Object.values(value)) {
-				if (!e.state) {
-					return false;
-				}
-			}
-			return true;
-		}
-	);
+export const AdminEnrollmentsUpdateSchema = yup.object().required();

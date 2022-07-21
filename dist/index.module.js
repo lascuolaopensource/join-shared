@@ -1,17 +1,7 @@
 import * as yup from 'yup';
 import { gql } from 'graphql-tag';
 
-var AdminEnrollmentsUpdateSchema = yup.object().required().test("has-state", "Some objects do not have a state attribute", function (value) {
-  for (var _i = 0, _Object$values = Object.values(value); _i < _Object$values.length; _i++) {
-    var e = _Object$values[_i];
-
-    if (!e.state) {
-      return false;
-    }
-  }
-
-  return true;
-});
+var AdminEnrollmentsUpdateSchema = yup.object().required();
 
 /**
  * Setting yup default messages
