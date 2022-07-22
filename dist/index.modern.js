@@ -459,9 +459,11 @@ function areMinEnrollsReached(c, e) {
 function areMaxEnrollsExceeded(c, e) {
   return e.length > c.enrollmentMax;
 }
+function countEnrollsApproved(a) {
+  return a.filter(e => e.state == Enum_Enrollment_State.Approved).length;
+}
 function areMinEnrollsApproved(c, e) {
-  const enrollsApprovedNum = e.filter(e => e.state == Enum_Enrollment_State.Approved).length;
-  return enrollsApprovedNum >= c.enrollmentMin;
+  return countEnrollsApproved(e) >= c.enrollmentMin;
 } //
 
 function canStart(c, e) {
@@ -489,6 +491,7 @@ var course = {
 	isEvaluationTime: isEvaluationTime,
 	areMinEnrollsReached: areMinEnrollsReached,
 	areMaxEnrollsExceeded: areMaxEnrollsExceeded,
+	countEnrollsApproved: countEnrollsApproved,
 	areMinEnrollsApproved: areMinEnrollsApproved,
 	canStart: canStart,
 	cannotStart: cannotStart,

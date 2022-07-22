@@ -510,11 +510,13 @@ function areMinEnrollsReached(c, e) {
 function areMaxEnrollsExceeded(c, e) {
   return e.length > c.enrollmentMax;
 }
-function areMinEnrollsApproved(c, e) {
-  var enrollsApprovedNum = e.filter(function (e) {
+function countEnrollsApproved(a) {
+  return a.filter(function (e) {
     return e.state == Enum_Enrollment_State.Approved;
   }).length;
-  return enrollsApprovedNum >= c.enrollmentMin;
+}
+function areMinEnrollsApproved(c, e) {
+  return countEnrollsApproved(e) >= c.enrollmentMin;
 } //
 
 function canStart(c, e) {
@@ -542,6 +544,7 @@ var course = {
 	isEvaluationTime: isEvaluationTime,
 	areMinEnrollsReached: areMinEnrollsReached,
 	areMaxEnrollsExceeded: areMaxEnrollsExceeded,
+	countEnrollsApproved: countEnrollsApproved,
 	areMinEnrollsApproved: areMinEnrollsApproved,
 	canStart: canStart,
 	cannotStart: cannotStart,

@@ -8,6 +8,7 @@ export declare function isCourseTime(c: Course): boolean;
 export declare function isEvaluationTime(c: Course): boolean;
 export declare function areMinEnrollsReached(c: Course, e: Array<Enrollment>): boolean;
 export declare function areMaxEnrollsExceeded(c: Course, e: Array<Enrollment>): boolean;
+export declare function countEnrollsApproved(a: Array<Enrollment>): number;
 export declare function areMinEnrollsApproved(c: Course, e: Array<Enrollment>): boolean;
 export declare function canStart(c: Course, e: Array<Enrollment>): boolean;
 export declare function cannotStart(c: Course, e: Array<Enrollment>): boolean;

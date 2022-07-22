@@ -47,14 +47,15 @@ export function areMaxEnrollsExceeded(
 	return e.length > c.enrollmentMax;
 }
 
+export function countEnrollsApproved(a: Array<Enrollment>): number {
+	return a.filter((e) => e.state == Enum_Enrollment_State.Approved).length;
+}
+
 export function areMinEnrollsApproved(
 	c: Course,
 	e: Array<Enrollment>
 ): boolean {
-	const enrollsApprovedNum = e.filter(
-		(e) => e.state == Enum_Enrollment_State.Approved
-	).length;
-	return enrollsApprovedNum >= c.enrollmentMin;
+	return countEnrollsApproved(e) >= c.enrollmentMin;
 }
 
 //
