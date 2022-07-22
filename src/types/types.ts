@@ -255,7 +255,7 @@ export type Course = {
   description?: Maybe<Scalars['String']>;
   enrollmentDeadline?: Maybe<Scalars['DateTime']>;
   enrollmentMax?: Maybe<Scalars['Int']>;
-  enrollmentMin?: Maybe<Scalars['Int']>;
+  enrollmentMin: Scalars['Int'];
   enrollments?: Maybe<EnrollmentRelationResponseCollection>;
   gallery?: Maybe<UploadFileRelationResponseCollection>;
   meetings?: Maybe<Array<Maybe<ComponentTimeMeeting>>>;
