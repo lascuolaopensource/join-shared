@@ -1,7 +1,7 @@
 (function (global, factory) {
 	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('yup')) :
 	typeof define === 'function' && define.amd ? define(['exports', 'yup'], factory) :
-	(global = global || self, factory(global.shared = {}, global.yup));
+	(global = global || self, factory(global.joinShared = {}, global.yup));
 })(this, (function (exports, yup) {
 	function _interopNamespace(e) {
 		if (e && e.__esModule) return e;
