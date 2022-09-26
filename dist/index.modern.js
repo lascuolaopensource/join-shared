@@ -71,7 +71,7 @@ var Schemas;
   };
 })(Schemas || (Schemas = {}));
 
-var index$3 = {
+var index$2 = {
 	__proto__: null,
 	get Regex () { return Regex; },
 	get Schemas () { return Schemas; }
@@ -94,14 +94,14 @@ var Create;
   }).required();
 })(Create || (Create = {}));
 
-var index$2 = {
+var index$1 = {
 	__proto__: null,
 	get Create () { return Create; }
 };
 
-var index$1 = {
+var index = {
 	__proto__: null,
-	Account: index$2
+	Account: index$1
 };
 
 const errors = {
@@ -135,10 +135,5 @@ const errors = {
 
 };
 
-var index = {
-	__proto__: null,
-	errors: errors
-};
-
-export { index as errors, index$1 as routes, index$3 as validation };
+export { errors, index as routes, index$2 as validation };
 //# sourceMappingURL=index.modern.js.map

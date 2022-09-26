@@ -112,7 +112,7 @@
 	  };
 	})(Schemas || (Schemas = {}));
 
-	var index$3 = {
+	var index$2 = {
 		__proto__: null,
 		get Regex () { return Regex; },
 		get Schemas () { return Schemas; }
@@ -135,14 +135,14 @@
 	  }).required();
 	})(Create || (Create = {}));
 
-	var index$2 = {
+	var index$1 = {
 		__proto__: null,
 		get Create () { return Create; }
 	};
 
-	var index$1 = {
+	var index = {
 		__proto__: null,
-		Account: index$2
+		Account: index$1
 	};
 
 	var errors = {
@@ -176,14 +176,9 @@
 
 	};
 
-	var index = {
-		__proto__: null,
-		errors: errors
-	};
-
-	exports.errors = index;
-	exports.routes = index$1;
-	exports.validation = index$3;
+	exports.errors = errors;
+	exports.routes = index;
+	exports.validation = index$2;
 
 }));
 //# sourceMappingURL=index.umd.js.map
