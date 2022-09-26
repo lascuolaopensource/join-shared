@@ -1,26 +1,6 @@
-export declare enum Errors {
-    AlreadyEnrolled = "AlreadyEnrolled",
-    BadPolicyConfig = "BadPolicyConfig",
-    DefaultRoleNotFound = "DefaultRoleNotFound",
-    EmailSendError = "EmailSendError",
-    EmailTaken = "EmailTaken",
-    EnrollmentExpired = "EnrollmentExpired",
-    InternalServerError = "InternalServerError",
-    InvalidRequestBody = "InvalidRequestBody",
-    InvalidRole = "InvalidRole",
-    MissingCourseID = "MissingCourseID",
-    MissingUserInfo = "MissingUserInfo",
-    NoSchemaProvidedInPolicyConfig = "NoSchemaProvidedInPolicyConfig",
-    NotFound = "NotFound",
-    PasswordThreeDollars = "PasswordThreeDollars",
-    PaymentAlreadyConfirmed = "PaymentAlreadyConfirmed",
-    PaymentAlreadyPaid = "PaymentAlreadyPaid",
-    PaymentExpired = "PaymentExpired",
-    PaymentNotFound = "PaymentNotFound",
-    RegisterDisabled = "RegisterDisabled",
-    UnknownError = "UnknownError",
-    UserExists = "UserExists",
-    UserNotConfirmed = "UserNotConfirmed",
-    UserNotFound = "UserNotFound",
-    ValidationError = "ValidationError"
-}
+export declare const errors: {
+    policies: {
+        noSchemaInConfig: string;
+        bodyNotValid: string;
+    };
+};

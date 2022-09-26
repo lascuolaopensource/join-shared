@@ -6,7 +6,7 @@ export declare namespace Create {
         password: string;
     }
     const values: Req;
-    const schema: import("yup/lib/object").OptionalObjectSchema<{
+    const schema: import("yup/lib/object").RequiredObjectSchema<{
         name: import("yup/lib/string").RequiredStringSchema<string, import("yup/lib/types").AnyObject>;
         surname: import("yup/lib/string").RequiredStringSchema<string, import("yup/lib/types").AnyObject>;
         email: import("yup/lib/string").RequiredStringSchema<string, import("yup/lib/types").AnyObject>;

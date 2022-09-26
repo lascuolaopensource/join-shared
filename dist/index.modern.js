@@ -71,7 +71,7 @@ var Schemas;
   };
 })(Schemas || (Schemas = {}));
 
-var index$2 = {
+var index$3 = {
 	__proto__: null,
 	get Regex () { return Regex; },
 	get Schemas () { return Schemas; }
@@ -91,18 +91,54 @@ var Create;
     surname: yup.string().required(),
     email: Schemas.email.required(),
     password: yup.string().required()
-  });
+  }).required();
 })(Create || (Create = {}));
 
-var index$1 = {
+var index$2 = {
 	__proto__: null,
 	get Create () { return Create; }
 };
 
-var index = {
+var index$1 = {
 	__proto__: null,
-	Account: index$1
+	Account: index$2
 };
 
-export { index as routes, index$2 as validation };
+const errors = {
+  policies: {
+    noSchemaInConfig: "noSchemaInConfig",
+    bodyNotValid: "bodyNotValid"
+  } // AlreadyEnrolled: "AlreadyEnrolled",
+  // BadPolicyConfig: "BadPolicyConfig",
+  // DefaultRoleNotFound: "DefaultRoleNotFound",
+  // EmailSendError: "EmailSendError",
+  // EmailTaken: "EmailTaken",
+  // EnrollmentExpired: "EnrollmentExpired",
+  // InternalServerError: "InternalServerError",
+  // InvalidRequestBody: "InvalidRequestBody",
+  // InvalidRole: "InvalidRole",
+  // MissingCourseID: "MissingCourseID",
+  // MissingUserInfo: "MissingUserInfo",
+  // NoSchemaProvidedInPolicyConfig: "NoSchemaProvidedInPolicyConfig",
+  // NotFound: "NotFound",
+  // PasswordThreeDollars: "PasswordThreeDollars",
+  // PaymentAlreadyConfirmed: "PaymentAlreadyConfirmed",
+  // PaymentAlreadyPaid: "PaymentAlreadyPaid",
+  // PaymentExpired: "PaymentExpired",
+  // PaymentNotFound: "PaymentNotFound",
+  // RegisterDisabled: "RegisterDisabled",
+  // UnknownError: "UnknownError",
+  // UserExists: "UserExists",
+  // UserNotConfirmed: "UserNotConfirmed",
+  // UserNotFound: "UserNotFound",
+  // ValidationError: "ValidationError",
+
+};
+
+var index = {
+	__proto__: null,
+	errors: errors
+};
+
+export { index as errors, index$1 as routes, index$3 as validation };
 //# sourceMappingURL=index.modern.js.map

@@ -16,12 +16,14 @@ export namespace Create {
 		password: "",
 	};
 
-	export const schema = yup.object({
-		name: yup.string().required(),
-		surname: yup.string().required(),
-		email: Schemas.email.required(),
-		password: yup.string().required(),
-	});
+	export const schema = yup
+		.object({
+			name: yup.string().required(),
+			surname: yup.string().required(),
+			email: Schemas.email.required(),
+			password: yup.string().required(),
+		})
+		.required();
 
 	export interface Res {}
 }
