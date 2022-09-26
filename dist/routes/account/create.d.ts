@@ -1,11 +1,11 @@
 export declare namespace Create {
-    interface Request {
+    interface Req {
         name: string;
         surname: string;
         email: string;
         password: string;
     }
-    const values: Request;
+    const values: Req;
     const schema: import("yup/lib/object").OptionalObjectSchema<{
         name: import("yup/lib/string").RequiredStringSchema<string, import("yup/lib/types").AnyObject>;
         surname: import("yup/lib/string").RequiredStringSchema<string, import("yup/lib/types").AnyObject>;
@@ -17,6 +17,6 @@ export declare namespace Create {
         email: import("yup/lib/string").RequiredStringSchema<string, import("yup/lib/types").AnyObject>;
         password: import("yup/lib/string").RequiredStringSchema<string, import("yup/lib/types").AnyObject>;
     }>>;
-    interface Response {
+    interface Res {
     }
 }

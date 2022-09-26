@@ -2,14 +2,14 @@ import * as yup from "yup";
 import { Schemas } from "../../validation";
 
 export namespace Create {
-	export interface Request {
+	export interface Req {
 		name: string;
 		surname: string;
 		email: string;
 		password: string;
 	}
 
-	export const values: Request = {
+	export const values: Req = {
 		name: "",
 		surname: "",
 		email: "",
@@ -23,5 +23,5 @@ export namespace Create {
 		password: yup.string().required(),
 	});
 
-	export interface Response {}
+	export interface Res {}
 }
