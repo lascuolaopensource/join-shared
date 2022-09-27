@@ -96,7 +96,7 @@ export declare type FloatFilterInput = {
     or?: InputMaybe<Array<InputMaybe<Scalars['Float']>>>;
     startsWith?: InputMaybe<Scalars['Float']>;
 };
-export declare type GenericMorph = I18NLocale | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
+export declare type GenericMorph = I18NLocale | UploadFile | UploadFolder | UserInfo | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
 export declare type I18NLocale = {
     __typename?: 'I18NLocale';
     code?: Maybe<Scalars['String']>;
@@ -203,12 +203,14 @@ export declare type Mutation = {
     changePassword?: Maybe<UsersPermissionsLoginPayload>;
     createUploadFile?: Maybe<UploadFileEntityResponse>;
     createUploadFolder?: Maybe<UploadFolderEntityResponse>;
+    createUserInfo?: Maybe<UserInfoEntityResponse>;
     /** Create a new role */
     createUsersPermissionsRole?: Maybe<UsersPermissionsCreateRolePayload>;
     /** Create a new user */
     createUsersPermissionsUser: UsersPermissionsUserEntityResponse;
     deleteUploadFile?: Maybe<UploadFileEntityResponse>;
     deleteUploadFolder?: Maybe<UploadFolderEntityResponse>;
+    deleteUserInfo?: Maybe<UserInfoEntityResponse>;
     /** Delete an existing role */
     deleteUsersPermissionsRole?: Maybe<UsersPermissionsDeleteRolePayload>;
     /** Delete an existing user */
@@ -227,6 +229,7 @@ export declare type Mutation = {
     updateFileInfo: UploadFileEntityResponse;
     updateUploadFile?: Maybe<UploadFileEntityResponse>;
     updateUploadFolder?: Maybe<UploadFolderEntityResponse>;
+    updateUserInfo?: Maybe<UserInfoEntityResponse>;
     /** Update an existing role */
     updateUsersPermissionsRole?: Maybe<UsersPermissionsUpdateRolePayload>;
     /** Update an existing user */
@@ -244,6 +247,9 @@ export declare type MutationCreateUploadFileArgs = {
 export declare type MutationCreateUploadFolderArgs = {
     data: UploadFolderInput;
 };
+export declare type MutationCreateUserInfoArgs = {
+    data: UserInfoInput;
+};
 export declare type MutationCreateUsersPermissionsRoleArgs = {
     data: UsersPermissionsRoleInput;
 };
@@ -254,6 +260,9 @@ export declare type MutationDeleteUploadFileArgs = {
     id: Scalars['ID'];
 };
 export declare type MutationDeleteUploadFolderArgs = {
+    id: Scalars['ID'];
+};
+export declare type MutationDeleteUserInfoArgs = {
     id: Scalars['ID'];
 };
 export declare type MutationDeleteUsersPermissionsRoleArgs = {
@@ -300,6 +309,10 @@ export declare type MutationUpdateUploadFolderArgs = {
     data: UploadFolderInput;
     id: Scalars['ID'];
 };
+export declare type MutationUpdateUserInfoArgs = {
+    data: UserInfoInput;
+    id: Scalars['ID'];
+};
 export declare type MutationUpdateUsersPermissionsRoleArgs = {
     data: UsersPermissionsRoleInput;
     id: Scalars['ID'];
@@ -337,6 +350,8 @@ export declare type Query = {
     uploadFiles?: Maybe<UploadFileEntityResponseCollection>;
     uploadFolder?: Maybe<UploadFolderEntityResponse>;
     uploadFolders?: Maybe<UploadFolderEntityResponseCollection>;
+    userInfo?: Maybe<UserInfoEntityResponse>;
+    userInfos?: Maybe<UserInfoEntityResponseCollection>;
     usersPermissionsRole?: Maybe<UsersPermissionsRoleEntityResponse>;
     usersPermissionsRoles?: Maybe<UsersPermissionsRoleEntityResponseCollection>;
     usersPermissionsUser?: Maybe<UsersPermissionsUserEntityResponse>;
@@ -363,6 +378,14 @@ export declare type QueryUploadFolderArgs = {
 };
 export declare type QueryUploadFoldersArgs = {
     filters?: InputMaybe<UploadFolderFiltersInput>;
+    pagination?: InputMaybe<PaginationArg>;
+    sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+export declare type QueryUserInfoArgs = {
+    id?: InputMaybe<Scalars['ID']>;
+};
+export declare type QueryUserInfosArgs = {
+    filters?: InputMaybe<UserInfoFiltersInput>;
     pagination?: InputMaybe<PaginationArg>;
     sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
@@ -550,6 +573,49 @@ export declare type UploadFolderRelationResponseCollection = {
     __typename?: 'UploadFolderRelationResponseCollection';
     data: Array<UploadFolderEntity>;
 };
+export declare type UserInfo = {
+    __typename?: 'UserInfo';
+    bio?: Maybe<Scalars['String']>;
+    createdAt?: Maybe<Scalars['DateTime']>;
+    name: Scalars['String'];
+    owner?: Maybe<UsersPermissionsUserEntityResponse>;
+    picture?: Maybe<UploadFileEntityResponse>;
+    surname: Scalars['String'];
+    updatedAt?: Maybe<Scalars['DateTime']>;
+};
+export declare type UserInfoEntity = {
+    __typename?: 'UserInfoEntity';
+    attributes?: Maybe<UserInfo>;
+    id?: Maybe<Scalars['ID']>;
+};
+export declare type UserInfoEntityResponse = {
+    __typename?: 'UserInfoEntityResponse';
+    data?: Maybe<UserInfoEntity>;
+};
+export declare type UserInfoEntityResponseCollection = {
+    __typename?: 'UserInfoEntityResponseCollection';
+    data: Array<UserInfoEntity>;
+    meta: ResponseCollectionMeta;
+};
+export declare type UserInfoFiltersInput = {
+    and?: InputMaybe<Array<InputMaybe<UserInfoFiltersInput>>>;
+    bio?: InputMaybe<StringFilterInput>;
+    createdAt?: InputMaybe<DateTimeFilterInput>;
+    id?: InputMaybe<IdFilterInput>;
+    name?: InputMaybe<StringFilterInput>;
+    not?: InputMaybe<UserInfoFiltersInput>;
+    or?: InputMaybe<Array<InputMaybe<UserInfoFiltersInput>>>;
+    owner?: InputMaybe<UsersPermissionsUserFiltersInput>;
+    surname?: InputMaybe<StringFilterInput>;
+    updatedAt?: InputMaybe<DateTimeFilterInput>;
+};
+export declare type UserInfoInput = {
+    bio?: InputMaybe<Scalars['String']>;
+    name?: InputMaybe<Scalars['String']>;
+    owner?: InputMaybe<Scalars['ID']>;
+    picture?: InputMaybe<Scalars['ID']>;
+    surname?: InputMaybe<Scalars['String']>;
+};
 export declare type UsersPermissionsCreateRolePayload = {
     __typename?: 'UsersPermissionsCreateRolePayload';
     ok: Scalars['Boolean'];
@@ -683,6 +749,7 @@ export declare type UsersPermissionsUser = {
     confirmed?: Maybe<Scalars['Boolean']>;
     createdAt?: Maybe<Scalars['DateTime']>;
     email: Scalars['String'];
+    info?: Maybe<UserInfoEntityResponse>;
     provider?: Maybe<Scalars['String']>;
     role?: Maybe<UsersPermissionsRoleEntityResponse>;
     updatedAt?: Maybe<Scalars['DateTime']>;
@@ -710,6 +777,7 @@ export declare type UsersPermissionsUserFiltersInput = {
     createdAt?: InputMaybe<DateTimeFilterInput>;
     email?: InputMaybe<StringFilterInput>;
     id?: InputMaybe<IdFilterInput>;
+    info?: InputMaybe<UserInfoFiltersInput>;
     not?: InputMaybe<UsersPermissionsUserFiltersInput>;
     or?: InputMaybe<Array<InputMaybe<UsersPermissionsUserFiltersInput>>>;
     password?: InputMaybe<StringFilterInput>;
@@ -724,6 +792,7 @@ export declare type UsersPermissionsUserInput = {
     confirmationToken?: InputMaybe<Scalars['String']>;
     confirmed?: InputMaybe<Scalars['Boolean']>;
     email?: InputMaybe<Scalars['String']>;
+    info?: InputMaybe<Scalars['ID']>;
     password?: InputMaybe<Scalars['String']>;
     provider?: InputMaybe<Scalars['String']>;
     resetPasswordToken?: InputMaybe<Scalars['String']>;
