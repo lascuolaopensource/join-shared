@@ -115,10 +115,30 @@ var index$3 = {
 	get Schemas () { return Schemas; }
 };
 
+var HTTPMethod;
+
+(function (HTTPMethod) {
+  HTTPMethod["CONNECT"] = "CONNECT";
+  HTTPMethod["DELETE"] = "DELETE";
+  HTTPMethod["GET"] = "GET";
+  HTTPMethod["HEAD"] = "HEAD";
+  HTTPMethod["OPTIONS"] = "OPTIONS";
+  HTTPMethod["PATCH"] = "PATCH";
+  HTTPMethod["POST"] = "POST";
+  HTTPMethod["PUT"] = "PUT";
+  HTTPMethod["TRACE"] = "TRACE";
+})(HTTPMethod || (HTTPMethod = {}));
+
+var index$2 = {
+	__proto__: null,
+	get HTTPMethod () { return HTTPMethod; }
+};
+
 var Create;
 
 (function (Create) {
   Create.path = "/account/create";
+  Create.method = HTTPMethod.POST;
   Create.values = {
     name: "",
     surname: "",
@@ -133,18 +153,14 @@ var Create;
   }).required();
 })(Create || (Create = {}));
 
-var index$2 = {
+var index$1 = {
 	__proto__: null,
 	get Create () { return Create; }
 };
 
-var index$1 = {
-	__proto__: null,
-	Account: index$2
-};
-
 var index = {
-	__proto__: null
+	__proto__: null,
+	Account: index$1
 };
 
 var errors = {
@@ -179,7 +195,7 @@ var errors = {
 };
 
 exports.errors = errors;
-exports.routes = index$1;
-exports.types = index;
+exports.routes = index;
+exports.types = index$2;
 exports.validation = index$3;
 //# sourceMappingURL=index.cjs.map

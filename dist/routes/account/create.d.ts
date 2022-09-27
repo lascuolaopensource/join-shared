@@ -1,5 +1,7 @@
+import { HTTPMethod } from "../../types";
 export declare namespace Create {
     const path = "/account/create";
+    const method = HTTPMethod.POST;
     interface Req {
         name: string;
         surname: string;

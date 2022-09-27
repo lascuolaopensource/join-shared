@@ -1,8 +1,10 @@
 import * as yup from "yup";
 import { Schemas } from "../../validation";
+import { HTTPMethod } from "../../types";
 
 export namespace Create {
 	export const path = "/account/create";
+	export const method = HTTPMethod.POST;
 
 	export interface Req {
 		name: string;
