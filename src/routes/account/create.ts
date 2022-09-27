@@ -2,6 +2,8 @@ import * as yup from "yup";
 import { Schemas } from "../../validation";
 
 export namespace Create {
+	export const path = "/account/create";
+
 	export interface Req {
 		name: string;
 		surname: string;

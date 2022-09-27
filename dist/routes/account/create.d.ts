@@ -1,4 +1,5 @@
 export declare namespace Create {
+    const path = "/account/create";
     interface Req {
         name: string;
         surname: string;

@@ -121,6 +121,7 @@
 	var Create;
 
 	(function (Create) {
+	  Create.path = "/account/create";
 	  Create.values = {
 	    name: "",
 	    surname: "",

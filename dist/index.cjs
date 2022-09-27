@@ -118,6 +118,7 @@ var index$3 = {
 var Create;
 
 (function (Create) {
+  Create.path = "/account/create";
   Create.values = {
     name: "",
     surname: "",
