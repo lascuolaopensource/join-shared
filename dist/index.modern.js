@@ -71,7 +71,7 @@ var Schemas;
   };
 })(Schemas || (Schemas = {}));
 
-var index$3 = {
+var index$4 = {
 	__proto__: null,
 	get Regex () { return Regex; },
 	get Schemas () { return Schemas; }
@@ -91,7 +91,7 @@ var HTTPMethod;
   HTTPMethod["TRACE"] = "TRACE";
 })(HTTPMethod || (HTTPMethod = {}));
 
-var index$2 = {
+var index$3 = {
 	__proto__: null,
 	get HTTPMethod () { return HTTPMethod; }
 };
@@ -128,10 +128,63 @@ var UserExists;
   }).required();
 })(UserExists || (UserExists = {}));
 
+var Login;
+
+(function (Login) {
+  Login.path = "/auth/local";
+  Login.method = HTTPMethod.POST;
+  Login.values = {
+    identifier: "",
+    password: ""
+  };
+  Login.schema = yup.object({
+    identifier: Schemas.email.required(),
+    password: yup.string().required()
+  }).required();
+})(Login || (Login = {}));
+
+var Forgot;
+
+(function (Forgot) {
+  Forgot.path = "/auth/forgot-password";
+  Forgot.method = HTTPMethod.POST;
+  Forgot.values = {
+    email: ""
+  };
+  Forgot.schema = yup.object({
+    email: Schemas.email.required()
+  }).required();
+})(Forgot || (Forgot = {}));
+
+var Reset;
+
+(function (Reset) {
+  Reset.path = "/auth/reset-password";
+  Reset.method = HTTPMethod.POST;
+  Reset.values = {
+    password: "string",
+    passwordConfirmation: "string",
+    code: "string"
+  };
+  Reset.schema = yup.object({
+    password: yup.string().required(),
+    passwordConfirmation: yup.string().required(),
+    code: yup.string().required()
+  }).required();
+})(Reset || (Reset = {}));
+
+var index$2 = {
+	__proto__: null,
+	get Forgot () { return Forgot; },
+	get Reset () { return Reset; }
+};
+
 var index$1 = {
 	__proto__: null,
+	Password: index$2,
 	get Create () { return Create; },
-	get UserExists () { return UserExists; }
+	get UserExists () { return UserExists; },
+	get Login () { return Login; }
 };
 
 var index = {
@@ -170,5 +223,5 @@ const errors = {
 
 };
 
-export { errors, index as routes, index$2 as types, index$3 as validation };
+export { errors, index as routes, index$3 as types, index$4 as validation };
 //# sourceMappingURL=index.modern.js.map

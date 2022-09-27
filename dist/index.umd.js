@@ -112,7 +112,7 @@
 	  };
 	})(Schemas || (Schemas = {}));
 
-	var index$3 = {
+	var index$4 = {
 		__proto__: null,
 		get Regex () { return Regex; },
 		get Schemas () { return Schemas; }
@@ -132,7 +132,7 @@
 	  HTTPMethod["TRACE"] = "TRACE";
 	})(HTTPMethod || (HTTPMethod = {}));
 
-	var index$2 = {
+	var index$3 = {
 		__proto__: null,
 		get HTTPMethod () { return HTTPMethod; }
 	};
@@ -169,10 +169,63 @@
 	  }).required();
 	})(UserExists || (UserExists = {}));
 
+	var Login;
+
+	(function (Login) {
+	  Login.path = "/auth/local";
+	  Login.method = HTTPMethod.POST;
+	  Login.values = {
+	    identifier: "",
+	    password: ""
+	  };
+	  Login.schema = yup__namespace.object({
+	    identifier: Schemas.email.required(),
+	    password: yup__namespace.string().required()
+	  }).required();
+	})(Login || (Login = {}));
+
+	var Forgot;
+
+	(function (Forgot) {
+	  Forgot.path = "/auth/forgot-password";
+	  Forgot.method = HTTPMethod.POST;
+	  Forgot.values = {
+	    email: ""
+	  };
+	  Forgot.schema = yup__namespace.object({
+	    email: Schemas.email.required()
+	  }).required();
+	})(Forgot || (Forgot = {}));
+
+	var Reset;
+
+	(function (Reset) {
+	  Reset.path = "/auth/reset-password";
+	  Reset.method = HTTPMethod.POST;
+	  Reset.values = {
+	    password: "string",
+	    passwordConfirmation: "string",
+	    code: "string"
+	  };
+	  Reset.schema = yup__namespace.object({
+	    password: yup__namespace.string().required(),
+	    passwordConfirmation: yup__namespace.string().required(),
+	    code: yup__namespace.string().required()
+	  }).required();
+	})(Reset || (Reset = {}));
+
+	var index$2 = {
+		__proto__: null,
+		get Forgot () { return Forgot; },
+		get Reset () { return Reset; }
+	};
+
 	var index$1 = {
 		__proto__: null,
+		Password: index$2,
 		get Create () { return Create; },
-		get UserExists () { return UserExists; }
+		get UserExists () { return UserExists; },
+		get Login () { return Login; }
 	};
 
 	var index = {
@@ -213,8 +266,8 @@
 
 	exports.errors = errors;
 	exports.routes = index;
-	exports.types = index$2;
-	exports.validation = index$3;
+	exports.types = index$3;
+	exports.validation = index$4;
 
 }));
 //# sourceMappingURL=index.umd.js.map
