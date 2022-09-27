@@ -1,4 +1,4 @@
-import { HTTPMethod } from "../../types";
+import { HTTPMethod, UsersPermissionsUser } from "../../types";
 export declare namespace Create {
     const path = "/account/create";
     const method = HTTPMethod.POST;
@@ -20,6 +20,6 @@ export declare namespace Create {
         email: import("yup/lib/string").RequiredStringSchema<string, import("yup/lib/types").AnyObject>;
         password: import("yup/lib/string").RequiredStringSchema<string, import("yup/lib/types").AnyObject>;
     }>>;
-    interface Res {
+    interface Res extends UsersPermissionsUser {
     }
 }
