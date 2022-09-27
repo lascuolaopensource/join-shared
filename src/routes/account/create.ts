@@ -1,6 +1,6 @@
 import * as yup from "yup";
 import { Schemas } from "../../validation";
-import { HTTPMethod, UsersPermissionsUser } from "../../types";
+import { HTTPMethod, UsersPermissionsMe } from "../../types";
 
 export namespace Create {
 	export const path = "/account/create";
@@ -29,5 +29,5 @@ export namespace Create {
 		})
 		.required();
 
-	export interface Res extends UsersPermissionsUser {}
+	export interface Res extends UsersPermissionsMe {}
 }
