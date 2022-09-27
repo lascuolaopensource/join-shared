@@ -89,7 +89,7 @@ var Schemas;
   };
 })(Schemas || (Schemas = {}));
 
-var index$2 = {
+var index$3 = {
 	__proto__: null,
 	get Regex () { return Regex; },
 	get Schemas () { return Schemas; }
@@ -112,14 +112,18 @@ var Create;
   }).required();
 })(Create || (Create = {}));
 
-var index$1 = {
+var index$2 = {
 	__proto__: null,
 	get Create () { return Create; }
 };
 
-var index = {
+var index$1 = {
 	__proto__: null,
-	Account: index$1
+	Account: index$2
+};
+
+var index = {
+	__proto__: null
 };
 
 var errors = {
@@ -153,5 +157,5 @@ var errors = {
 
 };
 
-export { errors, index as routes, index$2 as validation };
+export { errors, index$1 as routes, index as types, index$3 as validation };
 //# sourceMappingURL=index.module.js.map

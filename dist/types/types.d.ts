@@ -18,110 +18,9 @@ export declare type Scalars = {
     Boolean: boolean;
     Int: number;
     Float: number;
-    BillingInfoDataDynamicZoneInput: any;
-    /** A date string, such as 2007-12-03, compliant with the `full-date` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar. */
-    Date: any;
-    /** A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar. */
     DateTime: any;
-    /** A string used to identify an i18n locale */
-    I18NLocaleCode: any;
-    /** The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf). */
     JSON: any;
-    /** A time string with format HH:mm:ss.SSS */
-    Time: any;
-    /** The `Upload` scalar type represents a file upload. */
     Upload: any;
-};
-export declare type Area = {
-    __typename?: 'Area';
-    courses?: Maybe<CourseRelationResponseCollection>;
-    createdAt?: Maybe<Scalars['DateTime']>;
-    locale?: Maybe<Scalars['String']>;
-    localizations?: Maybe<AreaRelationResponseCollection>;
-    name?: Maybe<Scalars['String']>;
-    updatedAt?: Maybe<Scalars['DateTime']>;
-};
-export declare type AreaCoursesArgs = {
-    filters?: InputMaybe<CourseFiltersInput>;
-    pagination?: InputMaybe<PaginationArg>;
-    publicationState?: InputMaybe<PublicationState>;
-    sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-};
-export declare type AreaLocalizationsArgs = {
-    filters?: InputMaybe<AreaFiltersInput>;
-    pagination?: InputMaybe<PaginationArg>;
-    sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-};
-export declare type AreaEntity = {
-    __typename?: 'AreaEntity';
-    attributes?: Maybe<Area>;
-    id?: Maybe<Scalars['ID']>;
-};
-export declare type AreaEntityResponse = {
-    __typename?: 'AreaEntityResponse';
-    data?: Maybe<AreaEntity>;
-};
-export declare type AreaEntityResponseCollection = {
-    __typename?: 'AreaEntityResponseCollection';
-    data: Array<AreaEntity>;
-    meta: ResponseCollectionMeta;
-};
-export declare type AreaFiltersInput = {
-    and?: InputMaybe<Array<InputMaybe<AreaFiltersInput>>>;
-    courses?: InputMaybe<CourseFiltersInput>;
-    createdAt?: InputMaybe<DateTimeFilterInput>;
-    id?: InputMaybe<IdFilterInput>;
-    locale?: InputMaybe<StringFilterInput>;
-    localizations?: InputMaybe<AreaFiltersInput>;
-    name?: InputMaybe<StringFilterInput>;
-    not?: InputMaybe<AreaFiltersInput>;
-    or?: InputMaybe<Array<InputMaybe<AreaFiltersInput>>>;
-    updatedAt?: InputMaybe<DateTimeFilterInput>;
-};
-export declare type AreaInput = {
-    courses?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-    name?: InputMaybe<Scalars['String']>;
-};
-export declare type AreaRelationResponseCollection = {
-    __typename?: 'AreaRelationResponseCollection';
-    data: Array<AreaEntity>;
-};
-export declare type BillingInfo = {
-    __typename?: 'BillingInfo';
-    address: ComponentLocationAddress;
-    createdAt?: Maybe<Scalars['DateTime']>;
-    data: Array<Maybe<BillingInfoDataDynamicZone>>;
-    payment?: Maybe<PaymentEntityResponse>;
-    updatedAt?: Maybe<Scalars['DateTime']>;
-};
-export declare type BillingInfoDataDynamicZone = ComponentBillingCompany | ComponentBillingMe | ComponentBillingPerson | Error;
-export declare type BillingInfoEntity = {
-    __typename?: 'BillingInfoEntity';
-    attributes?: Maybe<BillingInfo>;
-    id?: Maybe<Scalars['ID']>;
-};
-export declare type BillingInfoEntityResponse = {
-    __typename?: 'BillingInfoEntityResponse';
-    data?: Maybe<BillingInfoEntity>;
-};
-export declare type BillingInfoEntityResponseCollection = {
-    __typename?: 'BillingInfoEntityResponseCollection';
-    data: Array<BillingInfoEntity>;
-    meta: ResponseCollectionMeta;
-};
-export declare type BillingInfoFiltersInput = {
-    and?: InputMaybe<Array<InputMaybe<BillingInfoFiltersInput>>>;
-    createdAt?: InputMaybe<DateTimeFilterInput>;
-    id?: InputMaybe<IdFilterInput>;
-    not?: InputMaybe<BillingInfoFiltersInput>;
-    or?: InputMaybe<Array<InputMaybe<BillingInfoFiltersInput>>>;
-    payment?: InputMaybe<PaymentFiltersInput>;
-    updatedAt?: InputMaybe<DateTimeFilterInput>;
-};
-export declare type BillingInfoInput = {
-    address?: InputMaybe<ComponentLocationAddressInput>;
-    data?: InputMaybe<Array<Scalars['BillingInfoDataDynamicZoneInput']>>;
-    payment?: InputMaybe<Scalars['ID']>;
 };
 export declare type BooleanFilterInput = {
     and?: InputMaybe<Array<InputMaybe<Scalars['Boolean']>>>;
@@ -130,6 +29,7 @@ export declare type BooleanFilterInput = {
     containsi?: InputMaybe<Scalars['Boolean']>;
     endsWith?: InputMaybe<Scalars['Boolean']>;
     eq?: InputMaybe<Scalars['Boolean']>;
+    eqi?: InputMaybe<Scalars['Boolean']>;
     gt?: InputMaybe<Scalars['Boolean']>;
     gte?: InputMaybe<Scalars['Boolean']>;
     in?: InputMaybe<Array<InputMaybe<Scalars['Boolean']>>>;
@@ -145,214 +45,6 @@ export declare type BooleanFilterInput = {
     or?: InputMaybe<Array<InputMaybe<Scalars['Boolean']>>>;
     startsWith?: InputMaybe<Scalars['Boolean']>;
 };
-export declare type ComponentBillingCompany = {
-    __typename?: 'ComponentBillingCompany';
-    id: Scalars['ID'];
-    name: Scalars['String'];
-    pec: Scalars['String'];
-    sdi: Scalars['String'];
-    vat: Scalars['String'];
-};
-export declare type ComponentBillingMe = {
-    __typename?: 'ComponentBillingMe';
-    cf: Scalars['String'];
-    id: Scalars['ID'];
-};
-export declare type ComponentBillingPerson = {
-    __typename?: 'ComponentBillingPerson';
-    cf: Scalars['String'];
-    email?: Maybe<Scalars['String']>;
-    id: Scalars['ID'];
-    name: Scalars['String'];
-    surname: Scalars['String'];
-};
-export declare type ComponentLocationAddress = {
-    __typename?: 'ComponentLocationAddress';
-    cap: Scalars['String'];
-    id: Scalars['ID'];
-    province: Scalars['String'];
-    street: Scalars['String'];
-    town: Scalars['String'];
-};
-export declare type ComponentLocationAddressInput = {
-    cap?: InputMaybe<Scalars['String']>;
-    id?: InputMaybe<Scalars['ID']>;
-    province?: InputMaybe<Scalars['String']>;
-    street?: InputMaybe<Scalars['String']>;
-    town?: InputMaybe<Scalars['String']>;
-};
-export declare type ComponentTimeMeeting = {
-    __typename?: 'ComponentTimeMeeting';
-    date?: Maybe<Scalars['Date']>;
-    id: Scalars['ID'];
-    timeSlots?: Maybe<Array<Maybe<ComponentTimeTimeSlot>>>;
-};
-export declare type ComponentTimeMeetingTimeSlotsArgs = {
-    filters?: InputMaybe<ComponentTimeTimeSlotFiltersInput>;
-    pagination?: InputMaybe<PaginationArg>;
-    sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-};
-export declare type ComponentTimeMeetingFiltersInput = {
-    and?: InputMaybe<Array<InputMaybe<ComponentTimeMeetingFiltersInput>>>;
-    date?: InputMaybe<DateFilterInput>;
-    not?: InputMaybe<ComponentTimeMeetingFiltersInput>;
-    or?: InputMaybe<Array<InputMaybe<ComponentTimeMeetingFiltersInput>>>;
-};
-export declare type ComponentTimeMeetingInput = {
-    date?: InputMaybe<Scalars['Date']>;
-    id?: InputMaybe<Scalars['ID']>;
-    timeSlots?: InputMaybe<Array<InputMaybe<ComponentTimeTimeSlotInput>>>;
-};
-export declare type ComponentTimeTimeSlot = {
-    __typename?: 'ComponentTimeTimeSlot';
-    endTime?: Maybe<Scalars['Time']>;
-    id: Scalars['ID'];
-    startTime?: Maybe<Scalars['Time']>;
-};
-export declare type ComponentTimeTimeSlotFiltersInput = {
-    and?: InputMaybe<Array<InputMaybe<ComponentTimeTimeSlotFiltersInput>>>;
-    endTime?: InputMaybe<TimeFilterInput>;
-    not?: InputMaybe<ComponentTimeTimeSlotFiltersInput>;
-    or?: InputMaybe<Array<InputMaybe<ComponentTimeTimeSlotFiltersInput>>>;
-    startTime?: InputMaybe<TimeFilterInput>;
-};
-export declare type ComponentTimeTimeSlotInput = {
-    endTime?: InputMaybe<Scalars['Time']>;
-    id?: InputMaybe<Scalars['ID']>;
-    startTime?: InputMaybe<Scalars['Time']>;
-};
-export declare type Course = {
-    __typename?: 'Course';
-    areas?: Maybe<AreaRelationResponseCollection>;
-    confirmed: Scalars['Boolean'];
-    createdAt?: Maybe<Scalars['DateTime']>;
-    cvNeeded?: Maybe<Scalars['Boolean']>;
-    description?: Maybe<Scalars['String']>;
-    enrollmentDeadline?: Maybe<Scalars['DateTime']>;
-    enrollmentMax?: Maybe<Scalars['Int']>;
-    enrollmentMin: Scalars['Int'];
-    enrollments?: Maybe<EnrollmentRelationResponseCollection>;
-    gallery?: Maybe<UploadFileRelationResponseCollection>;
-    meetings?: Maybe<Array<Maybe<ComponentTimeMeeting>>>;
-    motivationalLetterNeeded?: Maybe<Scalars['Boolean']>;
-    portfolioNeeded?: Maybe<Scalars['Boolean']>;
-    preconditionsNeeded?: Maybe<Scalars['Boolean']>;
-    price?: Maybe<Scalars['Int']>;
-    publishedAt?: Maybe<Scalars['DateTime']>;
-    slug?: Maybe<Scalars['String']>;
-    teachers?: Maybe<UserInfoRelationResponseCollection>;
-    title: Scalars['String'];
-    updatedAt?: Maybe<Scalars['DateTime']>;
-};
-export declare type CourseAreasArgs = {
-    filters?: InputMaybe<AreaFiltersInput>;
-    pagination?: InputMaybe<PaginationArg>;
-    sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-};
-export declare type CourseEnrollmentsArgs = {
-    filters?: InputMaybe<EnrollmentFiltersInput>;
-    pagination?: InputMaybe<PaginationArg>;
-    sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-};
-export declare type CourseGalleryArgs = {
-    filters?: InputMaybe<UploadFileFiltersInput>;
-    pagination?: InputMaybe<PaginationArg>;
-    sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-};
-export declare type CourseMeetingsArgs = {
-    filters?: InputMaybe<ComponentTimeMeetingFiltersInput>;
-    pagination?: InputMaybe<PaginationArg>;
-    sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-};
-export declare type CourseTeachersArgs = {
-    filters?: InputMaybe<UserInfoFiltersInput>;
-    pagination?: InputMaybe<PaginationArg>;
-    sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-};
-export declare type CourseEntity = {
-    __typename?: 'CourseEntity';
-    attributes?: Maybe<Course>;
-    id?: Maybe<Scalars['ID']>;
-};
-export declare type CourseEntityResponse = {
-    __typename?: 'CourseEntityResponse';
-    data?: Maybe<CourseEntity>;
-};
-export declare type CourseEntityResponseCollection = {
-    __typename?: 'CourseEntityResponseCollection';
-    data: Array<CourseEntity>;
-    meta: ResponseCollectionMeta;
-};
-export declare type CourseFiltersInput = {
-    and?: InputMaybe<Array<InputMaybe<CourseFiltersInput>>>;
-    areas?: InputMaybe<AreaFiltersInput>;
-    confirmed?: InputMaybe<BooleanFilterInput>;
-    createdAt?: InputMaybe<DateTimeFilterInput>;
-    cvNeeded?: InputMaybe<BooleanFilterInput>;
-    description?: InputMaybe<StringFilterInput>;
-    enrollmentDeadline?: InputMaybe<DateTimeFilterInput>;
-    enrollmentMax?: InputMaybe<IntFilterInput>;
-    enrollmentMin?: InputMaybe<IntFilterInput>;
-    enrollments?: InputMaybe<EnrollmentFiltersInput>;
-    id?: InputMaybe<IdFilterInput>;
-    motivationalLetterNeeded?: InputMaybe<BooleanFilterInput>;
-    not?: InputMaybe<CourseFiltersInput>;
-    or?: InputMaybe<Array<InputMaybe<CourseFiltersInput>>>;
-    portfolioNeeded?: InputMaybe<BooleanFilterInput>;
-    preconditionsNeeded?: InputMaybe<BooleanFilterInput>;
-    price?: InputMaybe<IntFilterInput>;
-    publishedAt?: InputMaybe<DateTimeFilterInput>;
-    slug?: InputMaybe<StringFilterInput>;
-    teachers?: InputMaybe<UserInfoFiltersInput>;
-    title?: InputMaybe<StringFilterInput>;
-    updatedAt?: InputMaybe<DateTimeFilterInput>;
-};
-export declare type CourseInput = {
-    areas?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-    confirmed?: InputMaybe<Scalars['Boolean']>;
-    cvNeeded?: InputMaybe<Scalars['Boolean']>;
-    description?: InputMaybe<Scalars['String']>;
-    enrollmentDeadline?: InputMaybe<Scalars['DateTime']>;
-    enrollmentMax?: InputMaybe<Scalars['Int']>;
-    enrollmentMin?: InputMaybe<Scalars['Int']>;
-    enrollments?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-    gallery?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-    meetings?: InputMaybe<Array<InputMaybe<ComponentTimeMeetingInput>>>;
-    motivationalLetterNeeded?: InputMaybe<Scalars['Boolean']>;
-    portfolioNeeded?: InputMaybe<Scalars['Boolean']>;
-    preconditionsNeeded?: InputMaybe<Scalars['Boolean']>;
-    price?: InputMaybe<Scalars['Int']>;
-    publishedAt?: InputMaybe<Scalars['DateTime']>;
-    slug?: InputMaybe<Scalars['String']>;
-    teachers?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-    title?: InputMaybe<Scalars['String']>;
-};
-export declare type CourseRelationResponseCollection = {
-    __typename?: 'CourseRelationResponseCollection';
-    data: Array<CourseEntity>;
-};
-export declare type DateFilterInput = {
-    and?: InputMaybe<Array<InputMaybe<Scalars['Date']>>>;
-    between?: InputMaybe<Array<InputMaybe<Scalars['Date']>>>;
-    contains?: InputMaybe<Scalars['Date']>;
-    containsi?: InputMaybe<Scalars['Date']>;
-    endsWith?: InputMaybe<Scalars['Date']>;
-    eq?: InputMaybe<Scalars['Date']>;
-    gt?: InputMaybe<Scalars['Date']>;
-    gte?: InputMaybe<Scalars['Date']>;
-    in?: InputMaybe<Array<InputMaybe<Scalars['Date']>>>;
-    lt?: InputMaybe<Scalars['Date']>;
-    lte?: InputMaybe<Scalars['Date']>;
-    ne?: InputMaybe<Scalars['Date']>;
-    not?: InputMaybe<DateFilterInput>;
-    notContains?: InputMaybe<Scalars['Date']>;
-    notContainsi?: InputMaybe<Scalars['Date']>;
-    notIn?: InputMaybe<Array<InputMaybe<Scalars['Date']>>>;
-    notNull?: InputMaybe<Scalars['Boolean']>;
-    null?: InputMaybe<Scalars['Boolean']>;
-    or?: InputMaybe<Array<InputMaybe<Scalars['Date']>>>;
-    startsWith?: InputMaybe<Scalars['Date']>;
-};
 export declare type DateTimeFilterInput = {
     and?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
     between?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
@@ -360,6 +52,7 @@ export declare type DateTimeFilterInput = {
     containsi?: InputMaybe<Scalars['DateTime']>;
     endsWith?: InputMaybe<Scalars['DateTime']>;
     eq?: InputMaybe<Scalars['DateTime']>;
+    eqi?: InputMaybe<Scalars['DateTime']>;
     gt?: InputMaybe<Scalars['DateTime']>;
     gte?: InputMaybe<Scalars['DateTime']>;
     in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
@@ -375,78 +68,6 @@ export declare type DateTimeFilterInput = {
     or?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
     startsWith?: InputMaybe<Scalars['DateTime']>;
 };
-export declare enum Enum_Enrollment_State {
-    Approved = "approved",
-    AwaitingPayment = "awaitingPayment",
-    Pending = "pending",
-    Rejected = "rejected"
-}
-export declare enum Enum_Toolslot_Type {
-    Availability = "availability",
-    Booking = "booking"
-}
-export declare type Enrollment = {
-    __typename?: 'Enrollment';
-    course?: Maybe<CourseEntityResponse>;
-    createdAt?: Maybe<Scalars['DateTime']>;
-    cvUrl?: Maybe<Scalars['String']>;
-    motivationalLetter?: Maybe<Scalars['String']>;
-    owner?: Maybe<UsersPermissionsUserEntityResponse>;
-    payment?: Maybe<PaymentEntityResponse>;
-    phoneNumber: PhoneNumberEntityResponse;
-    portfolioUrl?: Maybe<Scalars['String']>;
-    state: Enum_Enrollment_State;
-    updatedAt?: Maybe<Scalars['DateTime']>;
-};
-export declare type EnrollmentEntity = {
-    __typename?: 'EnrollmentEntity';
-    attributes?: Maybe<Enrollment>;
-    id?: Maybe<Scalars['ID']>;
-};
-export declare type EnrollmentEntityResponse = {
-    __typename?: 'EnrollmentEntityResponse';
-    data?: Maybe<EnrollmentEntity>;
-};
-export declare type EnrollmentEntityResponseCollection = {
-    __typename?: 'EnrollmentEntityResponseCollection';
-    data: Array<EnrollmentEntity>;
-    meta: ResponseCollectionMeta;
-};
-export declare type EnrollmentFiltersInput = {
-    and?: InputMaybe<Array<InputMaybe<EnrollmentFiltersInput>>>;
-    course?: InputMaybe<CourseFiltersInput>;
-    createdAt?: InputMaybe<DateTimeFilterInput>;
-    cvUrl?: InputMaybe<StringFilterInput>;
-    id?: InputMaybe<IdFilterInput>;
-    motivationalLetter?: InputMaybe<StringFilterInput>;
-    not?: InputMaybe<EnrollmentFiltersInput>;
-    or?: InputMaybe<Array<InputMaybe<EnrollmentFiltersInput>>>;
-    owner?: InputMaybe<UsersPermissionsUserFiltersInput>;
-    payment?: InputMaybe<PaymentFiltersInput>;
-    phoneNumber?: InputMaybe<PhoneNumberFiltersInput>;
-    portfolioUrl?: InputMaybe<StringFilterInput>;
-    state?: InputMaybe<StringFilterInput>;
-    updatedAt?: InputMaybe<DateTimeFilterInput>;
-};
-export declare type EnrollmentInput = {
-    course?: InputMaybe<Scalars['ID']>;
-    cvUrl?: InputMaybe<Scalars['String']>;
-    motivationalLetter?: InputMaybe<Scalars['String']>;
-    owner?: InputMaybe<Scalars['ID']>;
-    payment?: InputMaybe<Scalars['ID']>;
-    phoneNumber?: InputMaybe<Scalars['ID']>;
-    portfolioUrl?: InputMaybe<Scalars['String']>;
-    state?: InputMaybe<Enum_Enrollment_State>;
-};
-export declare type EnrollmentRelationResponseCollection = {
-    __typename?: 'EnrollmentRelationResponseCollection';
-    data: Array<EnrollmentEntity>;
-};
-export declare type Error = {
-    __typename?: 'Error';
-    code: Scalars['String'];
-    message?: Maybe<Scalars['String']>;
-};
 export declare type FileInfoInput = {
     alternativeText?: InputMaybe<Scalars['String']>;
     caption?: InputMaybe<Scalars['String']>;
@@ -459,6 +80,7 @@ export declare type FloatFilterInput = {
     containsi?: InputMaybe<Scalars['Float']>;
     endsWith?: InputMaybe<Scalars['Float']>;
     eq?: InputMaybe<Scalars['Float']>;
+    eqi?: InputMaybe<Scalars['Float']>;
     gt?: InputMaybe<Scalars['Float']>;
     gte?: InputMaybe<Scalars['Float']>;
     in?: InputMaybe<Array<InputMaybe<Scalars['Float']>>>;
@@ -474,7 +96,7 @@ export declare type FloatFilterInput = {
     or?: InputMaybe<Array<InputMaybe<Scalars['Float']>>>;
     startsWith?: InputMaybe<Scalars['Float']>;
 };
-export declare type GenericMorph = Area | BillingInfo | ComponentBillingCompany | ComponentBillingMe | ComponentBillingPerson | ComponentLocationAddress | ComponentTimeMeeting | ComponentTimeTimeSlot | Course | Enrollment | I18NLocale | Payment | PhoneNumber | Tool | ToolSlot | ToolsBooking | UploadFile | UserInfo | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
+export declare type GenericMorph = I18NLocale | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
 export declare type I18NLocale = {
     __typename?: 'I18NLocale';
     code?: Maybe<Scalars['String']>;
@@ -513,6 +135,7 @@ export declare type IdFilterInput = {
     containsi?: InputMaybe<Scalars['ID']>;
     endsWith?: InputMaybe<Scalars['ID']>;
     eq?: InputMaybe<Scalars['ID']>;
+    eqi?: InputMaybe<Scalars['ID']>;
     gt?: InputMaybe<Scalars['ID']>;
     gte?: InputMaybe<Scalars['ID']>;
     in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
@@ -535,6 +158,7 @@ export declare type IntFilterInput = {
     containsi?: InputMaybe<Scalars['Int']>;
     endsWith?: InputMaybe<Scalars['Int']>;
     eq?: InputMaybe<Scalars['Int']>;
+    eqi?: InputMaybe<Scalars['Int']>;
     gt?: InputMaybe<Scalars['Int']>;
     gte?: InputMaybe<Scalars['Int']>;
     in?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>;
@@ -557,6 +181,7 @@ export declare type JsonFilterInput = {
     containsi?: InputMaybe<Scalars['JSON']>;
     endsWith?: InputMaybe<Scalars['JSON']>;
     eq?: InputMaybe<Scalars['JSON']>;
+    eqi?: InputMaybe<Scalars['JSON']>;
     gt?: InputMaybe<Scalars['JSON']>;
     gte?: InputMaybe<Scalars['JSON']>;
     in?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>;
@@ -574,37 +199,19 @@ export declare type JsonFilterInput = {
 };
 export declare type Mutation = {
     __typename?: 'Mutation';
-    createArea?: Maybe<AreaEntityResponse>;
-    createAreaLocalization?: Maybe<AreaEntityResponse>;
-    createBillingInfo?: Maybe<BillingInfoEntityResponse>;
-    createCourse?: Maybe<CourseEntityResponse>;
-    createEnrollment?: Maybe<EnrollmentEntityResponse>;
-    createPayment?: Maybe<PaymentEntityResponse>;
-    createPhoneNumber?: Maybe<PhoneNumberEntityResponse>;
-    createTool?: Maybe<ToolEntityResponse>;
-    createToolLocalization?: Maybe<ToolEntityResponse>;
-    createToolSlot?: Maybe<ToolSlotEntityResponse>;
-    createToolsBooking?: Maybe<ToolsBookingEntityResponse>;
+    /** Change user password. Confirm with the current password. */
+    changePassword?: Maybe<UsersPermissionsLoginPayload>;
     createUploadFile?: Maybe<UploadFileEntityResponse>;
-    createUserInfo?: Maybe<UserInfoEntityResponse>;
+    createUploadFolder?: Maybe<UploadFolderEntityResponse>;
     /** Create a new role */
     createUsersPermissionsRole?: Maybe<UsersPermissionsCreateRolePayload>;
     /** Create a new user */
     createUsersPermissionsUser: UsersPermissionsUserEntityResponse;
-    deleteArea?: Maybe<AreaEntityResponse>;
-    deleteBillingInfo?: Maybe<BillingInfoEntityResponse>;
-    deleteCourse?: Maybe<CourseEntityResponse>;
-    deleteEnrollment?: Maybe<EnrollmentEntityResponse>;
-    deletePayment?: Maybe<PaymentEntityResponse>;
-    deletePhoneNumber?: Maybe<PhoneNumberEntityResponse>;
-    deleteTool?: Maybe<ToolEntityResponse>;
-    deleteToolSlot?: Maybe<ToolSlotEntityResponse>;
-    deleteToolsBooking?: Maybe<ToolsBookingEntityResponse>;
     deleteUploadFile?: Maybe<UploadFileEntityResponse>;
-    deleteUserInfo?: Maybe<UserInfoEntityResponse>;
+    deleteUploadFolder?: Maybe<UploadFolderEntityResponse>;
     /** Delete an existing role */
     deleteUsersPermissionsRole?: Maybe<UsersPermissionsDeleteRolePayload>;
-    /** Update an existing user */
+    /** Delete an existing user */
     deleteUsersPermissionsUser: UsersPermissionsUserEntityResponse;
     /** Confirm an email users email address */
     emailConfirmation?: Maybe<UsersPermissionsLoginPayload>;
@@ -617,68 +224,25 @@ export declare type Mutation = {
     removeFile?: Maybe<UploadFileEntityResponse>;
     /** Reset user password. Confirm with a code (resetToken from forgotPassword) */
     resetPassword?: Maybe<UsersPermissionsLoginPayload>;
-    updateArea?: Maybe<AreaEntityResponse>;
-    updateBillingInfo?: Maybe<BillingInfoEntityResponse>;
-    updateCourse?: Maybe<CourseEntityResponse>;
-    updateEnrollment?: Maybe<EnrollmentEntityResponse>;
     updateFileInfo: UploadFileEntityResponse;
-    updatePayment?: Maybe<PaymentEntityResponse>;
-    updatePhoneNumber?: Maybe<PhoneNumberEntityResponse>;
-    updateTool?: Maybe<ToolEntityResponse>;
-    updateToolSlot?: Maybe<ToolSlotEntityResponse>;
-    updateToolsBooking?: Maybe<ToolsBookingEntityResponse>;
     updateUploadFile?: Maybe<UploadFileEntityResponse>;
-    updateUserInfo?: Maybe<UserInfoEntityResponse>;
+    updateUploadFolder?: Maybe<UploadFolderEntityResponse>;
     /** Update an existing role */
     updateUsersPermissionsRole?: Maybe<UsersPermissionsUpdateRolePayload>;
     /** Update an existing user */
     updateUsersPermissionsUser: UsersPermissionsUserEntityResponse;
     upload: UploadFileEntityResponse;
 };
-export declare type MutationCreateAreaArgs = {
-    data: AreaInput;
-    locale?: InputMaybe<Scalars['I18NLocaleCode']>;
-};
-export declare type MutationCreateAreaLocalizationArgs = {
-    data?: InputMaybe<AreaInput>;
-    id?: InputMaybe<Scalars['ID']>;
-    locale?: InputMaybe<Scalars['I18NLocaleCode']>;
-};
-export declare type MutationCreateBillingInfoArgs = {
-    data: BillingInfoInput;
-};
-export declare type MutationCreateCourseArgs = {
-    data: CourseInput;
-};
-export declare type MutationCreateEnrollmentArgs = {
-    data: EnrollmentInput;
-};
-export declare type MutationCreatePaymentArgs = {
-    data: PaymentInput;
-};
-export declare type MutationCreatePhoneNumberArgs = {
-    data: PhoneNumberInput;
-};
-export declare type MutationCreateToolArgs = {
-    data: ToolInput;
-    locale?: InputMaybe<Scalars['I18NLocaleCode']>;
-};
-export declare type MutationCreateToolLocalizationArgs = {
-    data?: InputMaybe<ToolInput>;
-    id?: InputMaybe<Scalars['ID']>;
-    locale?: InputMaybe<Scalars['I18NLocaleCode']>;
-};
-export declare type MutationCreateToolSlotArgs = {
-    data: ToolSlotInput;
-};
-export declare type MutationCreateToolsBookingArgs = {
-    data: ToolsBookingInput;
+export declare type MutationChangePasswordArgs = {
+    currentPassword: Scalars['String'];
+    password: Scalars['String'];
+    passwordConfirmation: Scalars['String'];
 };
 export declare type MutationCreateUploadFileArgs = {
     data: UploadFileInput;
 };
-export declare type MutationCreateUserInfoArgs = {
-    data: UserInfoInput;
+export declare type MutationCreateUploadFolderArgs = {
+    data: UploadFolderInput;
 };
 export declare type MutationCreateUsersPermissionsRoleArgs = {
     data: UsersPermissionsRoleInput;
@@ -686,39 +250,10 @@ export declare type MutationCreateUsersPermissionsRoleArgs = {
 export declare type MutationCreateUsersPermissionsUserArgs = {
     data: UsersPermissionsUserInput;
 };
-export declare type MutationDeleteAreaArgs = {
-    id: Scalars['ID'];
-    locale?: InputMaybe<Scalars['I18NLocaleCode']>;
-};
-export declare type MutationDeleteBillingInfoArgs = {
-    id: Scalars['ID'];
-};
-export declare type MutationDeleteCourseArgs = {
-    id: Scalars['ID'];
-};
-export declare type MutationDeleteEnrollmentArgs = {
-    id: Scalars['ID'];
-};
-export declare type MutationDeletePaymentArgs = {
-    id: Scalars['ID'];
-};
-export declare type MutationDeletePhoneNumberArgs = {
-    id: Scalars['ID'];
-};
-export declare type MutationDeleteToolArgs = {
-    id: Scalars['ID'];
-    locale?: InputMaybe<Scalars['I18NLocaleCode']>;
-};
-export declare type MutationDeleteToolSlotArgs = {
-    id: Scalars['ID'];
-};
-export declare type MutationDeleteToolsBookingArgs = {
-    id: Scalars['ID'];
-};
 export declare type MutationDeleteUploadFileArgs = {
     id: Scalars['ID'];
 };
-export declare type MutationDeleteUserInfoArgs = {
+export declare type MutationDeleteUploadFolderArgs = {
     id: Scalars['ID'];
 };
 export declare type MutationDeleteUsersPermissionsRoleArgs = {
@@ -753,54 +288,16 @@ export declare type MutationResetPasswordArgs = {
     password: Scalars['String'];
     passwordConfirmation: Scalars['String'];
 };
-export declare type MutationUpdateAreaArgs = {
-    data: AreaInput;
-    id: Scalars['ID'];
-    locale?: InputMaybe<Scalars['I18NLocaleCode']>;
-};
-export declare type MutationUpdateBillingInfoArgs = {
-    data: BillingInfoInput;
-    id: Scalars['ID'];
-};
-export declare type MutationUpdateCourseArgs = {
-    data: CourseInput;
-    id: Scalars['ID'];
-};
-export declare type MutationUpdateEnrollmentArgs = {
-    data: EnrollmentInput;
-    id: Scalars['ID'];
-};
 export declare type MutationUpdateFileInfoArgs = {
     id: Scalars['ID'];
     info?: InputMaybe<FileInfoInput>;
-};
-export declare type MutationUpdatePaymentArgs = {
-    data: PaymentInput;
-    id: Scalars['ID'];
-};
-export declare type MutationUpdatePhoneNumberArgs = {
-    data: PhoneNumberInput;
-    id: Scalars['ID'];
-};
-export declare type MutationUpdateToolArgs = {
-    data: ToolInput;
-    id: Scalars['ID'];
-    locale?: InputMaybe<Scalars['I18NLocaleCode']>;
-};
-export declare type MutationUpdateToolSlotArgs = {
-    data: ToolSlotInput;
-    id: Scalars['ID'];
-};
-export declare type MutationUpdateToolsBookingArgs = {
-    data: ToolsBookingInput;
-    id: Scalars['ID'];
 };
 export declare type MutationUpdateUploadFileArgs = {
     data: UploadFileInput;
     id: Scalars['ID'];
 };
-export declare type MutationUpdateUserInfoArgs = {
-    data: UserInfoInput;
+export declare type MutationUpdateUploadFolderArgs = {
+    data: UploadFolderInput;
     id: Scalars['ID'];
 };
 export declare type MutationUpdateUsersPermissionsRoleArgs = {
@@ -831,209 +328,25 @@ export declare type PaginationArg = {
     pageSize?: InputMaybe<Scalars['Int']>;
     start?: InputMaybe<Scalars['Int']>;
 };
-export declare type Payment = {
-    __typename?: 'Payment';
-    billing?: Maybe<BillingInfoEntityResponse>;
-    createdAt?: Maybe<Scalars['DateTime']>;
-    enrollment?: Maybe<EnrollmentEntityResponse>;
-    expiration: Scalars['DateTime'];
-    hash: Scalars['String'];
-    owner?: Maybe<UsersPermissionsUserEntityResponse>;
-    paid: Scalars['Boolean'];
-    updatedAt?: Maybe<Scalars['DateTime']>;
-};
-export declare type PaymentEntity = {
-    __typename?: 'PaymentEntity';
-    attributes?: Maybe<Payment>;
-    id?: Maybe<Scalars['ID']>;
-};
-export declare type PaymentEntityResponse = {
-    __typename?: 'PaymentEntityResponse';
-    data?: Maybe<PaymentEntity>;
-};
-export declare type PaymentEntityResponseCollection = {
-    __typename?: 'PaymentEntityResponseCollection';
-    data: Array<PaymentEntity>;
-    meta: ResponseCollectionMeta;
-};
-export declare type PaymentFiltersInput = {
-    and?: InputMaybe<Array<InputMaybe<PaymentFiltersInput>>>;
-    billing?: InputMaybe<BillingInfoFiltersInput>;
-    confirmCode?: InputMaybe<StringFilterInput>;
-    createdAt?: InputMaybe<DateTimeFilterInput>;
-    enrollment?: InputMaybe<EnrollmentFiltersInput>;
-    expiration?: InputMaybe<DateTimeFilterInput>;
-    hash?: InputMaybe<StringFilterInput>;
-    id?: InputMaybe<IdFilterInput>;
-    not?: InputMaybe<PaymentFiltersInput>;
-    or?: InputMaybe<Array<InputMaybe<PaymentFiltersInput>>>;
-    owner?: InputMaybe<UsersPermissionsUserFiltersInput>;
-    paid?: InputMaybe<BooleanFilterInput>;
-    updatedAt?: InputMaybe<DateTimeFilterInput>;
-};
-export declare type PaymentInput = {
-    billing?: InputMaybe<Scalars['ID']>;
-    confirmCode?: InputMaybe<Scalars['String']>;
-    enrollment?: InputMaybe<Scalars['ID']>;
-    expiration?: InputMaybe<Scalars['DateTime']>;
-    hash?: InputMaybe<Scalars['String']>;
-    owner?: InputMaybe<Scalars['ID']>;
-    paid?: InputMaybe<Scalars['Boolean']>;
-};
-export declare type PaymentRelationResponseCollection = {
-    __typename?: 'PaymentRelationResponseCollection';
-    data: Array<PaymentEntity>;
-};
-export declare type PhoneNumber = {
-    __typename?: 'PhoneNumber';
-    createdAt?: Maybe<Scalars['DateTime']>;
-    number: Scalars['String'];
-    updatedAt?: Maybe<Scalars['DateTime']>;
-};
-export declare type PhoneNumberEntity = {
-    __typename?: 'PhoneNumberEntity';
-    attributes?: Maybe<PhoneNumber>;
-    id?: Maybe<Scalars['ID']>;
-};
-export declare type PhoneNumberEntityResponse = {
-    __typename?: 'PhoneNumberEntityResponse';
-    data?: Maybe<PhoneNumberEntity>;
-};
-export declare type PhoneNumberEntityResponseCollection = {
-    __typename?: 'PhoneNumberEntityResponseCollection';
-    data: Array<PhoneNumberEntity>;
-    meta: ResponseCollectionMeta;
-};
-export declare type PhoneNumberFiltersInput = {
-    and?: InputMaybe<Array<InputMaybe<PhoneNumberFiltersInput>>>;
-    createdAt?: InputMaybe<DateTimeFilterInput>;
-    id?: InputMaybe<IdFilterInput>;
-    not?: InputMaybe<PhoneNumberFiltersInput>;
-    number?: InputMaybe<StringFilterInput>;
-    or?: InputMaybe<Array<InputMaybe<PhoneNumberFiltersInput>>>;
-    updatedAt?: InputMaybe<DateTimeFilterInput>;
-};
-export declare type PhoneNumberInput = {
-    number?: InputMaybe<Scalars['String']>;
-};
-export declare enum PublicationState {
-    Live = "LIVE",
-    Preview = "PREVIEW"
-}
 export declare type Query = {
     __typename?: 'Query';
-    area?: Maybe<AreaEntityResponse>;
-    areas?: Maybe<AreaEntityResponseCollection>;
-    billingInfo?: Maybe<BillingInfoEntityResponse>;
-    billingInfos?: Maybe<BillingInfoEntityResponseCollection>;
-    course?: Maybe<CourseEntityResponse>;
-    courses?: Maybe<CourseEntityResponseCollection>;
-    enrollment?: Maybe<EnrollmentEntityResponse>;
-    enrollments?: Maybe<EnrollmentEntityResponseCollection>;
     i18NLocale?: Maybe<I18NLocaleEntityResponse>;
     i18NLocales?: Maybe<I18NLocaleEntityResponseCollection>;
     me?: Maybe<UsersPermissionsMe>;
-    payment?: Maybe<PaymentEntityResponse>;
-    payments?: Maybe<PaymentEntityResponseCollection>;
-    phoneNumber?: Maybe<PhoneNumberEntityResponse>;
-    phoneNumbers?: Maybe<PhoneNumberEntityResponseCollection>;
-    tool?: Maybe<ToolEntityResponse>;
-    toolSlot?: Maybe<ToolSlotEntityResponse>;
-    toolSlots?: Maybe<ToolSlotEntityResponseCollection>;
-    tools?: Maybe<ToolEntityResponseCollection>;
-    toolsBooking?: Maybe<ToolsBookingEntityResponse>;
-    toolsBookings?: Maybe<ToolsBookingEntityResponseCollection>;
     uploadFile?: Maybe<UploadFileEntityResponse>;
     uploadFiles?: Maybe<UploadFileEntityResponseCollection>;
-    userInfo?: Maybe<UserInfoEntityResponse>;
-    userInfos?: Maybe<UserInfoEntityResponseCollection>;
+    uploadFolder?: Maybe<UploadFolderEntityResponse>;
+    uploadFolders?: Maybe<UploadFolderEntityResponseCollection>;
     usersPermissionsRole?: Maybe<UsersPermissionsRoleEntityResponse>;
     usersPermissionsRoles?: Maybe<UsersPermissionsRoleEntityResponseCollection>;
     usersPermissionsUser?: Maybe<UsersPermissionsUserEntityResponse>;
     usersPermissionsUsers?: Maybe<UsersPermissionsUserEntityResponseCollection>;
-};
-export declare type QueryAreaArgs = {
-    id?: InputMaybe<Scalars['ID']>;
-    locale?: InputMaybe<Scalars['I18NLocaleCode']>;
-};
-export declare type QueryAreasArgs = {
-    filters?: InputMaybe<AreaFiltersInput>;
-    locale?: InputMaybe<Scalars['I18NLocaleCode']>;
-    pagination?: InputMaybe<PaginationArg>;
-    sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-};
-export declare type QueryBillingInfoArgs = {
-    id?: InputMaybe<Scalars['ID']>;
-};
-export declare type QueryBillingInfosArgs = {
-    filters?: InputMaybe<BillingInfoFiltersInput>;
-    pagination?: InputMaybe<PaginationArg>;
-    sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-};
-export declare type QueryCourseArgs = {
-    id?: InputMaybe<Scalars['ID']>;
-};
-export declare type QueryCoursesArgs = {
-    filters?: InputMaybe<CourseFiltersInput>;
-    pagination?: InputMaybe<PaginationArg>;
-    publicationState?: InputMaybe<PublicationState>;
-    sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-};
-export declare type QueryEnrollmentArgs = {
-    id?: InputMaybe<Scalars['ID']>;
-};
-export declare type QueryEnrollmentsArgs = {
-    filters?: InputMaybe<EnrollmentFiltersInput>;
-    pagination?: InputMaybe<PaginationArg>;
-    sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 export declare type QueryI18NLocaleArgs = {
     id?: InputMaybe<Scalars['ID']>;
 };
 export declare type QueryI18NLocalesArgs = {
     filters?: InputMaybe<I18NLocaleFiltersInput>;
-    pagination?: InputMaybe<PaginationArg>;
-    sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-};
-export declare type QueryPaymentArgs = {
-    id?: InputMaybe<Scalars['ID']>;
-};
-export declare type QueryPaymentsArgs = {
-    filters?: InputMaybe<PaymentFiltersInput>;
-    pagination?: InputMaybe<PaginationArg>;
-    sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-};
-export declare type QueryPhoneNumberArgs = {
-    id?: InputMaybe<Scalars['ID']>;
-};
-export declare type QueryPhoneNumbersArgs = {
-    filters?: InputMaybe<PhoneNumberFiltersInput>;
-    pagination?: InputMaybe<PaginationArg>;
-    sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-};
-export declare type QueryToolArgs = {
-    id?: InputMaybe<Scalars['ID']>;
-    locale?: InputMaybe<Scalars['I18NLocaleCode']>;
-};
-export declare type QueryToolSlotArgs = {
-    id?: InputMaybe<Scalars['ID']>;
-};
-export declare type QueryToolSlotsArgs = {
-    filters?: InputMaybe<ToolSlotFiltersInput>;
-    pagination?: InputMaybe<PaginationArg>;
-    sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-};
-export declare type QueryToolsArgs = {
-    filters?: InputMaybe<ToolFiltersInput>;
-    locale?: InputMaybe<Scalars['I18NLocaleCode']>;
-    pagination?: InputMaybe<PaginationArg>;
-    sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-};
-export declare type QueryToolsBookingArgs = {
-    id?: InputMaybe<Scalars['ID']>;
-};
-export declare type QueryToolsBookingsArgs = {
-    filters?: InputMaybe<ToolsBookingFiltersInput>;
     pagination?: InputMaybe<PaginationArg>;
     sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
@@ -1045,11 +358,11 @@ export declare type QueryUploadFilesArgs = {
     pagination?: InputMaybe<PaginationArg>;
     sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
-export declare type QueryUserInfoArgs = {
+export declare type QueryUploadFolderArgs = {
     id?: InputMaybe<Scalars['ID']>;
 };
-export declare type QueryUserInfosArgs = {
-    filters?: InputMaybe<UserInfoFiltersInput>;
+export declare type QueryUploadFoldersArgs = {
+    filters?: InputMaybe<UploadFolderFiltersInput>;
     pagination?: InputMaybe<PaginationArg>;
     sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
@@ -1080,6 +393,7 @@ export declare type StringFilterInput = {
     containsi?: InputMaybe<Scalars['String']>;
     endsWith?: InputMaybe<Scalars['String']>;
     eq?: InputMaybe<Scalars['String']>;
+    eqi?: InputMaybe<Scalars['String']>;
     gt?: InputMaybe<Scalars['String']>;
     gte?: InputMaybe<Scalars['String']>;
     in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
@@ -1094,173 +408,6 @@ export declare type StringFilterInput = {
     null?: InputMaybe<Scalars['Boolean']>;
     or?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
     startsWith?: InputMaybe<Scalars['String']>;
-};
-export declare type TimeFilterInput = {
-    and?: InputMaybe<Array<InputMaybe<Scalars['Time']>>>;
-    between?: InputMaybe<Array<InputMaybe<Scalars['Time']>>>;
-    contains?: InputMaybe<Scalars['Time']>;
-    containsi?: InputMaybe<Scalars['Time']>;
-    endsWith?: InputMaybe<Scalars['Time']>;
-    eq?: InputMaybe<Scalars['Time']>;
-    gt?: InputMaybe<Scalars['Time']>;
-    gte?: InputMaybe<Scalars['Time']>;
-    in?: InputMaybe<Array<InputMaybe<Scalars['Time']>>>;
-    lt?: InputMaybe<Scalars['Time']>;
-    lte?: InputMaybe<Scalars['Time']>;
-    ne?: InputMaybe<Scalars['Time']>;
-    not?: InputMaybe<TimeFilterInput>;
-    notContains?: InputMaybe<Scalars['Time']>;
-    notContainsi?: InputMaybe<Scalars['Time']>;
-    notIn?: InputMaybe<Array<InputMaybe<Scalars['Time']>>>;
-    notNull?: InputMaybe<Scalars['Boolean']>;
-    null?: InputMaybe<Scalars['Boolean']>;
-    or?: InputMaybe<Array<InputMaybe<Scalars['Time']>>>;
-    startsWith?: InputMaybe<Scalars['Time']>;
-};
-export declare type Tool = {
-    __typename?: 'Tool';
-    createdAt?: Maybe<Scalars['DateTime']>;
-    locale?: Maybe<Scalars['String']>;
-    localizations?: Maybe<ToolRelationResponseCollection>;
-    name: Scalars['String'];
-    slots?: Maybe<ToolSlotRelationResponseCollection>;
-    updatedAt?: Maybe<Scalars['DateTime']>;
-};
-export declare type ToolLocalizationsArgs = {
-    filters?: InputMaybe<ToolFiltersInput>;
-    pagination?: InputMaybe<PaginationArg>;
-    sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-};
-export declare type ToolSlotsArgs = {
-    filters?: InputMaybe<ToolSlotFiltersInput>;
-    pagination?: InputMaybe<PaginationArg>;
-    sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-};
-export declare type ToolEntity = {
-    __typename?: 'ToolEntity';
-    attributes?: Maybe<Tool>;
-    id?: Maybe<Scalars['ID']>;
-};
-export declare type ToolEntityResponse = {
-    __typename?: 'ToolEntityResponse';
-    data?: Maybe<ToolEntity>;
-};
-export declare type ToolEntityResponseCollection = {
-    __typename?: 'ToolEntityResponseCollection';
-    data: Array<ToolEntity>;
-    meta: ResponseCollectionMeta;
-};
-export declare type ToolFiltersInput = {
-    and?: InputMaybe<Array<InputMaybe<ToolFiltersInput>>>;
-    createdAt?: InputMaybe<DateTimeFilterInput>;
-    id?: InputMaybe<IdFilterInput>;
-    locale?: InputMaybe<StringFilterInput>;
-    localizations?: InputMaybe<ToolFiltersInput>;
-    name?: InputMaybe<StringFilterInput>;
-    not?: InputMaybe<ToolFiltersInput>;
-    or?: InputMaybe<Array<InputMaybe<ToolFiltersInput>>>;
-    slots?: InputMaybe<ToolSlotFiltersInput>;
-    updatedAt?: InputMaybe<DateTimeFilterInput>;
-};
-export declare type ToolInput = {
-    name?: InputMaybe<Scalars['String']>;
-    slots?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-};
-export declare type ToolRelationResponseCollection = {
-    __typename?: 'ToolRelationResponseCollection';
-    data: Array<ToolEntity>;
-};
-export declare type ToolSlot = {
-    __typename?: 'ToolSlot';
-    booking?: Maybe<ToolsBookingEntityResponse>;
-    createdAt?: Maybe<Scalars['DateTime']>;
-    end: Scalars['DateTime'];
-    start: Scalars['DateTime'];
-    tool?: Maybe<ToolEntityResponse>;
-    type: Enum_Toolslot_Type;
-    updatedAt?: Maybe<Scalars['DateTime']>;
-};
-export declare type ToolSlotEntity = {
-    __typename?: 'ToolSlotEntity';
-    attributes?: Maybe<ToolSlot>;
-    id?: Maybe<Scalars['ID']>;
-};
-export declare type ToolSlotEntityResponse = {
-    __typename?: 'ToolSlotEntityResponse';
-    data?: Maybe<ToolSlotEntity>;
-};
-export declare type ToolSlotEntityResponseCollection = {
-    __typename?: 'ToolSlotEntityResponseCollection';
-    data: Array<ToolSlotEntity>;
-    meta: ResponseCollectionMeta;
-};
-export declare type ToolSlotFiltersInput = {
-    and?: InputMaybe<Array<InputMaybe<ToolSlotFiltersInput>>>;
-    booking?: InputMaybe<ToolsBookingFiltersInput>;
-    createdAt?: InputMaybe<DateTimeFilterInput>;
-    end?: InputMaybe<DateTimeFilterInput>;
-    id?: InputMaybe<IdFilterInput>;
-    not?: InputMaybe<ToolSlotFiltersInput>;
-    or?: InputMaybe<Array<InputMaybe<ToolSlotFiltersInput>>>;
-    start?: InputMaybe<DateTimeFilterInput>;
-    tool?: InputMaybe<ToolFiltersInput>;
-    type?: InputMaybe<StringFilterInput>;
-    updatedAt?: InputMaybe<DateTimeFilterInput>;
-};
-export declare type ToolSlotInput = {
-    booking?: InputMaybe<Scalars['ID']>;
-    end?: InputMaybe<Scalars['DateTime']>;
-    start?: InputMaybe<Scalars['DateTime']>;
-    tool?: InputMaybe<Scalars['ID']>;
-    type?: InputMaybe<Enum_Toolslot_Type>;
-};
-export declare type ToolSlotRelationResponseCollection = {
-    __typename?: 'ToolSlotRelationResponseCollection';
-    data: Array<ToolSlotEntity>;
-};
-export declare type ToolsBooking = {
-    __typename?: 'ToolsBooking';
-    createdAt?: Maybe<Scalars['DateTime']>;
-    owner?: Maybe<UsersPermissionsUserEntityResponse>;
-    slots?: Maybe<ToolSlotRelationResponseCollection>;
-    updatedAt?: Maybe<Scalars['DateTime']>;
-};
-export declare type ToolsBookingSlotsArgs = {
-    filters?: InputMaybe<ToolSlotFiltersInput>;
-    pagination?: InputMaybe<PaginationArg>;
-    sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-};
-export declare type ToolsBookingEntity = {
-    __typename?: 'ToolsBookingEntity';
-    attributes?: Maybe<ToolsBooking>;
-    id?: Maybe<Scalars['ID']>;
-};
-export declare type ToolsBookingEntityResponse = {
-    __typename?: 'ToolsBookingEntityResponse';
-    data?: Maybe<ToolsBookingEntity>;
-};
-export declare type ToolsBookingEntityResponseCollection = {
-    __typename?: 'ToolsBookingEntityResponseCollection';
-    data: Array<ToolsBookingEntity>;
-    meta: ResponseCollectionMeta;
-};
-export declare type ToolsBookingFiltersInput = {
-    and?: InputMaybe<Array<InputMaybe<ToolsBookingFiltersInput>>>;
-    createdAt?: InputMaybe<DateTimeFilterInput>;
-    id?: InputMaybe<IdFilterInput>;
-    not?: InputMaybe<ToolsBookingFiltersInput>;
-    or?: InputMaybe<Array<InputMaybe<ToolsBookingFiltersInput>>>;
-    owner?: InputMaybe<UsersPermissionsUserFiltersInput>;
-    slots?: InputMaybe<ToolSlotFiltersInput>;
-    updatedAt?: InputMaybe<DateTimeFilterInput>;
-};
-export declare type ToolsBookingInput = {
-    owner?: InputMaybe<Scalars['ID']>;
-    slots?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-};
-export declare type ToolsBookingRelationResponseCollection = {
-    __typename?: 'ToolsBookingRelationResponseCollection';
-    data: Array<ToolsBookingEntity>;
 };
 export declare type UploadFile = {
     __typename?: 'UploadFile';
@@ -1302,6 +449,8 @@ export declare type UploadFileFiltersInput = {
     caption?: InputMaybe<StringFilterInput>;
     createdAt?: InputMaybe<DateTimeFilterInput>;
     ext?: InputMaybe<StringFilterInput>;
+    folder?: InputMaybe<UploadFolderFiltersInput>;
+    folderPath?: InputMaybe<StringFilterInput>;
     formats?: InputMaybe<JsonFilterInput>;
     hash?: InputMaybe<StringFilterInput>;
     height?: InputMaybe<IntFilterInput>;
@@ -1322,6 +471,8 @@ export declare type UploadFileInput = {
     alternativeText?: InputMaybe<Scalars['String']>;
     caption?: InputMaybe<Scalars['String']>;
     ext?: InputMaybe<Scalars['String']>;
+    folder?: InputMaybe<Scalars['ID']>;
+    folderPath?: InputMaybe<Scalars['String']>;
     formats?: InputMaybe<Scalars['JSON']>;
     hash?: InputMaybe<Scalars['String']>;
     height?: InputMaybe<Scalars['Int']>;
@@ -1338,61 +489,66 @@ export declare type UploadFileRelationResponseCollection = {
     __typename?: 'UploadFileRelationResponseCollection';
     data: Array<UploadFileEntity>;
 };
-export declare type UserInfo = {
-    __typename?: 'UserInfo';
-    bio?: Maybe<Scalars['String']>;
-    coursesHeld?: Maybe<CourseRelationResponseCollection>;
+export declare type UploadFolder = {
+    __typename?: 'UploadFolder';
+    children?: Maybe<UploadFolderRelationResponseCollection>;
     createdAt?: Maybe<Scalars['DateTime']>;
-    name?: Maybe<Scalars['String']>;
-    owner?: Maybe<UsersPermissionsUserEntityResponse>;
-    picture?: Maybe<UploadFileEntityResponse>;
-    surname?: Maybe<Scalars['String']>;
+    files?: Maybe<UploadFileRelationResponseCollection>;
+    name: Scalars['String'];
+    parent?: Maybe<UploadFolderEntityResponse>;
+    path: Scalars['String'];
+    pathId: Scalars['Int'];
     updatedAt?: Maybe<Scalars['DateTime']>;
 };
-export declare type UserInfoCoursesHeldArgs = {
-    filters?: InputMaybe<CourseFiltersInput>;
+export declare type UploadFolderChildrenArgs = {
+    filters?: InputMaybe<UploadFolderFiltersInput>;
     pagination?: InputMaybe<PaginationArg>;
-    publicationState?: InputMaybe<PublicationState>;
     sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
-export declare type UserInfoEntity = {
-    __typename?: 'UserInfoEntity';
-    attributes?: Maybe<UserInfo>;
+export declare type UploadFolderFilesArgs = {
+    filters?: InputMaybe<UploadFileFiltersInput>;
+    pagination?: InputMaybe<PaginationArg>;
+    sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+export declare type UploadFolderEntity = {
+    __typename?: 'UploadFolderEntity';
+    attributes?: Maybe<UploadFolder>;
     id?: Maybe<Scalars['ID']>;
 };
-export declare type UserInfoEntityResponse = {
-    __typename?: 'UserInfoEntityResponse';
-    data?: Maybe<UserInfoEntity>;
+export declare type UploadFolderEntityResponse = {
+    __typename?: 'UploadFolderEntityResponse';
+    data?: Maybe<UploadFolderEntity>;
 };
-export declare type UserInfoEntityResponseCollection = {
-    __typename?: 'UserInfoEntityResponseCollection';
-    data: Array<UserInfoEntity>;
+export declare type UploadFolderEntityResponseCollection = {
+    __typename?: 'UploadFolderEntityResponseCollection';
+    data: Array<UploadFolderEntity>;
     meta: ResponseCollectionMeta;
 };
-export declare type UserInfoFiltersInput = {
-    and?: InputMaybe<Array<InputMaybe<UserInfoFiltersInput>>>;
-    bio?: InputMaybe<StringFilterInput>;
-    coursesHeld?: InputMaybe<CourseFiltersInput>;
+export declare type UploadFolderFiltersInput = {
+    and?: InputMaybe<Array<InputMaybe<UploadFolderFiltersInput>>>;
+    children?: InputMaybe<UploadFolderFiltersInput>;
     createdAt?: InputMaybe<DateTimeFilterInput>;
+    files?: InputMaybe<UploadFileFiltersInput>;
     id?: InputMaybe<IdFilterInput>;
     name?: InputMaybe<StringFilterInput>;
-    not?: InputMaybe<UserInfoFiltersInput>;
-    or?: InputMaybe<Array<InputMaybe<UserInfoFiltersInput>>>;
-    owner?: InputMaybe<UsersPermissionsUserFiltersInput>;
-    surname?: InputMaybe<StringFilterInput>;
+    not?: InputMaybe<UploadFolderFiltersInput>;
+    or?: InputMaybe<Array<InputMaybe<UploadFolderFiltersInput>>>;
+    parent?: InputMaybe<UploadFolderFiltersInput>;
+    path?: InputMaybe<StringFilterInput>;
+    pathId?: InputMaybe<IntFilterInput>;
     updatedAt?: InputMaybe<DateTimeFilterInput>;
 };
-export declare type UserInfoInput = {
-    bio?: InputMaybe<Scalars['String']>;
-    coursesHeld?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+export declare type UploadFolderInput = {
+    children?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+    files?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
     name?: InputMaybe<Scalars['String']>;
-    owner?: InputMaybe<Scalars['ID']>;
-    picture?: InputMaybe<Scalars['ID']>;
-    surname?: InputMaybe<Scalars['String']>;
+    parent?: InputMaybe<Scalars['ID']>;
+    path?: InputMaybe<Scalars['String']>;
+    pathId?: InputMaybe<Scalars['Int']>;
 };
-export declare type UserInfoRelationResponseCollection = {
-    __typename?: 'UserInfoRelationResponseCollection';
-    data: Array<UserInfoEntity>;
+export declare type UploadFolderRelationResponseCollection = {
+    __typename?: 'UploadFolderRelationResponseCollection';
+    data: Array<UploadFolderEntity>;
 };
 export declare type UsersPermissionsCreateRolePayload = {
     __typename?: 'UsersPermissionsCreateRolePayload';
@@ -1527,29 +683,10 @@ export declare type UsersPermissionsUser = {
     confirmed?: Maybe<Scalars['Boolean']>;
     createdAt?: Maybe<Scalars['DateTime']>;
     email: Scalars['String'];
-    enrollments?: Maybe<EnrollmentRelationResponseCollection>;
-    payments?: Maybe<PaymentRelationResponseCollection>;
     provider?: Maybe<Scalars['String']>;
     role?: Maybe<UsersPermissionsRoleEntityResponse>;
-    tools_bookings?: Maybe<ToolsBookingRelationResponseCollection>;
     updatedAt?: Maybe<Scalars['DateTime']>;
-    userInfo?: Maybe<UserInfoEntityResponse>;
     username: Scalars['String'];
-};
-export declare type UsersPermissionsUserEnrollmentsArgs = {
-    filters?: InputMaybe<EnrollmentFiltersInput>;
-    pagination?: InputMaybe<PaginationArg>;
-    sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-};
-export declare type UsersPermissionsUserPaymentsArgs = {
-    filters?: InputMaybe<PaymentFiltersInput>;
-    pagination?: InputMaybe<PaginationArg>;
-    sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-};
-export declare type UsersPermissionsUserTools_BookingsArgs = {
-    filters?: InputMaybe<ToolsBookingFiltersInput>;
-    pagination?: InputMaybe<PaginationArg>;
-    sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 export declare type UsersPermissionsUserEntity = {
     __typename?: 'UsersPermissionsUserEntity';
@@ -1572,18 +709,14 @@ export declare type UsersPermissionsUserFiltersInput = {
     confirmed?: InputMaybe<BooleanFilterInput>;
     createdAt?: InputMaybe<DateTimeFilterInput>;
     email?: InputMaybe<StringFilterInput>;
-    enrollments?: InputMaybe<EnrollmentFiltersInput>;
     id?: InputMaybe<IdFilterInput>;
     not?: InputMaybe<UsersPermissionsUserFiltersInput>;
     or?: InputMaybe<Array<InputMaybe<UsersPermissionsUserFiltersInput>>>;
     password?: InputMaybe<StringFilterInput>;
-    payments?: InputMaybe<PaymentFiltersInput>;
     provider?: InputMaybe<StringFilterInput>;
     resetPasswordToken?: InputMaybe<StringFilterInput>;
     role?: InputMaybe<UsersPermissionsRoleFiltersInput>;
-    tools_bookings?: InputMaybe<ToolsBookingFiltersInput>;
     updatedAt?: InputMaybe<DateTimeFilterInput>;
-    userInfo?: InputMaybe<UserInfoFiltersInput>;
     username?: InputMaybe<StringFilterInput>;
 };
 export declare type UsersPermissionsUserInput = {
@@ -1591,44 +724,13 @@ export declare type UsersPermissionsUserInput = {
     confirmationToken?: InputMaybe<Scalars['String']>;
     confirmed?: InputMaybe<Scalars['Boolean']>;
     email?: InputMaybe<Scalars['String']>;
-    enrollments?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
     password?: InputMaybe<Scalars['String']>;
-    payments?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
     provider?: InputMaybe<Scalars['String']>;
     resetPasswordToken?: InputMaybe<Scalars['String']>;
     role?: InputMaybe<Scalars['ID']>;
-    tools_bookings?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-    userInfo?: InputMaybe<Scalars['ID']>;
     username?: InputMaybe<Scalars['String']>;
 };
 export declare type UsersPermissionsUserRelationResponseCollection = {
     __typename?: 'UsersPermissionsUserRelationResponseCollection';
     data: Array<UsersPermissionsUserEntity>;
-};
-export declare type GetCoursePageBySlugQueryVariables = Exact<{
-    slug: Scalars['String'];
-}>;
-export declare type GetCoursePageBySlugQuery = {
-    __typename?: 'Query';
-    courses?: {
-        __typename?: 'CourseEntityResponseCollection';
-        data: Array<{
-            __typename?: 'CourseEntity';
-            attributes?: {
-                __typename?: 'Course';
-                title: string;
-                description?: string | null;
-                slug?: string | null;
-                meetings?: Array<{
-                    __typename?: 'ComponentTimeMeeting';
-                    date?: any | null;
-                    timeSlots?: Array<{
-                        __typename?: 'ComponentTimeTimeSlot';
-                        startTime?: any | null;
-                        endTime?: any | null;
-                    } | null> | null;
-                } | null> | null;
-            } | null;
-        }>;
-    } | null;
 };
