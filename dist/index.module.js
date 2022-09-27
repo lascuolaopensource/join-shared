@@ -133,9 +133,23 @@ var Create;
   }).required();
 })(Create || (Create = {}));
 
+var UserExists;
+
+(function (UserExists) {
+  UserExists.path = "/account/user-exists";
+  UserExists.method = HTTPMethod.POST;
+  UserExists.values = {
+    email: ""
+  };
+  UserExists.schema = yup.object({
+    email: Schemas.email.required()
+  }).required();
+})(UserExists || (UserExists = {}));
+
 var index$1 = {
 	__proto__: null,
-	get Create () { return Create; }
+	get Create () { return Create; },
+	get UserExists () { return UserExists; }
 };
 
 var index = {
