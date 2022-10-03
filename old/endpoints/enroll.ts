@@ -12,11 +12,16 @@ setYupDefaultMessages();
  * Contacts
  */
 
-export const ContactsValues = {
-	exists: false,
+// 'NU' stands for 'New User'
+export const ContactsValuesNU = {
 	email: "",
 	name: "",
 	surname: "",
+	phone: "",
+};
+
+// 'OU' stands for 'Old User'
+export const ContactsValuesOU = {
 	phone: "",
 };
 
