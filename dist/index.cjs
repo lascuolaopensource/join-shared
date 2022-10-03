@@ -115,6 +115,22 @@ var index$4 = {
 	get Schemas () { return Schemas; }
 };
 
+var Enum_Enrollment_State;
+
+(function (Enum_Enrollment_State) {
+  Enum_Enrollment_State["Approved"] = "approved";
+  Enum_Enrollment_State["AwaitingPayment"] = "awaitingPayment";
+  Enum_Enrollment_State["Pending"] = "pending";
+  Enum_Enrollment_State["Rejected"] = "rejected";
+})(Enum_Enrollment_State || (Enum_Enrollment_State = {}));
+
+var PublicationState;
+
+(function (PublicationState) {
+  PublicationState["Live"] = "LIVE";
+  PublicationState["Preview"] = "PREVIEW";
+})(PublicationState || (PublicationState = {}));
+
 var HTTPMethod;
 
 (function (HTTPMethod) {
@@ -131,7 +147,9 @@ var HTTPMethod;
 
 var index$3 = {
 	__proto__: null,
-	get HTTPMethod () { return HTTPMethod; }
+	get HTTPMethod () { return HTTPMethod; },
+	get Enum_Enrollment_State () { return Enum_Enrollment_State; },
+	get PublicationState () { return PublicationState; }
 };
 
 var Create;
