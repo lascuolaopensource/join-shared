@@ -1,16 +1,5 @@
-import { Course, Enrollment } from "../types";
-export declare function getStartDate(c: Course): string;
-export declare function getEndDate(c: Course): string;
-export declare function isPaymentNeeded(c: Course): boolean;
-export declare function isEvaluationNeeded(c: Course): boolean;
-export declare function isErollmentTime(c: Course): boolean;
-export declare function isCourseTime(c: Course): boolean;
-export declare function isEvaluationTime(c: Course): boolean;
-export declare function areMinEnrollsReached(c: Course, e: Array<Enrollment>): boolean;
-export declare function areMaxEnrollsExceeded(c: Course, e: Array<Enrollment>): boolean;
-export declare function countEnrollsApproved(a: Array<Enrollment>): number;
-export declare function areMinEnrollsApproved(c: Course, e: Array<Enrollment>): boolean;
-export declare function canStart(c: Course, e: Array<Enrollment>): boolean;
-export declare function cannotStart(c: Course, e: Array<Enrollment>): boolean;
-export declare function isActive(c: Course, e: Array<Enrollment>): boolean;
-export declare function isNotActivated(c: Course, e: Array<Enrollment>): boolean;
+import { Course as ICourse } from "$types";
+import { Evaluation } from "$routes";
+export declare namespace Course {
+    function getSchemaCtx(c: ICourse): Evaluation.ISchemaCtx;
+}

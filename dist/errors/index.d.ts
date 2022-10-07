@@ -3,4 +3,5 @@ export declare const errors: {
         noSchemaInConfig: string;
         bodyNotValid: string;
     };
+    courseNotFound: string;
 };

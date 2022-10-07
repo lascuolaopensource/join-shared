@@ -3,6 +3,7 @@ export const errors = {
 		noSchemaInConfig: "noSchemaInConfig",
 		bodyNotValid: "bodyNotValid",
 	},
+	courseNotFound: "courseNotFound",
 	// AlreadyEnrolled: "AlreadyEnrolled",
 	// BadPolicyConfig: "BadPolicyConfig",
 	// DefaultRoleNotFound: "DefaultRoleNotFound",

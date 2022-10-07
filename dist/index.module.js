@@ -89,7 +89,7 @@ var Schemas;
   };
 })(Schemas || (Schemas = {}));
 
-var index$4 = {
+var index$5 = {
 	__proto__: null,
 	get Regex () { return Regex; },
 	get Schemas () { return Schemas; }
@@ -125,7 +125,7 @@ var HTTPMethod;
   HTTPMethod["TRACE"] = "TRACE";
 })(HTTPMethod || (HTTPMethod = {}));
 
-var index$3 = {
+var index$4 = {
 	__proto__: null,
 	get HTTPMethod () { return HTTPMethod; },
 	get Enum_Enrollment_State () { return Enum_Enrollment_State; },
@@ -209,15 +209,15 @@ var Reset;
   }).required();
 })(Reset || (Reset = {}));
 
-var index$2 = {
+var index$3 = {
 	__proto__: null,
 	get Forgot () { return Forgot; },
 	get Reset () { return Reset; }
 };
 
-var index$1 = {
+var index$2 = {
 	__proto__: null,
-	Password: index$2,
+	Password: index$3,
 	get Create () { return Create; },
 	get UserExists () { return UserExists; },
 	get Login () { return Login; }
@@ -314,9 +314,9 @@ var Enroll;
   Enroll.getSchemaCtx = getSchemaCtx;
 })(Enroll || (Enroll = {}));
 
-var index = {
+var index$1 = {
 	__proto__: null,
-	Account: index$1,
+	Account: index$2,
 	get Enroll () { return Enroll; },
 	get Contacts () { return Contacts; },
 	get Evaluation () { return Evaluation; }
@@ -326,7 +326,8 @@ var errors = {
   policies: {
     noSchemaInConfig: "noSchemaInConfig",
     bodyNotValid: "bodyNotValid"
-  } // AlreadyEnrolled: "AlreadyEnrolled",
+  },
+  courseNotFound: "courseNotFound" // AlreadyEnrolled: "AlreadyEnrolled",
   // BadPolicyConfig: "BadPolicyConfig",
   // DefaultRoleNotFound: "DefaultRoleNotFound",
   // EmailSendError: "EmailSendError",
@@ -353,5 +354,24 @@ var errors = {
 
 };
 
-export { errors, index as routes, index$3 as types, index$4 as validation };
+var Course;
+
+(function (Course) {
+  function getSchemaCtx(c) {
+    return {
+      cvNeeded: c.cvNeeded,
+      letterNeeded: c.motivationalLetterNeeded,
+      portfolioNeeded: c.portfolioNeeded
+    };
+  }
+
+  Course.getSchemaCtx = getSchemaCtx;
+})(Course || (Course = {}));
+
+var index = {
+	__proto__: null,
+	get Course () { return Course; }
+};
+
+export { errors, index as helpers, index$1 as routes, index$4 as types, index$5 as validation };
 //# sourceMappingURL=index.module.js.map

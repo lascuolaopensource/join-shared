@@ -112,7 +112,7 @@
 	  };
 	})(Schemas || (Schemas = {}));
 
-	var index$4 = {
+	var index$5 = {
 		__proto__: null,
 		get Regex () { return Regex; },
 		get Schemas () { return Schemas; }
@@ -148,7 +148,7 @@
 	  HTTPMethod["TRACE"] = "TRACE";
 	})(HTTPMethod || (HTTPMethod = {}));
 
-	var index$3 = {
+	var index$4 = {
 		__proto__: null,
 		get HTTPMethod () { return HTTPMethod; },
 		get Enum_Enrollment_State () { return Enum_Enrollment_State; },
@@ -232,15 +232,15 @@
 	  }).required();
 	})(Reset || (Reset = {}));
 
-	var index$2 = {
+	var index$3 = {
 		__proto__: null,
 		get Forgot () { return Forgot; },
 		get Reset () { return Reset; }
 	};
 
-	var index$1 = {
+	var index$2 = {
 		__proto__: null,
-		Password: index$2,
+		Password: index$3,
 		get Create () { return Create; },
 		get UserExists () { return UserExists; },
 		get Login () { return Login; }
@@ -337,9 +337,9 @@
 	  Enroll.getSchemaCtx = getSchemaCtx;
 	})(Enroll || (Enroll = {}));
 
-	var index = {
+	var index$1 = {
 		__proto__: null,
-		Account: index$1,
+		Account: index$2,
 		get Enroll () { return Enroll; },
 		get Contacts () { return Contacts; },
 		get Evaluation () { return Evaluation; }
@@ -349,7 +349,8 @@
 	  policies: {
 	    noSchemaInConfig: "noSchemaInConfig",
 	    bodyNotValid: "bodyNotValid"
-	  } // AlreadyEnrolled: "AlreadyEnrolled",
+	  },
+	  courseNotFound: "courseNotFound" // AlreadyEnrolled: "AlreadyEnrolled",
 	  // BadPolicyConfig: "BadPolicyConfig",
 	  // DefaultRoleNotFound: "DefaultRoleNotFound",
 	  // EmailSendError: "EmailSendError",
@@ -376,10 +377,30 @@
 
 	};
 
+	var Course;
+
+	(function (Course) {
+	  function getSchemaCtx(c) {
+	    return {
+	      cvNeeded: c.cvNeeded,
+	      letterNeeded: c.motivationalLetterNeeded,
+	      portfolioNeeded: c.portfolioNeeded
+	    };
+	  }
+
+	  Course.getSchemaCtx = getSchemaCtx;
+	})(Course || (Course = {}));
+
+	var index = {
+		__proto__: null,
+		get Course () { return Course; }
+	};
+
 	exports.errors = errors;
-	exports.routes = index;
-	exports.types = index$3;
-	exports.validation = index$4;
+	exports.helpers = index;
+	exports.routes = index$1;
+	exports.types = index$4;
+	exports.validation = index$5;
 
 }));
 //# sourceMappingURL=index.umd.js.map
