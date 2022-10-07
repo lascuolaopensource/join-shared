@@ -328,7 +328,8 @@ var errors = {
     bodyNotValid: "bodyNotValid"
   },
   missingCourseId: "missingCourseId",
-  courseNotFound: "courseNotFound" // AlreadyEnrolled: "AlreadyEnrolled",
+  courseNotFound: "courseNotFound",
+  userAlreadyExisting: "userAlreadyExisting" // AlreadyEnrolled: "AlreadyEnrolled",
   // BadPolicyConfig: "BadPolicyConfig",
   // DefaultRoleNotFound: "DefaultRoleNotFound",
   // EmailSendError: "EmailSendError",

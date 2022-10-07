@@ -5,6 +5,7 @@ export const errors = {
 	},
 	missingCourseId: "missingCourseId",
 	courseNotFound: "courseNotFound",
+	userAlreadyExisting: "userAlreadyExisting",
 	// AlreadyEnrolled: "AlreadyEnrolled",
 	// BadPolicyConfig: "BadPolicyConfig",
 	// DefaultRoleNotFound: "DefaultRoleNotFound",
