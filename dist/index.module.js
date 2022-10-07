@@ -327,6 +327,7 @@ var errors = {
     noSchemaInConfig: "noSchemaInConfig",
     bodyNotValid: "bodyNotValid"
   },
+  missingCourseId: "missingCourseId",
   courseNotFound: "courseNotFound" // AlreadyEnrolled: "AlreadyEnrolled",
   // BadPolicyConfig: "BadPolicyConfig",
   // DefaultRoleNotFound: "DefaultRoleNotFound",
