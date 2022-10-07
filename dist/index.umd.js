@@ -381,7 +381,7 @@
 	var Course;
 
 	(function (Course) {
-	  function getSchemaCtx(c) {
+	  function getEvaluationSchemaCtx(c) {
 	    return {
 	      cvNeeded: c.cvNeeded,
 	      letterNeeded: c.motivationalLetterNeeded,
@@ -389,7 +389,7 @@
 	    };
 	  }
 
-	  Course.getSchemaCtx = getSchemaCtx;
+	  Course.getEvaluationSchemaCtx = getEvaluationSchemaCtx;
 	})(Course || (Course = {}));
 
 	var index = {
