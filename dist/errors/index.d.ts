@@ -5,5 +5,5 @@ export declare const errors: {
     };
     missingCourseId: string;
     courseNotFound: string;
-    userAlreadyExisting: string;
+    emailAlreadyExisting: string;
 };

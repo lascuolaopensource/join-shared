@@ -329,7 +329,7 @@ var errors = {
   },
   missingCourseId: "missingCourseId",
   courseNotFound: "courseNotFound",
-  userAlreadyExisting: "userAlreadyExisting" // AlreadyEnrolled: "AlreadyEnrolled",
+  emailAlreadyExisting: "emailAlreadyExisting" // AlreadyEnrolled: "AlreadyEnrolled",
   // BadPolicyConfig: "BadPolicyConfig",
   // DefaultRoleNotFound: "DefaultRoleNotFound",
   // EmailSendError: "EmailSendError",
