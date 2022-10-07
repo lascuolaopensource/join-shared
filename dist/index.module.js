@@ -303,8 +303,8 @@ var Enroll;
   };
   Enroll.schema = yup.object({
     courseId: yup.string().required(),
-    contacts: Contacts.schema,
-    evaluation: Evaluation.schema
+    contacts: Contacts.schema.required(),
+    evaluation: Evaluation.schema.required()
   });
 
   function getSchemaCtx(userExists, letterNeeded, portfolioNeeded, cvNeeded) {

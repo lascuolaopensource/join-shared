@@ -20,8 +20,8 @@ export namespace Enroll {
 
 	export const schema = yup.object<Shape<Req>>({
 		courseId: yup.string().required(),
-		contacts: Contacts.schema,
-		evaluation: Evaluation.schema,
+		contacts: Contacts.schema.required(),
+		evaluation: Evaluation.schema.required(),
 	});
 
 	export type Res = {

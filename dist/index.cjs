@@ -323,8 +323,8 @@ var Enroll;
   };
   Enroll.schema = yup__namespace.object({
     courseId: yup__namespace.string().required(),
-    contacts: Contacts.schema,
-    evaluation: Evaluation.schema
+    contacts: Contacts.schema.required(),
+    evaluation: Evaluation.schema.required()
   });
 
   function getSchemaCtx(userExists, letterNeeded, portfolioNeeded, cvNeeded) {
