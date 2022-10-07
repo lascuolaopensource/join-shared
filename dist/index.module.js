@@ -89,7 +89,7 @@ var Schemas;
   };
 })(Schemas || (Schemas = {}));
 
-var index$4 = {
+var index$5 = {
 	__proto__: null,
 	get Regex () { return Regex; },
 	get Schemas () { return Schemas; }
@@ -125,7 +125,7 @@ var HTTPMethod;
   HTTPMethod["TRACE"] = "TRACE";
 })(HTTPMethod || (HTTPMethod = {}));
 
-var index$3 = {
+var index$4 = {
 	__proto__: null,
 	get HTTPMethod () { return HTTPMethod; },
 	get Enum_Enrollment_State () { return Enum_Enrollment_State; },
@@ -209,23 +209,122 @@ var Reset;
   }).required();
 })(Reset || (Reset = {}));
 
-var index$2 = {
+var index$3 = {
 	__proto__: null,
 	get Forgot () { return Forgot; },
 	get Reset () { return Reset; }
 };
 
-var index$1 = {
+var index$2 = {
 	__proto__: null,
-	Password: index$2,
+	Password: index$3,
 	get Create () { return Create; },
 	get UserExists () { return UserExists; },
 	get Login () { return Login; }
 };
 
+function _extends() {
+  _extends = Object.assign ? Object.assign.bind() : function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+
+    return target;
+  };
+  return _extends.apply(this, arguments);
+}
+
+var Contacts;
+
+(function (Contacts) {
+  Contacts.values = {
+    email: "",
+    name: "",
+    surname: "",
+    phone: ""
+  };
+  var USER_EXISTS = "$userExists";
+  Contacts.schema = yup.object({
+    email: yup.string().email().when(USER_EXISTS, Schemas.thenReq(false)),
+    name: yup.string().when(USER_EXISTS, Schemas.thenReq(false)),
+    surname: yup.string().when(USER_EXISTS, Schemas.thenReq(false)),
+    phone: Schemas.phone.required()
+  });
+
+  function getSchemaCtx(userExists) {
+    return {
+      userExists: userExists
+    };
+  }
+
+  Contacts.getSchemaCtx = getSchemaCtx;
+})(Contacts || (Contacts = {}));
+
+var Evaluation;
+
+(function (Evaluation) {
+  Evaluation.values = {
+    letter: "",
+    portfolio: "",
+    cv: ""
+  };
+  Evaluation.schema = yup.object({
+    letter: yup.string().when("$letterNeeded", Schemas.thenReq(true)),
+    portfolio: yup.string().when("$portfolioNeeded", Schemas.thenUrlReq(true)),
+    cv: yup.string().when("$cvNeeded", Schemas.thenUrlReq(true))
+  });
+
+  function getSchemaCtx(letterNeeded, portfolioNeeded, cvNeeded) {
+    return {
+      letterNeeded: letterNeeded,
+      portfolioNeeded: portfolioNeeded,
+      cvNeeded: cvNeeded
+    };
+  }
+
+  Evaluation.getSchemaCtx = getSchemaCtx;
+})(Evaluation || (Evaluation = {}));
+
+var index$1 = {
+	__proto__: null,
+	get Contacts () { return Contacts; },
+	get Evaluation () { return Evaluation; }
+};
+
+var Enroll;
+
+(function (Enroll) {
+  Enroll.path = "/enroll";
+  Enroll.method = HTTPMethod.POST;
+  Enroll.values = {
+    courseId: "",
+    contacts: Contacts.values,
+    evaluation: Evaluation.values
+  };
+  Enroll.schema = yup.object({
+    courseId: yup.string().required(),
+    contacts: Contacts.schema,
+    evaluation: Evaluation.schema
+  });
+
+  function getSchemaCtx(userExists, letterNeeded, portfolioNeeded, cvNeeded) {
+    return _extends({}, Contacts.getSchemaCtx(userExists), Evaluation.getSchemaCtx(letterNeeded, portfolioNeeded, cvNeeded));
+  }
+
+  Enroll.getSchemaCtx = getSchemaCtx;
+})(Enroll || (Enroll = {}));
+
 var index = {
 	__proto__: null,
-	Account: index$1
+	Account: index$2,
+	Utils: index$1,
+	get Enroll () { return Enroll; }
 };
 
 var errors = {
@@ -259,5 +358,5 @@ var errors = {
 
 };
 
-export { errors, index as routes, index$3 as types, index$4 as validation };
+export { errors, index as routes, index$4 as types, index$5 as validation };
 //# sourceMappingURL=index.module.js.map
