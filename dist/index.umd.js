@@ -112,7 +112,7 @@
 	  };
 	})(Schemas || (Schemas = {}));
 
-	var index$5 = {
+	var index$4 = {
 		__proto__: null,
 		get Regex () { return Regex; },
 		get Schemas () { return Schemas; }
@@ -148,7 +148,7 @@
 	  HTTPMethod["TRACE"] = "TRACE";
 	})(HTTPMethod || (HTTPMethod = {}));
 
-	var index$4 = {
+	var index$3 = {
 		__proto__: null,
 		get HTTPMethod () { return HTTPMethod; },
 		get Enum_Enrollment_State () { return Enum_Enrollment_State; },
@@ -232,15 +232,15 @@
 	  }).required();
 	})(Reset || (Reset = {}));
 
-	var index$3 = {
+	var index$2 = {
 		__proto__: null,
 		get Forgot () { return Forgot; },
 		get Reset () { return Reset; }
 	};
 
-	var index$2 = {
+	var index$1 = {
 		__proto__: null,
-		Password: index$3,
+		Password: index$2,
 		get Create () { return Create; },
 		get UserExists () { return UserExists; },
 		get Login () { return Login; }
@@ -314,12 +314,6 @@
 	  Evaluation.getSchemaCtx = getSchemaCtx;
 	})(Evaluation || (Evaluation = {}));
 
-	var index$1 = {
-		__proto__: null,
-		get Contacts () { return Contacts; },
-		get Evaluation () { return Evaluation; }
-	};
-
 	var Enroll;
 
 	(function (Enroll) {
@@ -345,9 +339,10 @@
 
 	var index = {
 		__proto__: null,
-		Account: index$2,
-		Utils: index$1,
-		get Enroll () { return Enroll; }
+		Account: index$1,
+		get Enroll () { return Enroll; },
+		get Contacts () { return Contacts; },
+		get Evaluation () { return Evaluation; }
 	};
 
 	var errors = {
@@ -383,8 +378,8 @@
 
 	exports.errors = errors;
 	exports.routes = index;
-	exports.types = index$4;
-	exports.validation = index$5;
+	exports.types = index$3;
+	exports.validation = index$4;
 
 }));
 //# sourceMappingURL=index.umd.js.map

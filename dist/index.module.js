@@ -89,7 +89,7 @@ var Schemas;
   };
 })(Schemas || (Schemas = {}));
 
-var index$5 = {
+var index$4 = {
 	__proto__: null,
 	get Regex () { return Regex; },
 	get Schemas () { return Schemas; }
@@ -125,7 +125,7 @@ var HTTPMethod;
   HTTPMethod["TRACE"] = "TRACE";
 })(HTTPMethod || (HTTPMethod = {}));
 
-var index$4 = {
+var index$3 = {
 	__proto__: null,
 	get HTTPMethod () { return HTTPMethod; },
 	get Enum_Enrollment_State () { return Enum_Enrollment_State; },
@@ -209,15 +209,15 @@ var Reset;
   }).required();
 })(Reset || (Reset = {}));
 
-var index$3 = {
+var index$2 = {
 	__proto__: null,
 	get Forgot () { return Forgot; },
 	get Reset () { return Reset; }
 };
 
-var index$2 = {
+var index$1 = {
 	__proto__: null,
-	Password: index$3,
+	Password: index$2,
 	get Create () { return Create; },
 	get UserExists () { return UserExists; },
 	get Login () { return Login; }
@@ -291,12 +291,6 @@ var Evaluation;
   Evaluation.getSchemaCtx = getSchemaCtx;
 })(Evaluation || (Evaluation = {}));
 
-var index$1 = {
-	__proto__: null,
-	get Contacts () { return Contacts; },
-	get Evaluation () { return Evaluation; }
-};
-
 var Enroll;
 
 (function (Enroll) {
@@ -322,9 +316,10 @@ var Enroll;
 
 var index = {
 	__proto__: null,
-	Account: index$2,
-	Utils: index$1,
-	get Enroll () { return Enroll; }
+	Account: index$1,
+	get Enroll () { return Enroll; },
+	get Contacts () { return Contacts; },
+	get Evaluation () { return Evaluation; }
 };
 
 var errors = {
@@ -358,5 +353,5 @@ var errors = {
 
 };
 
-export { errors, index as routes, index$4 as types, index$5 as validation };
+export { errors, index as routes, index$3 as types, index$4 as validation };
 //# sourceMappingURL=index.module.js.map
