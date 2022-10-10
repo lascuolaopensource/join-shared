@@ -8,6 +8,7 @@ export declare const errors: {
     emailAlreadyExisting: string;
     alreadyEnrolled: string;
     pastDeadline: string;
+    userNotCreated: string;
     badPolicyConfig: string;
     defaultRoleNotFound: string;
     emailSendError: string;

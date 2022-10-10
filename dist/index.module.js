@@ -332,6 +332,7 @@ var errors = {
   emailAlreadyExisting: "emailAlreadyExisting",
   alreadyEnrolled: "alreadyEnrolled",
   pastDeadline: "pastDeadline",
+  userNotCreated: "userNotCreated",
   //
   badPolicyConfig: "badPolicyConfig",
   defaultRoleNotFound: "defaultRoleNotFound",
