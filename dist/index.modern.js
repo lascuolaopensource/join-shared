@@ -353,6 +353,12 @@ var Course;
   }
 
   Course.getEvaluationSchemaCtx = getEvaluationSchemaCtx;
+
+  function isPaymentNeeded(c) {
+    return c.price > 0;
+  }
+
+  Course.isPaymentNeeded = isPaymentNeeded;
 })(Course || (Course = {}));
 
 var index = {

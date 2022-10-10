@@ -9,4 +9,8 @@ export namespace Course {
 			portfolioNeeded: c.portfolioNeeded,
 		};
 	}
+
+	export function isPaymentNeeded(c: ICourse): boolean {
+		return c.price > 0;
+	}
 }
