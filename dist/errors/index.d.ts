@@ -7,6 +7,7 @@ export declare const errors: {
     courseNotFound: string;
     emailAlreadyExisting: string;
     alreadyEnrolled: string;
+    pastDeadline: string;
     badPolicyConfig: string;
     defaultRoleNotFound: string;
     emailSendError: string;

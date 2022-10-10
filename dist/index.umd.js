@@ -354,6 +354,8 @@
 	  courseNotFound: "courseNotFound",
 	  emailAlreadyExisting: "emailAlreadyExisting",
 	  alreadyEnrolled: "alreadyEnrolled",
+	  pastDeadline: "pastDeadline",
+	  //
 	  badPolicyConfig: "badPolicyConfig",
 	  defaultRoleNotFound: "defaultRoleNotFound",
 	  emailSendError: "emailSendError",
