@@ -11,7 +11,7 @@ export declare namespace Enroll {
     const values: Req;
     const schema: import("yup/lib/object").OptionalObjectSchema<Shape<Req>, import("yup/lib/object").AnyObject, import("yup/lib/object").TypeOfShape<Shape<Req>>>;
     type Res = {
-        paymentId: string | null;
+        paymentUID: string | null;
     };
     function getSchemaCtx(userExists: boolean, letterNeeded: boolean, portfolioNeeded: boolean, cvNeeded: boolean): ISchemaCtx;
     interface ISchemaCtx extends Contacts.ISchemaCtx, Evaluation.ISchemaCtx {

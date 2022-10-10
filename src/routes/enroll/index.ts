@@ -25,7 +25,7 @@ export namespace Enroll {
 	});
 
 	export type Res = {
-		paymentId: string | null;
+		paymentUID: string | null;
 	};
 
 	export function getSchemaCtx(
