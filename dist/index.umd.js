@@ -112,7 +112,7 @@
 	  };
 	})(Schemas || (Schemas = {}));
 
-	var index$5 = {
+	var index$6 = {
 		__proto__: null,
 		get Regex () { return Regex; },
 		get Schemas () { return Schemas; }
@@ -148,7 +148,7 @@
 	  HTTPMethod["TRACE"] = "TRACE";
 	})(HTTPMethod || (HTTPMethod = {}));
 
-	var index$4 = {
+	var index$5 = {
 		__proto__: null,
 		get HTTPMethod () { return HTTPMethod; },
 		get Enum_Enrollment_State () { return Enum_Enrollment_State; },
@@ -232,15 +232,15 @@
 	  }).required();
 	})(Reset || (Reset = {}));
 
-	var index$3 = {
+	var index$4 = {
 		__proto__: null,
 		get Forgot () { return Forgot; },
 		get Reset () { return Reset; }
 	};
 
-	var index$2 = {
+	var index$3 = {
 		__proto__: null,
-		Password: index$3,
+		Password: index$4,
 		get Create () { return Create; },
 		get UserExists () { return UserExists; },
 		get Login () { return Login; }
@@ -337,9 +337,9 @@
 	  Enroll.getSchemaCtx = getSchemaCtx;
 	})(Enroll || (Enroll = {}));
 
-	var index$1 = {
+	var index$2 = {
 		__proto__: null,
-		Account: index$2,
+		Account: index$3,
 		get Enroll () { return Enroll; },
 		get Contacts () { return Contacts; },
 		get Evaluation () { return Evaluation; }
@@ -402,16 +402,50 @@
 	  Course.isPaymentNeeded = isPaymentNeeded;
 	})(Course || (Course = {}));
 
-	var index = {
+	var index$1 = {
 		__proto__: null,
 		get Course () { return Course; }
 	};
 
+	var formatPriceNumber = function formatPriceNumber(price, locale, currency) {
+	  if (locale === void 0) {
+	    locale = "IT-it";
+	  }
+
+	  if (currency === void 0) {
+	    currency = "EUR";
+	  }
+
+	  var formatter = new Intl.NumberFormat(locale, {
+	    style: "currency",
+	    currency: currency
+	  });
+	  return formatter.format(price);
+	};
+	function formatDate(date, locale) {
+	  if (locale === void 0) {
+	    locale = "IT-it";
+	  }
+
+	  return date.toLocaleDateString(locale, {
+	    month: "2-digit",
+	    day: "2-digit",
+	    year: "2-digit"
+	  });
+	}
+
+	var index = {
+		__proto__: null,
+		formatPriceNumber: formatPriceNumber,
+		formatDate: formatDate
+	};
+
 	exports.errors = errors;
-	exports.helpers = index;
-	exports.routes = index$1;
-	exports.types = index$4;
-	exports.validation = index$5;
+	exports.formatters = index;
+	exports.helpers = index$1;
+	exports.routes = index$2;
+	exports.types = index$5;
+	exports.validation = index$6;
 
 }));
 //# sourceMappingURL=index.umd.js.map

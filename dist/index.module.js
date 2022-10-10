@@ -89,7 +89,7 @@ var Schemas;
   };
 })(Schemas || (Schemas = {}));
 
-var index$5 = {
+var index$6 = {
 	__proto__: null,
 	get Regex () { return Regex; },
 	get Schemas () { return Schemas; }
@@ -125,7 +125,7 @@ var HTTPMethod;
   HTTPMethod["TRACE"] = "TRACE";
 })(HTTPMethod || (HTTPMethod = {}));
 
-var index$4 = {
+var index$5 = {
 	__proto__: null,
 	get HTTPMethod () { return HTTPMethod; },
 	get Enum_Enrollment_State () { return Enum_Enrollment_State; },
@@ -209,15 +209,15 @@ var Reset;
   }).required();
 })(Reset || (Reset = {}));
 
-var index$3 = {
+var index$4 = {
 	__proto__: null,
 	get Forgot () { return Forgot; },
 	get Reset () { return Reset; }
 };
 
-var index$2 = {
+var index$3 = {
 	__proto__: null,
-	Password: index$3,
+	Password: index$4,
 	get Create () { return Create; },
 	get UserExists () { return UserExists; },
 	get Login () { return Login; }
@@ -314,9 +314,9 @@ var Enroll;
   Enroll.getSchemaCtx = getSchemaCtx;
 })(Enroll || (Enroll = {}));
 
-var index$1 = {
+var index$2 = {
 	__proto__: null,
-	Account: index$2,
+	Account: index$3,
 	get Enroll () { return Enroll; },
 	get Contacts () { return Contacts; },
 	get Evaluation () { return Evaluation; }
@@ -379,10 +379,43 @@ var Course;
   Course.isPaymentNeeded = isPaymentNeeded;
 })(Course || (Course = {}));
 
-var index = {
+var index$1 = {
 	__proto__: null,
 	get Course () { return Course; }
 };
 
-export { errors, index as helpers, index$1 as routes, index$4 as types, index$5 as validation };
+var formatPriceNumber = function formatPriceNumber(price, locale, currency) {
+  if (locale === void 0) {
+    locale = "IT-it";
+  }
+
+  if (currency === void 0) {
+    currency = "EUR";
+  }
+
+  var formatter = new Intl.NumberFormat(locale, {
+    style: "currency",
+    currency: currency
+  });
+  return formatter.format(price);
+};
+function formatDate(date, locale) {
+  if (locale === void 0) {
+    locale = "IT-it";
+  }
+
+  return date.toLocaleDateString(locale, {
+    month: "2-digit",
+    day: "2-digit",
+    year: "2-digit"
+  });
+}
+
+var index = {
+	__proto__: null,
+	formatPriceNumber: formatPriceNumber,
+	formatDate: formatDate
+};
+
+export { errors, index as formatters, index$1 as helpers, index$2 as routes, index$5 as types, index$6 as validation };
 //# sourceMappingURL=index.module.js.map
