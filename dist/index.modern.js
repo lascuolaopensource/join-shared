@@ -71,7 +71,7 @@ var Schemas;
   };
 })(Schemas || (Schemas = {}));
 
-var index$6 = {
+var index$8 = {
 	__proto__: null,
 	get Regex () { return Regex; },
 	get Schemas () { return Schemas; }
@@ -107,7 +107,7 @@ var HTTPMethod;
   HTTPMethod["TRACE"] = "TRACE";
 })(HTTPMethod || (HTTPMethod = {}));
 
-var index$5 = {
+var index$7 = {
 	__proto__: null,
 	get HTTPMethod () { return HTTPMethod; },
 	get Enum_Enrollment_State () { return Enum_Enrollment_State; },
@@ -191,36 +191,19 @@ var Reset;
   }).required();
 })(Reset || (Reset = {}));
 
-var index$4 = {
+var index$6 = {
 	__proto__: null,
 	get Forgot () { return Forgot; },
 	get Reset () { return Reset; }
 };
 
-var index$3 = {
+var index$5 = {
 	__proto__: null,
-	Password: index$4,
+	Password: index$6,
 	get Create () { return Create; },
 	get UserExists () { return UserExists; },
 	get Login () { return Login; }
 };
-
-function _extends() {
-  _extends = Object.assign ? Object.assign.bind() : function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-
-    return target;
-  };
-  return _extends.apply(this, arguments);
-}
 
 var Contacts;
 
@@ -273,6 +256,127 @@ var Evaluation;
   Evaluation.getSchemaCtx = getSchemaCtx;
 })(Evaluation || (Evaluation = {}));
 
+var Address;
+
+(function (Address) {
+  Address.values = {
+    country: "",
+    administrativeArea: "",
+    city: "",
+    postCode: "",
+    street: "",
+    number: ""
+  };
+  Address.schema = yup.object({
+    country: yup.string().required(),
+    administrativeArea: Schemas.provincia.required(),
+    city: yup.string().required(),
+    postCode: Schemas.cap.required(),
+    street: yup.string().required(),
+    number: yup.string().required()
+  });
+})(Address || (Address = {}));
+
+var Owner;
+
+(function (Owner) {
+  Owner.values = {
+    fiscalCode: ""
+  };
+  Owner.schema = yup.object({
+    fiscalCode: Schemas.cf.required()
+  });
+})(Owner || (Owner = {}));
+
+var Person;
+
+(function (Person) {
+  Person.values = {
+    name: "",
+    surname: "",
+    fiscalCode: "",
+    email: ""
+  };
+  Person.schema = yup.object({
+    name: yup.string().required(),
+    surname: yup.string().required(),
+    fiscalCode: Schemas.cf.required(),
+    email: Schemas.email.required()
+  });
+})(Person || (Person = {}));
+
+var Company;
+
+(function (Company) {
+  Company.values = {
+    name: "",
+    vatNumber: "",
+    sdiCode: "",
+    certifiedEmail: ""
+  };
+  Company.schema = yup.object({
+    name: yup.string().required(),
+    vatNumber: Schemas.vat.required(),
+    sdiCode: Schemas.sdi,
+    certifiedEmail: Schemas.pec.required()
+  });
+})(Company || (Company = {}));
+
+const Options = ["owner", "person", "company"];
+
+var index$4 = {
+	__proto__: null,
+	Options: Options,
+	get Owner () { return Owner; },
+	get Person () { return Person; },
+	get Company () { return Company; }
+};
+
+var Execute;
+
+(function (Execute) {
+  Execute.path = "/pay/execute";
+  Execute.method = HTTPMethod.POST;
+  Execute.values = {
+    paymentId: "",
+    billingOption: Options[0],
+    owner: Owner.values,
+    person: Person.values,
+    company: Company.values,
+    address: Address.values
+  };
+  Execute.schema = yup.object({
+    paymentId: yup.string().required(),
+    billingOption: yup.string().oneOf([...Options]).required(),
+    owner: Owner.schema.when("billingOption", Schemas.thenReq(Options[0])),
+    person: Person.schema.when("billingOption", Schemas.thenReq(Options[1])),
+    company: Company.schema.when("billingOption", Schemas.thenReq(Options[2])),
+    address: Address.schema.required()
+  });
+})(Execute || (Execute = {}));
+
+var index$3 = {
+	__proto__: null,
+	get Execute () { return Execute; }
+};
+
+function _extends() {
+  _extends = Object.assign ? Object.assign.bind() : function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+
+    return target;
+  };
+  return _extends.apply(this, arguments);
+}
+
 var Enroll;
 
 (function (Enroll) {
@@ -298,10 +402,13 @@ var Enroll;
 
 var index$2 = {
 	__proto__: null,
-	Account: index$3,
+	Account: index$5,
+	Pay: index$3,
 	get Enroll () { return Enroll; },
 	get Contacts () { return Contacts; },
-	get Evaluation () { return Evaluation; }
+	get Evaluation () { return Evaluation; },
+	get Address () { return Address; },
+	Billing: index$4
 };
 
 const errors = {
@@ -387,5 +494,5 @@ var index = {
 	formatDate: formatDate
 };
 
-export { errors, index as formatters, index$1 as helpers, index$2 as routes, index$5 as types, index$6 as validation };
+export { errors, index as formatters, index$1 as helpers, index$2 as routes, index$7 as types, index$8 as validation };
 //# sourceMappingURL=index.modern.js.map

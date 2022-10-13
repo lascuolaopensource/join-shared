@@ -132,30 +132,33 @@ export declare type ComponentPeopleCreditsInput = {
 };
 export declare type ComponentSpaceAddress = {
     __typename?: 'ComponentSpaceAddress';
+    administrativeArea: Scalars['String'];
+    city: Scalars['String'];
+    country: Scalars['String'];
     id: Scalars['ID'];
-    municipality: Scalars['String'];
     number: Scalars['String'];
-    province: Scalars['String'];
+    postCode: Scalars['String'];
     street: Scalars['String'];
-    zip: Scalars['String'];
 };
 export declare type ComponentSpaceAddressFiltersInput = {
+    administrativeArea?: InputMaybe<StringFilterInput>;
     and?: InputMaybe<Array<InputMaybe<ComponentSpaceAddressFiltersInput>>>;
-    municipality?: InputMaybe<StringFilterInput>;
+    city?: InputMaybe<StringFilterInput>;
+    country?: InputMaybe<StringFilterInput>;
     not?: InputMaybe<ComponentSpaceAddressFiltersInput>;
     number?: InputMaybe<StringFilterInput>;
     or?: InputMaybe<Array<InputMaybe<ComponentSpaceAddressFiltersInput>>>;
-    province?: InputMaybe<StringFilterInput>;
+    postCode?: InputMaybe<StringFilterInput>;
     street?: InputMaybe<StringFilterInput>;
-    zip?: InputMaybe<StringFilterInput>;
 };
 export declare type ComponentSpaceAddressInput = {
+    administrativeArea?: InputMaybe<Scalars['String']>;
+    city?: InputMaybe<Scalars['String']>;
+    country?: InputMaybe<Scalars['String']>;
     id?: InputMaybe<Scalars['ID']>;
-    municipality?: InputMaybe<Scalars['String']>;
     number?: InputMaybe<Scalars['String']>;
-    province?: InputMaybe<Scalars['String']>;
+    postCode?: InputMaybe<Scalars['String']>;
     street?: InputMaybe<Scalars['String']>;
-    zip?: InputMaybe<Scalars['String']>;
 };
 export declare type ComponentTimeMeetings = {
     __typename?: 'ComponentTimeMeetings';

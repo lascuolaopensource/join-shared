@@ -1,15 +1,21 @@
+/**
+ * Adds ID to any interface
+ */
+
+export type ID<T> = T & { id: string };
+
+/**
+ * Cleans a component from __typeName and ID
+ */
+
+export type CleanComp<T> = Omit<T, "id" | "__typename">;
+
 // import {
 // 	UsersPermissionsMe,
 // 	ComponentLocationAddress,
 // 	BillingInfoDataDynamicZone,
 // 	Payment,
 // } from "./types";
-
-/**
- * Utility
- */
-
-export type ID<T> = T & { id: string };
 
 // export type Comp<T> = Partial<T> & { __component: string };
 
@@ -52,10 +58,6 @@ export type ID<T> = T & { id: string };
 // /**
 //  * Billing options
 //  */
-
-// export const BillingOptions = ["me", "person", "company"] as const;
-
-// export type BillingOptions = typeof BillingOptions[number];
 
 // // Lista dei componenti per la zona dinamica
 // // Reference: strapi-backend/src/api/billing-info/content-types/billing-info/schema.json
