@@ -31,7 +31,11 @@ export interface PaymentDetails {
 	executed: boolean;
 	deadline: string;
 	expired: boolean;
-	owner: string;
+	owner: {
+		name: string;
+		surname: string;
+		email: string;
+	};
 }
 
 export enum PaymentCategories {
