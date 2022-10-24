@@ -27,3 +27,6 @@ export interface PaymentDetails {
     expired: boolean;
     owner: string;
 }
+export declare enum PaymentCategories {
+    course = "course"
+}

@@ -34,6 +34,10 @@ export interface PaymentDetails {
 	owner: string;
 }
 
+export enum PaymentCategories {
+	course = "course",
+}
+
 // import {
 // 	UsersPermissionsMe,
 // 	ComponentLocationAddress,
@@ -63,10 +67,6 @@ export interface PaymentDetails {
 // export interface PaymentBillingInfo {
 // 	address: ComponentLocationAddress;
 // 	data: Comp<BillingInfoDataDynamicZone>;
-// }
-
-// export enum PaymentCategories {
-// 	course = "course",
 // }
 
 // /**
