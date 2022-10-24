@@ -1,2 +1,3 @@
-import { Payment } from "../types";
-export declare function isExpired(p: Payment): boolean;
+export declare namespace Payment {
+    function isExpired(date: string): boolean;
+}

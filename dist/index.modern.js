@@ -121,9 +121,6 @@ var PaymentCategories;
 // 	address: ComponentLocationAddress;
 // 	data: Comp<BillingInfoDataDynamicZone>;
 // }
-// export enum PaymentCategories {
-// 	course = "course",
-// }
 // /**
 //  * Billing options
 //  */
@@ -519,9 +516,20 @@ var Course;
   Course.isPaymentNeeded = isPaymentNeeded;
 })(Course || (Course = {}));
 
+var Payment;
+
+(function (Payment) {
+  function isExpired(date) {
+    return new Date() > new Date(date);
+  }
+
+  Payment.isExpired = isExpired;
+})(Payment || (Payment = {}));
+
 var index$1 = {
 	__proto__: null,
-	get Course () { return Course; }
+	get Course () { return Course; },
+	get Payment () { return Payment; }
 };
 
 const formatPriceNumber = (price, locale = "IT-it", currency = "EUR") => {

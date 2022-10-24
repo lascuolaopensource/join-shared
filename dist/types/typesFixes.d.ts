@@ -22,8 +22,8 @@ export interface PaymentDetails {
     category: string;
     title: string;
     price: number;
-    paid: boolean;
-    expiration: string;
+    executed: boolean;
+    deadline: string;
     expired: boolean;
     owner: string;
 }
