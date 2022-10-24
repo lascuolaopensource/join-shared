@@ -422,9 +422,17 @@ var Execute;
   });
 })(Execute || (Execute = {}));
 
+var Confirm;
+
+(function (Confirm) {
+  Confirm.path = "/pay/confirm";
+  Confirm.method = HTTPMethod.POST;
+})(Confirm || (Confirm = {}));
+
 var index$3 = {
 	__proto__: null,
-	get Execute () { return Execute; }
+	get Execute () { return Execute; },
+	get Confirm () { return Confirm; }
 };
 
 function _extends() {
