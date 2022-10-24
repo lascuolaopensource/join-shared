@@ -23,7 +23,7 @@ export declare const errors: {
     notFound: string;
     passwordThreeDollars: string;
     paymentAlreadyConfirmed: string;
-    paymentAlreadyPaid: string;
+    paymentAlreadyExecuted: string;
     paymentExpired: string;
     paymentNotFound: string;
     registerDisabled: string;

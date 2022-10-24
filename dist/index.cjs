@@ -460,7 +460,6 @@ var errors = {
   alreadyEnrolled: "alreadyEnrolled",
   pastDeadline: "pastDeadline",
   userNotCreated: "userNotCreated",
-  //
   badPolicyConfig: "badPolicyConfig",
   defaultRoleNotFound: "defaultRoleNotFound",
   emailSendError: "emailSendError",
@@ -475,7 +474,7 @@ var errors = {
   notFound: "notFound",
   passwordThreeDollars: "passwordThreeDollars",
   paymentAlreadyConfirmed: "paymentAlreadyConfirmed",
-  paymentAlreadyPaid: "paymentAlreadyPaid",
+  paymentAlreadyExecuted: "paymentAlreadyExecuted",
   paymentExpired: "paymentExpired",
   paymentNotFound: "paymentNotFound",
   registerDisabled: "registerDisabled",
