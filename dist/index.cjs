@@ -447,6 +447,9 @@ var Confirm;
 (function (Confirm) {
   Confirm.path = "/pay/confirm";
   Confirm.method = HTTPMethod.POST;
+  Confirm.schema = yup__namespace.object({
+    confirmationCode: yup__namespace.string().required()
+  });
 })(Confirm || (Confirm = {}));
 
 var index$3 = {

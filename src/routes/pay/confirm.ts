@@ -1,4 +1,5 @@
-import { HTTPMethod } from "$types";
+import * as yup from "yup";
+import { HTTPMethod, Shape } from "$types";
 
 export namespace Confirm {
 	export const path = "/pay/confirm";
@@ -7,6 +8,10 @@ export namespace Confirm {
 	export interface Req {
 		confirmationCode: string;
 	}
+
+	export const schema = yup.object<Shape<Req>>({
+		confirmationCode: yup.string().required(),
+	});
 
 	export interface Res {
 		confirmed: boolean;
