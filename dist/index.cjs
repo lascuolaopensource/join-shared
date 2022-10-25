@@ -479,9 +479,24 @@ var Update;
   });
 })(Update || (Update = {}));
 
+var ConfirmCourse;
+
+(function (ConfirmCourse) {
+  ConfirmCourse.path = function (id) {
+    if (id === void 0) {
+      id = ":id";
+    }
+
+    return "/admin-enrollments/confirm-course/" + id;
+  };
+
+  ConfirmCourse.method = HTTPMethod.GET;
+})(ConfirmCourse || (ConfirmCourse = {}));
+
 var index$4 = {
 	__proto__: null,
-	get Update () { return Update; }
+	get Update () { return Update; },
+	get ConfirmCourse () { return ConfirmCourse; }
 };
 
 var index$3 = {
