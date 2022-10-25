@@ -109,7 +109,7 @@ var Schemas;
   };
 })(Schemas || (Schemas = {}));
 
-var index$8 = {
+var index$a = {
 	__proto__: null,
 	get Regex () { return Regex; },
 	get Schemas () { return Schemas; }
@@ -135,7 +135,13 @@ var PaymentCategories;
 
 (function (PaymentCategories) {
   PaymentCategories["course"] = "course";
-})(PaymentCategories || (PaymentCategories = {})); // import {
+})(PaymentCategories || (PaymentCategories = {}));
+/**
+ * Enrollment states, as list
+ */
+
+
+var EnrollmentStates = Object.values(Enum_Enrollment_State); // import {
 // 	UsersPermissionsMe,
 // 	ComponentLocationAddress,
 // 	BillingInfoDataDynamicZone,
@@ -193,12 +199,13 @@ var HTTPMethod;
   HTTPMethod["TRACE"] = "TRACE";
 })(HTTPMethod || (HTTPMethod = {}));
 
-var index$7 = {
+var index$9 = {
 	__proto__: null,
 	get HTTPMethod () { return HTTPMethod; },
 	get Enum_Enrollment_State () { return Enum_Enrollment_State; },
 	get PublicationState () { return PublicationState; },
-	get PaymentCategories () { return PaymentCategories; }
+	get PaymentCategories () { return PaymentCategories; },
+	EnrollmentStates: EnrollmentStates
 };
 
 var Create;
@@ -278,15 +285,15 @@ var Reset;
   }).required();
 })(Reset || (Reset = {}));
 
-var index$6 = {
+var index$8 = {
 	__proto__: null,
 	get Forgot () { return Forgot; },
 	get Reset () { return Reset; }
 };
 
-var index$5 = {
+var index$7 = {
 	__proto__: null,
-	Password: index$6,
+	Password: index$8,
 	get Create () { return Create; },
 	get UserExists () { return UserExists; },
 	get Login () { return Login; }
@@ -411,7 +418,7 @@ var Company;
 
 var Options = ["owner", "person", "company"];
 
-var index$4 = {
+var index$6 = {
 	__proto__: null,
 	Options: Options,
 	get Owner () { return Owner; },
@@ -452,10 +459,34 @@ var Confirm;
   });
 })(Confirm || (Confirm = {}));
 
-var index$3 = {
+var index$5 = {
 	__proto__: null,
 	get Execute () { return Execute; },
 	get Confirm () { return Confirm; }
+};
+
+var Update;
+
+(function (Update) {
+  Update.path = "/admin-enrollments/update";
+  Update.method = HTTPMethod.POST;
+  Update.itemSchema = yup__namespace.object({
+    id: yup__namespace.string().required(),
+    state: yup__namespace.string().oneOf(EnrollmentStates).required()
+  });
+  Update.schema = yup__namespace.object({
+    changes: yup__namespace.array(Update.itemSchema).required()
+  });
+})(Update || (Update = {}));
+
+var index$4 = {
+	__proto__: null,
+	get Update () { return Update; }
+};
+
+var index$3 = {
+	__proto__: null,
+	Enrollments: index$4
 };
 
 function _extends() {
@@ -500,13 +531,14 @@ var Enroll;
 
 var index$2 = {
 	__proto__: null,
-	Account: index$5,
-	Pay: index$3,
+	Account: index$7,
+	Pay: index$5,
+	Admin: index$3,
 	get Enroll () { return Enroll; },
 	get Contacts () { return Contacts; },
 	get Evaluation () { return Evaluation; },
 	get Address () { return Address; },
-	Billing: index$4
+	Billing: index$6
 };
 
 var errors = {
@@ -618,6 +650,6 @@ exports.errors = errors;
 exports.formatters = index;
 exports.helpers = index$1;
 exports.routes = index$2;
-exports.types = index$7;
-exports.validation = index$8;
+exports.types = index$9;
+exports.validation = index$a;
 //# sourceMappingURL=index.cjs.map

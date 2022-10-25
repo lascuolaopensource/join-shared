@@ -1,4 +1,4 @@
-import { Payment } from "./types";
+import { Enum_Enrollment_State, Payment } from "./types";
 
 /**
  * Adds ID to any interface
@@ -41,6 +41,12 @@ export interface PaymentDetails {
 export enum PaymentCategories {
 	course = "course",
 }
+
+/**
+ * Enrollment states, as list
+ */
+
+export const EnrollmentStates = Object.values(Enum_Enrollment_State);
 
 // import {
 // 	UsersPermissionsMe,
