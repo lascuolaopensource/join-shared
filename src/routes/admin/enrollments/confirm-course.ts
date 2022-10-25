@@ -14,5 +14,7 @@ export namespace ConfirmCourse {
 
 	export interface Req {}
 
-	export interface Res {}
+	export interface Res {
+		message?: string;
+	}
 }

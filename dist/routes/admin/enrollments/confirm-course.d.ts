@@ -8,5 +8,6 @@ export declare namespace ConfirmCourse {
     interface Req {
     }
     interface Res {
+        message?: string;
     }
 }
