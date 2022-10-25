@@ -8,6 +8,10 @@ export namespace ConfirmCourse {
 
 	export const method = HTTPMethod.GET;
 
+	export interface Params {
+		id: string;
+	}
+
 	export interface Req {}
 
 	export interface Res {}
