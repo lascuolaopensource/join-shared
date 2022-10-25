@@ -561,6 +561,7 @@ var errors = {
     noSchemaInConfig: "noSchemaInConfig",
     bodyNotValid: "bodyNotValid"
   },
+  notPastDeadline: "notPastDeadline",
   courseAlreadyConfirmed: "courseAlreadyConfirmed",
   missingCourseId: "missingCourseId",
   courseNotFound: "courseNotFound",
