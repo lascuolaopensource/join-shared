@@ -3,6 +3,7 @@ export declare const errors: {
         noSchemaInConfig: string;
         bodyNotValid: string;
     };
+    courseAlreadyConfirmed: string;
     missingCourseId: string;
     courseNotFound: string;
     emailAlreadyExisting: string;
